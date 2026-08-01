@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rhoiE \"\\\\bYDC\\\\b[^\\\\\"]{0,80}\" \"c:/Users/maria/.claude/projects/c--Users-maria-Projects-Alkhlejia-Aldwaliya/\")",
+      "PowerShell(Start-Process \"c:\\\\Users\\\\maria\\\\Projects\\\\YDC Web\\\\index.html\")"
+    ]
+  }
+}
