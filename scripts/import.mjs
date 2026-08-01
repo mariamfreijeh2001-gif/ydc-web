@@ -612,6 +612,12 @@ async function indexDropFolder() {
 const RASTER = /\.(png|jpe?g)$/i;
 
 /**
+ * Long-edge cap for imported rasters. 2560 covers a full-bleed hero on a 1280px
+ * container at 2x DPR, which is the largest thing the design asks for.
+ */
+const MAX_WIDTH = 2560;
+
+/**
  * Copy each referenced asset into public/media.
  *
  * Most source images are photographs saved as multi-megabyte PNGs, so rasters are
@@ -669,8 +675,16 @@ async function importAssets(index) {
     if (isRaster) {
       const img = sharp(buf, { limitInputPixels: false });
       const meta = await img.metadata();
-      const sized = meta.width && meta.width > 1920 ? img.resize({ width: 1920 }) : img;
-      buf = await sized.webp({ quality: 82, effort: 5 }).toBuffer();
+      const sized =
+        meta.width && meta.width > MAX_WIDTH
+          ? img.resize({ width: MAX_WIDTH, kernel: 'lanczos3' })
+          : img;
+      /*
+       * next/image re-encodes these on the way out, so this is the first of two lossy
+       * passes — keep it high or card images visibly degrade. `effort: 6` buys back
+       * most of the size that the higher quality costs.
+       */
+      buf = await sized.webp({ quality: 92, effort: 6, smartSubsample: true }).toBuffer();
     }
     bytesOut += buf.length;
 

@@ -44,11 +44,12 @@
   font-weight: 600;
 }
 
+/* The live case page shows the portrait cover as a square, not a 16:9 banner. */
 .cover {
   position: relative;
   margin-top: 32px;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-alternate);
@@ -56,7 +57,7 @@
 
 .coverImg {
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center;
 }
 
 /* ---- Slider + copy ------------------------------------------------------ */
@@ -93,7 +94,4 @@
     gap: 28px;
   }
 
-  .cover {
-    aspect-ratio: 4 / 3;
-  }
 }

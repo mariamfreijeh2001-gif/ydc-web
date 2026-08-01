@@ -7,6 +7,7 @@ import { Section } from '@/components/layout/Section';
 import { ArrowUpRightIcon } from '@/components/ui/Icon';
 import { clinics, contact } from '@/content/site';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export const metadata: Metadata = {
   title: 'Contacts',
@@ -36,6 +37,7 @@ export default function ContactsPage() {
                     priority={i === 0}
                     sizes="(max-width: 1024px) 100vw, 46vw"
                     className={styles.cover}
+                    quality={IMAGE_QUALITY}
                   />
                 </div>
 
@@ -115,6 +117,7 @@ export default function ContactsPage() {
                 height={520}
                 sizes="(max-width: 1024px) 60vw, 420px"
                 className={styles.askImg}
+                quality={IMAGE_QUALITY}
               />
             </div>
 

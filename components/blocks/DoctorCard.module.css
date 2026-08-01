@@ -1,10 +1,16 @@
+/*
+ * Live card measures 407x569 with a 260px photo — the extra height is generous
+ * breathing room around the portrait, not a larger image. Pinning the height keeps
+ * every card in a row equal, which is what the theme's grid does.
+ */
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 34px 30px 26px;
+  padding: 40px 34px 30px;
   border-radius: var(--radius-card);
   background: var(--c-alternate);
+  min-height: 569px;
   height: 100%;
 }
 
@@ -27,7 +33,8 @@
   width: 100%;
   max-width: 260px;
   aspect-ratio: 1;
-  margin: 28px 0;
+  /* `auto` centres the portrait in whatever height is left over. */
+  margin: auto 0;
   border-radius: 50%;
   overflow: hidden;
   background: var(--c-surface-2);
@@ -64,4 +71,15 @@
 .social:hover {
   background: var(--c-primary);
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  .card {
+    min-height: 0;
+    padding: 30px 24px 24px;
+  }
+
+  .photo {
+    margin: 28px 0;
+  }
 }

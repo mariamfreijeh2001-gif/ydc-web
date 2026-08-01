@@ -23,7 +23,13 @@
       "PowerShell(Get-NetTCPConnection -LocalPort 3111 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; \"dev stopped\")",
       "Bash(rm -rf .next)",
       "Bash(curl -s -o /dev/null -w \"  /before-after/allon4-n-d/ -> %{http_code} %{redirect_url}\\\\n\" http://localhost:3222/before-after/allon4-n-d/)",
-      "Bash(curl -sL -o /dev/null -w \"  followed -> %{http_code} %{url_effective}\\\\n\" http://localhost:3222/before-after/allon4-n-d)"
+      "Bash(curl -sL -o /dev/null -w \"  followed -> %{http_code} %{url_effective}\\\\n\" http://localhost:3222/before-after/allon4-n-d)",
+      "Bash(git commit *)",
+      "Bash(git --no-pager log --oneline -1)",
+      "Bash(git --no-pager show -s --format=\"author: %an <%ae>\")",
+      "Bash(git --no-pager log --oneline -2)",
+      "Bash(git commit -q -m 'docs: record blog/shop as out of scope and list deferred items *)",
+      "Bash(git commit -q -m 'Pin Vercel framework to Next.js *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\.claude\\projects\\c--Users-maria-Projects-YDC-Web\\memory"

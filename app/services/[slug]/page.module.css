@@ -59,26 +59,29 @@
   margin-bottom: 40px;
 }
 
+/* Live: 1170px grid of 360x495 cards with 120px icons. */
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin: 0;
+  gap: 45px;
+  margin: 0 auto;
+  max-width: 1170px;
 }
 
 .feature {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 30px 28px;
+  gap: 18px;
+  padding: 40px 34px;
   border: 1px solid var(--c-border);
   border-radius: var(--radius-md);
   background: var(--c-bg);
+  min-height: 495px;
 }
 
 .featureIcon {
-  width: 64px;
-  height: 64px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
 }
 
@@ -105,7 +108,7 @@
 
 .splitMedia {
   position: relative;
-  min-height: 420px;
+  min-height: 560px;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-alternate);
@@ -214,7 +217,7 @@
 .plans {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
+  gap: var(--gap);
   margin: 0;
 }
 
@@ -291,7 +294,7 @@
 .relatedGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: var(--gap);
   margin: 0;
 }
 

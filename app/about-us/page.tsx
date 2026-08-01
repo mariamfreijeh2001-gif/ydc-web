@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { about } from '@/content/pages/about';
 import { doctors, services } from '@/lib/content';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -32,6 +33,7 @@ export default function AboutPage() {
               priority
               sizes="100vw"
               className={styles.heroImg}
+              quality={IMAGE_QUALITY}
             />
             <div className={styles.heroCard}>
               <p className={styles.eyebrow}>{about.hero.eyebrow}</p>
@@ -53,6 +55,7 @@ export default function AboutPage() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 46vw"
                 className={styles.cover}
+                quality={IMAGE_QUALITY}
               />
             </div>
             <div className={styles.welcomeBody}>
@@ -79,6 +82,7 @@ export default function AboutPage() {
                       fill
                       sizes="(max-width: 1024px) 45vw, 22vw"
                       className={styles.cover}
+                      quality={IMAGE_QUALITY}
                     />
                   </li>
                 ))}
@@ -91,6 +95,7 @@ export default function AboutPage() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 46vw"
                 className={styles.cover}
+                quality={IMAGE_QUALITY}
               />
             </div>
           </div>

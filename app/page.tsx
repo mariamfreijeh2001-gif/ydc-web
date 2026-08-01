@@ -48,9 +48,9 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Our Services */}
+      {/* Our Services — wider container than the surrounding copy, as on the live site */}
       <Section space="tight">
-        <Container>
+        <Container size="wide">
           <header className={styles.sectionHead}>
             <h2>Our Services</h2>
             <Link href="/services/" className={styles.viewAll}>
@@ -71,7 +71,7 @@ export default function HomePage() {
 
       {/* Our Patients */}
       <Section space="tight">
-        <Container>
+        <Container size="wide">
           <header className={styles.sectionHead}>
             <h2>Our Patients</h2>
             <Link href="/before-after/" className={styles.viewAll}>
@@ -80,7 +80,15 @@ export default function HomePage() {
             </Link>
           </header>
 
-          <Carousel label="Patient before and after cases" perView={3.5}>
+          {/*
+            The live site shows 3.5 cards with the next peeking, which only reads as a
+            carousel when there are more cards than fit. With the published set smaller
+            than that, fill the row instead of leaving dead space on the right.
+          */}
+          <Carousel
+            label="Patient before and after cases"
+            perView={cases.length > 3 ? 3.5 : cases.length}
+          >
             {cases.map((item) => (
               <li key={item.slug}>
                 <CaseCard item={item} variant="compact" />

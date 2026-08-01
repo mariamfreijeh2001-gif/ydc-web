@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { contact, nav, site } from '@/content/site';
 import { AtIcon, CloseIcon, MenuIcon, PhoneIcon } from '@/components/ui/Icon';
 import styles from './SiteHeader.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 const LOGO = '/media/2024/05/ydc_logo_transparent.webp';
 
@@ -41,7 +42,9 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label={`${site.name} — home`}>
-          <Image src={LOGO} alt={site.name} width={230} height={44} priority />
+          <Image src={LOGO} alt={site.name} width={230} height={44} priority
+  quality={IMAGE_QUALITY}
+/>
         </Link>
 
         <nav className={styles.nav} aria-label="Main">

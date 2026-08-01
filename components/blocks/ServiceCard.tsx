@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import type { Service } from '@/lib/content';
 import styles from './ServiceCard.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   service: Service;
@@ -29,6 +30,7 @@ export function ServiceCard({ service, tone = 'image', priority = false }: Props
           priority={priority}
           sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className={styles.image}
+          quality={IMAGE_QUALITY}
         />
       ) : null}
 

@@ -3,8 +3,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Portrait card, matching the live grid's 3:4 proportion. */
-  aspect-ratio: 3 / 4;
+  /*
+   * Fixed height, not an aspect ratio: on the live site these cards stay 580px tall
+   * whatever their column width (measured 433x580 on home, 370x580 on /services/).
+   */
+  height: var(--card-h);
   padding: 30px 28px;
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -93,7 +96,6 @@
 
 @media (max-width: 767px) {
   .card {
-    aspect-ratio: 3 / 2;
     padding: 24px 22px;
   }
 }

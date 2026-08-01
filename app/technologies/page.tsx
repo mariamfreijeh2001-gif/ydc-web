@@ -6,6 +6,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { technologies } from '@/content/pages/technologies';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export const metadata: Metadata = {
   title: 'Our technologies',
@@ -37,6 +38,7 @@ export default function TechnologiesPage() {
                     sizes="(max-width: 767px) 70vw, 340px"
                     className={styles.img}
                     priority={i === 0}
+                    quality={IMAGE_QUALITY}
                   />
                 </div>
               </li>

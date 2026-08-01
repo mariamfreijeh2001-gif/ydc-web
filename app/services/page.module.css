@@ -6,18 +6,24 @@
   padding-top: 40px;
 }
 
+/*
+ * The live /services/ category grid is a 1170px column centred in the page — narrower
+ * than the 1280 boxed container. The heading sits on the same left edge as the cards.
+ */
 .groupTitle {
   font-size: var(--fs-h4);
   line-height: var(--lh-h4);
   letter-spacing: 0;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
+  max-width: 1170px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin: 0;
+  gap: var(--gap);
+  margin: 0 auto;
+  max-width: 1170px;
 }
 
 /* ---- Section heads ------------------------------------------------------ */

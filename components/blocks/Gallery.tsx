@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from '@/components/ui/Icon';
 import styles from './Gallery.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   images: string[];
@@ -56,6 +57,7 @@ export function Gallery({ images, caption }: Props) {
                 fill
                 sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={styles.img}
+                quality={IMAGE_QUALITY}
               />
             </button>
           </li>
@@ -96,6 +98,7 @@ export function Gallery({ images, caption }: Props) {
               sizes="90vw"
               className={styles.full}
               priority
+              quality={IMAGE_QUALITY}
             />
           </div>
 

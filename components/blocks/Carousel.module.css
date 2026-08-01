@@ -1,7 +1,6 @@
 .root {
   position: relative;
   --per-view: 4;
-  --gap: 22px;
 }
 
 .track {

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { Doctor } from '@/lib/content';
 import { SocialGlyph } from '@/components/ui/Icon';
 import styles from './DoctorCard.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export function DoctorCard({ doctor }: { doctor: Doctor }) {
   const links = [
@@ -22,6 +23,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
           fill
           sizes="(max-width: 767px) 60vw, 260px"
           className={styles.img}
+          quality={IMAGE_QUALITY}
         />
       </div>
 

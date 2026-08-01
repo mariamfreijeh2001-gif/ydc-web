@@ -5,6 +5,7 @@ import { Section } from '@/components/layout/Section';
 import { StarIcon } from '@/components/ui/Icon';
 import { reviews } from '@/lib/content';
 import styles from './Reviews.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 /** "Top Reviews" — 3-up then 2-up grid of Google testimonials. */
 export function Reviews() {
@@ -35,6 +36,7 @@ export function Reviews() {
                     width={40}
                     height={40}
                     className={styles.avatar}
+                    quality={IMAGE_QUALITY}
                   />
                 ) : null}
                 <span className={styles.name}>{review.name}</span>

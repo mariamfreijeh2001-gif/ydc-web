@@ -100,9 +100,14 @@
 }
 
 @media (max-width: 767px) {
+  /* The live mobile gallery is a single full-width column, not a 2-up grid. */
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .thumb {
+    aspect-ratio: 4 / 3;
   }
 
   .stage {

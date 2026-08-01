@@ -6,8 +6,12 @@
   padding-block: var(--section-y);
 }
 
+/*
+ * The theme's sections breathe more than a simple half-step. Measured against the live
+ * service pages, ~0.7 of the full rhythm lines the section boundaries up.
+ */
 .space-tight {
-  padding-block: calc(var(--section-y) / 2);
+  padding-block: calc(var(--section-y) * 0.7);
 }
 
 .space-none {

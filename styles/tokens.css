@@ -27,7 +27,14 @@
   --c-star: #004a5e;
 
   /* ---- Layout ----------------------------------------------------------- */
+  /*
+   * Two container widths, measured off the live site at a 1440 viewport:
+   *   boxed  — 1280 content, starting at x=80  (intro copy, reviews, most pages)
+   *   wide   — 1360 content, starting at x=40  (home services grid + patients carousel)
+   * `--container-pad` is the gutter that kicks in once the viewport is too narrow.
+   */
   --container: 1280px;
+  --container-wide-gutter: 40px;
   --container-pad: 20px;
 
   --radius-card: 40px;
@@ -39,7 +46,10 @@
 
   /* Vertical rhythm between page sections. */
   --section-y: 120px;
-  --gap: 24px;
+  /* Grid gutter between cards — 30px on the live site, not the 24px default. */
+  --gap: 30px;
+  /* Service and case cards are a fixed height on the live site, not a fixed ratio. */
+  --card-h: 580px;
 
   /* ---- Typography ------------------------------------------------------- */
   /* --font-sans is injected by next/font in app/layout.tsx */
@@ -122,6 +132,9 @@
 
     --section-y: 90px;
     --radius-card: 32px;
+    --gap: 24px;
+    --card-h: 470px;
+    --container-wide-gutter: 24px;
   }
 }
 
@@ -149,5 +162,8 @@
     --container-pad: 16px;
     --radius-card: 24px;
     --header-h: 64px;
+    --gap: 18px;
+    --card-h: 400px;
+    --container-wide-gutter: 16px;
   }
 }

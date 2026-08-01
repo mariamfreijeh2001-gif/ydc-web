@@ -17,7 +17,7 @@
 }
 
 .default {
-  min-height: 340px;
+  height: var(--card-h);
   padding: 26px 26px 24px;
 }
 
@@ -80,8 +80,3 @@
   inset: 0;
 }
 
-@media (max-width: 767px) {
-  .default {
-    min-height: 300px;
-  }
-}

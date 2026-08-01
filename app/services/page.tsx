@@ -9,6 +9,7 @@ import { Accordion } from '@/components/ui/Accordion';
 import page from '@/content/pages/services.json';
 import { servicesByCategory } from '@/lib/content';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -58,6 +59,7 @@ export default function ServicesPage() {
                     width={48}
                     height={48}
                     className={styles.reasonIcon}
+                    quality={IMAGE_QUALITY}
                   />
                 ) : null}
                 <h3 className={styles.reasonTitle}>{reason.title}</h3>
@@ -80,7 +82,9 @@ export default function ServicesPage() {
             {page.how.steps.map((step) => (
               <li key={step.title} className={styles.step}>
                 {step.icon ? (
-                  <Image src={step.icon} alt="" width={64} height={64} className={styles.stepIcon} />
+                  <Image src={step.icon} alt="" width={64} height={64} className={styles.stepIcon}
+  quality={IMAGE_QUALITY}
+/>
                 ) : null}
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepText}>{step.text}</p>

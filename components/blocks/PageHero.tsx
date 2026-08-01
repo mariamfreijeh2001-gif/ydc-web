@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 
 import styles from './PageHero.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   title: string;
@@ -37,6 +38,7 @@ export function PageHero({ title, intro, image, variant = 'overlay', children }:
           sizes="100vw"
           className={styles.image}
           aria-hidden="true"
+          quality={IMAGE_QUALITY}
         />
         <div className={styles.scrim} />
       </div>

@@ -11,6 +11,7 @@ import { CheckIcon, MoonIcon, StarIcon } from '@/components/ui/Icon';
 import { Tabs } from '@/components/ui/Tabs';
 import { getService, relatedServices, services } from '@/lib/content';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -63,6 +64,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                 priority
                 sizes="(max-width: 1280px) 100vw, 1280px"
                 className={styles.featuredImg}
+                quality={IMAGE_QUALITY}
               />
             </div>
           ) : null}
@@ -106,6 +108,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                       width={64}
                       height={64}
                       className={styles.featureIcon}
+                      quality={IMAGE_QUALITY}
                     />
                   ) : null}
                   <h3 className={styles.featureTitle}>{item.title}</h3>
@@ -130,6 +133,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     className={styles.splitImg}
+                    quality={IMAGE_QUALITY}
                   />
                 </div>
               ) : null}
@@ -169,6 +173,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     className={styles.splitImg}
+                    quality={IMAGE_QUALITY}
                   />
                 </div>
               ) : null}

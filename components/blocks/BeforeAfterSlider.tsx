@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
 
 import styles from './BeforeAfterSlider.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   before: string;
@@ -56,6 +57,7 @@ export function BeforeAfterSlider({ before, after, alt = '', priority = false }:
           priority={priority}
           sizes="(max-width: 1024px) 100vw, 640px"
           className={styles.img}
+          quality={IMAGE_QUALITY}
         />
 
         {/*
@@ -70,6 +72,7 @@ export function BeforeAfterSlider({ before, after, alt = '', priority = false }:
             priority={priority}
             sizes="(max-width: 1024px) 100vw, 640px"
             className={styles.img}
+            quality={IMAGE_QUALITY}
           />
         </div>
 

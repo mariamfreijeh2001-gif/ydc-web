@@ -10,6 +10,7 @@ import { Section } from '@/components/layout/Section';
 import { ArrowLeftIcon } from '@/components/ui/Icon';
 import { cases, getCase } from '@/lib/content';
 import styles from './page.module.css';
+import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -70,6 +71,7 @@ export default async function CasePage({ params }: Params) {
                 priority
                 sizes="(max-width: 1280px) 100vw, 1280px"
                 className={styles.coverImg}
+                quality={IMAGE_QUALITY}
               />
             </div>
           ) : null}
