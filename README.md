@@ -95,12 +95,20 @@ Three of the 38 archived cases are published. To add another:
 2. Run `npm run import` (it will fetch any images not in `public/media/` from the live site).
 3. Add the generated `content/cases/<slug>.json` import to `lib/content.ts`.
 
-## Known gaps
+## Out of scope
 
-- The live site's footer **TikTok icon links to Instagram** — reproduced as-is in
-  `content/site.ts`. Swap in the real TikTok URL when available.
-- The doctors' LinkedIn/Instagram links were placeholders (`#`) on the live site, so the
-  social chips on doctor cards are hidden until real URLs are added to
-  `content/doctors.json`.
-- Blog posts and the WooCommerce shop were out of scope; their content is still in
-  `ydc media/site-archive/` only.
+The site has **no blog and no shop**. The old WordPress install had two posts and six
+WooCommerce products; both were deliberately dropped in the rebuild, so there is no
+`/blog` route, no nav entry and no content file for either. Neither was linked from the
+live site's navigation.
+
+## Still to settle
+
+These are known and deferred, not oversights:
+
+- **Contact form** — needs `RESEND_API_KEY` (see above) before it can deliver.
+- **WhatsApp** — the FAB and footer link point at `wa.me/96181258176`; confirm the number
+  and the prefilled message text in `content/site.ts`.
+- **Social links** — the live site's footer TikTok icon points at Instagram (a copy-paste
+  slip carried over verbatim), and the doctors' LinkedIn/Instagram links were `#`
+  placeholders, so those chips stay hidden until real URLs land in `content/doctors.json`.
