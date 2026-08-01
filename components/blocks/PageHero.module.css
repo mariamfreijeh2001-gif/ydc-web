@@ -1,0 +1,93 @@
+/* ---- Overlay variant (/services/, /before-after/) ----------------------- */
+
+.overlay {
+  position: relative;
+  max-width: var(--container);
+  margin: 12px auto 0;
+  padding-inline: var(--container-pad);
+}
+
+.media {
+  position: absolute;
+  inset: 12px var(--container-pad) 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.55) 34%,
+    rgba(255, 255, 255, 0.06) 72%
+  );
+}
+
+.overlayInner {
+  position: relative;
+  min-height: clamp(280px, 32vw, 420px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px 0 34px;
+}
+
+.overlayTitle {
+  margin: 0;
+}
+
+.overlayIntro {
+  margin-top: 12px;
+  max-width: 62ch;
+  font-size: var(--fs-tertiary);
+  line-height: var(--lh-tertiary);
+  color: var(--c-text);
+}
+
+/* ---- Centered variant (/technologies/) ---------------------------------- */
+
+.centered {
+  padding-block: 48px 12px;
+}
+
+.centeredInner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.centeredTitle {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  text-align: center;
+  margin: 0;
+}
+
+.centeredIntro {
+  margin: 40px auto 0;
+  max-width: 100ch;
+  color: var(--c-tertiary);
+}
+
+@media (max-width: 767px) {
+  .overlayInner {
+    min-height: 240px;
+    padding: 48px 0 24px;
+  }
+
+  .centered {
+    padding-block: 28px 8px;
+  }
+
+  .centeredIntro {
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,22 @@
+/node_modules
+/.next/
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+
+# local env
+.env
+.env*.local
+
+# design QA artifacts (reference + local screenshots)
+/.design-ref/
+/.design-qa/
+
+# temporary WordPress export drop folder — deletable once `npm run import` has run
+/ydc media/
+
+.DS_Store
+*.pem
+/coverage
+.vercel

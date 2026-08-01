@@ -1,0 +1,124 @@
+{
+  "slug": "zir-maxveneers",
+  "title": "Zir-Max Veneers",
+  "category": "Cosmetic",
+  "image": "/media/2024/08/dental-veneers-1.webp",
+  "intro": {
+    "heading": "Dental Veneers at Younes Dental Clinic",
+    "blocks": [
+      {
+        "text": "Crafting High-End Veneers in Lebanon",
+        "kind": "subheading"
+      },
+      {
+        "text": "At Younes Dental Clinic, we specialize in transforming smiles with our high-quality dental veneers. Our expert team has successfully treated thousands of patients, many of whom have traveled from around the world to achieve their dream smile in Lebanon. We pride ourselves on delivering exceptional results at an affordable cost, making us a top destination for veneer treatments.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "We invite you to explore our Instagram page to see the incredible transformations we’ve achieved for our patients through our veneer services.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Our Veneer Options Include:",
+        "kind": "subheading"
+      },
+      {
+        "text": "Sometines mistaken for lumineers, lumeneers pioneered nonprep veneers with their propraietery materials, but it is possible to make with other material, that are stronger and more esthetic such as our own zirmax",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Not all cases can be done with non prep",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Lumineers: A non-invasive choice that requires no drilling or shots, yet delivers a perfect smile.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Veneers at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/01/tooth-xray-spot.svg",
+        "title": "Pain-Free Treatment",
+        "text": "Our skilled professionals ensure that your veneer procedure is completely pain-free. With our advanced techniques and caring approach, we make your comfort our top priority"
+      },
+      {
+        "icon": "/media/2024/01/tooth-xray-1.svg",
+        "title": "Modern Equipment",
+        "text": "At Younes Dental Clinic, we utilize cutting-edge technology to deliver the best results. From state-of-the-art CT machines and microscopes to advanced CEREC systems that allow for same-day crowns, our equipment is designed to provide precise, efficient, and high-quality care."
+      },
+      {
+        "icon": "/media/2024/01/vineer-1.svg",
+        "title": "Customized Aesthetic Solutions",
+        "text": "We understand that every smile is unique, which is why we offer personalized veneer solutions tailored to your specific needs and aesthetic goals. Our team works closely with you to design veneers that perfectly match your natural teeth, ensuring a seamless, beautiful, and natural-looking result."
+      }
+    ]
+  },
+  "candidates": null,
+  "restorative": {
+    "eyebrow": "",
+    "heading": "Who Can Get Veneers?",
+    "paragraphs": [
+      "Veneers are an ideal solution for individuals looking to enhance the appearance of their teeth. This treatment is particularly beneficial for those with chipped, broken, or worn-down teeth, as well as for patients who wish to correct discoloration that cannot be addressed through traditional whitening methods. Veneers are also suitable for individuals who want to improve the shape, size, or alignment of their teeth, resulting in a more balanced and aesthetically pleasing smile. Additionally, this treatment offers a long-lasting and minimally invasive option for those looking to achieve a significant improvement in the look of their teeth."
+    ],
+    "cta": null,
+    "image": "/media/2024/08/Beige-Minimalist-Carousel-Instagram-Post-37-e1724682486791.webp"
+  },
+  "visits": [
+    {
+      "label": "First Visit",
+      "subtitle": "Consultation and Digital Smile Design",
+      "points": [
+        {
+          "title": "Consultation with Our Dental Specialists",
+          "text": "Meet with our expert team to discuss your goals and expectations. We’ll assess your oral health and begin the process of designing your new smile."
+        }
+      ]
+    },
+    {
+      "label": "Second Visit",
+      "subtitle": "Preparation and Veneer Placement",
+      "points": [
+        {
+          "title": "Preparation for Veneers",
+          "text": "Once you approve the smile design, we’ll begin the preparation phase. This involves minimally adjusting your teeth to ensure a perfect fit for your veneers."
+        },
+        {
+          "title": "Veneer Placement",
+          "text": "The veneers will be custom-made and fitted precisely to your teeth. The entire process is completed within one week, giving you a beautiful, lasting smile."
+        }
+      ]
+    },
+    {
+      "label": "Third Visit",
+      "subtitle": "Smile Review",
+      "points": [
+        {
+          "title": "Final Result Review",
+          "text": "After the veneers are placed, we’ll have a follow-up visit to review the final result and ensure you’re completely satisfied with your new smile."
+        }
+      ]
+    }
+  ],
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long do veneers last?",
+      "a": "Veneers are designed to be a long-lasting solution for enhancing your smile. With proper care, our high-quality veneers can last 10 to 15 years or even longer. Regular dental check-ups and maintaining good oral hygiene will help ensure their longevity."
+    },
+    {
+      "q": "Are veneers painful to get?",
+      "a": "The process of getting veneers is generally pain-free. We use advanced techniques to minimize any discomfort during the preparation and placement phases. Most patients report little to no pain, and any mild discomfort can be managed with local anesthesia"
+    },
+    {
+      "q": "Why don’t you offer composite veneers?",
+      "a": "At Younes Dental Clinic, we prioritize long-term results and patient satisfaction. Composite veneers, while more affordable, tend to have a higher rate of discoloration, chipping, and wear over time compared to other materials like porcelain or zirconia. To ensure the best possible outcomes for our patients, we offer only premium veneer options that are more durable and aesthetically superior."
+    },
+    {
+      "q": "Can veneers be whitened?",
+      "a": "Veneers themselves cannot be whitened. However, one of the advantages of veneers is that they are stain-resistant and retain their color over time. If you’re considering veneers and want a brighter smile, we recommend whitening your natural teeth before the veneer process so the veneers can be matched to your preferred shade."
+    }
+  ]
+}

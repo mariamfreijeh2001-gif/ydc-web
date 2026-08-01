@@ -1,0 +1,209 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+}
+
+.inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.logo img {
+  width: clamp(150px, 16vw, 200px);
+  height: auto;
+}
+
+/* ---- Desktop nav -------------------------------------------------------- */
+
+.nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 30px);
+  margin: 0;
+}
+
+.navLink {
+  display: inline-block;
+  font-size: var(--fs-accent);
+  font-weight: 500;
+  color: var(--c-tertiary);
+  padding-block: 6px;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--c-primary);
+}
+
+/* The live site marks the current page with colour alone — no underline. */
+.navLink[aria-current='page'] {
+  color: var(--c-secondary);
+}
+
+/* ---- Mobile toggle ------------------------------------------------------ */
+
+.toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--c-primary);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+/* Elementor's `dropdown-breakpoints` collapse the menu at the tablet breakpoint. */
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .toggle {
+    display: inline-flex;
+  }
+}
+
+/* ---- Off-canvas drawer -------------------------------------------------- */
+
+/*
+ * Viewport-sized clipping shell. Without it the drawer, parked at translateX(100%),
+ * widens the document and creates a phantom horizontal scroll on every page.
+ */
+.shell {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shellOpen {
+  pointer-events: auto;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 30, 33, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.scrimOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  width: min(360px, 86vw);
+  background: var(--c-bg);
+  padding: 22px var(--container-pad) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  transform: translateX(100%);
+  transition: transform 0.36s var(--ease);
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+.drawerOpen {
+  transform: none;
+  visibility: visible;
+}
+
+.drawerHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.drawerTitle {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--ls-h6);
+  text-transform: uppercase;
+  color: var(--c-tertiary);
+  font-weight: 600;
+}
+
+.drawerClose {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--c-secondary);
+  background: var(--c-alternate);
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+}
+
+.drawerLink {
+  display: block;
+  padding: 12px 0;
+  font-size: var(--fs-h4);
+  font-weight: 500;
+  color: var(--c-secondary);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.drawerLink[aria-current='page'] {
+  color: var(--c-primary);
+}
+
+.drawerContact {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: var(--fs-meta);
+}
+
+.drawerContact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--c-secondary);
+  font-weight: 600;
+}
+
+.drawerContact a:hover {
+  color: var(--c-primary);
+}

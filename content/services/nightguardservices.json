@@ -1,0 +1,75 @@
+{
+  "slug": "nightguardservices",
+  "title": "Night Guard Services",
+  "category": "Therapeutic",
+  "image": "/media/2024/08/Your-paragraph-text-27-e1725452807145.webp",
+  "intro": {
+    "heading": "Night Guard Services at Younes Dental Clinic",
+    "blocks": [
+      {
+        "text": "At Younes Dental Clinic, we understand the impact that teeth grinding (bruxism) and jaw clenching can have on your oral health and overall well-being. Our custom-made night guards are designed to protect your teeth from the damaging effects of these habits, helping you maintain a healthy smile and avoid unnecessary dental complications.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "What is a Night Guard?",
+        "kind": "subheading"
+      },
+      {
+        "text": "A night guard is a custom-fitted dental appliance that you wear while you sleep. It creates a protective barrier between your upper and lower teeth, preventing them from grinding against each other. Night guards are also effective in reducing the stress on your jaw muscles and joints, which can alleviate symptoms of temporomandibular joint (TMJ) disorders.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Night Guard Services at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-28.webp",
+        "title": "Customized Fit for Maximum Comfort",
+        "text": "Our night guards are custom-made to fit the unique contours of your teeth and mouth, ensuring a comfortable fit. Unlike over-the-counter options, a custom night guard stays securely in place throughout the night, providing reliable protection without discomfort."
+      },
+      {
+        "icon": "/media/2024/08/a-27.webp",
+        "title": "Durable and Long-Lasting Protection",
+        "text": "Made from high-quality materials, our night guards are designed to withstand the pressure of teeth grinding and jaw clenching over time. This durability ensures that your night guard will continue to protect your teeth and jaw for years, reducing the risk of dental wear and damage."
+      },
+      {
+        "icon": "/media/2024/08/a-29.webp",
+        "title": "Improves Sleep Quality",
+        "text": "By preventing the negative effects of bruxism and jaw clenching, night guards can significantly improve your sleep quality. Alleviating jaw pain, headaches, and discomfort helps you wake up feeling refreshed and pain-free, enhancing your overall well-being"
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get a Night Guard?",
+    "text": "Night guards are highly recommended for individuals who suffer from teeth grinding (bruxism) or jaw clenching, particularly during sleep. If you frequently wake up with headaches, jaw pain, or notice that your teeth are wearing down, you could benefit from using a night guard. Those with temporomandibular joint (TMJ) disorders can also find relief from symptoms like jaw pain, clicking, or locking by using a custom-made night guard. Additionally, anyone looking to protect their dental work, such as crowns, fillings, or veneers, from the damaging effects of grinding will find a night guard beneficial.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Patients with Severe Sleep Apnea If you suffer from severe sleep apnea",
+      "Individuals with Unresolved Dental Issues",
+      "Patients with Loose Teeth or Unstable Dental Work"
+    ],
+    "image": "/media/2024/08/3000x1x2-e1725284836618.webp"
+  },
+  "restorative": null,
+  "visits": null,
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How do I know if I need a night guard?",
+      "a": "If you wake up with jaw pain, headaches, or notice wear and tear on your teeth, you might be grinding or clenching your teeth at night. A night guard can protect your teeth from damage caused by these habits. Your dentist can evaluate your symptoms and recommend whether a night guard is the right solution for you."
+    },
+    {
+      "q": "How is a custom night guard different from an over-the-counter one?",
+      "a": "Custom night guards are made specifically for your mouth, providing a perfect fit and better comfort compared to over-the-counter options. They are also more durable and effective in protecting your teeth and jaw from the effects of grinding and clenching. An over-the-counter night guard may not fit as well, which can reduce its effectiveness and comfort."
+    },
+    {
+      "q": "How long does a custom night guard last?",
+      "a": "The lifespan of a custom night guard varies depending on the severity of your grinding and how well you take care of it. On average, a well-maintained night guard can last anywhere from 3 to 5 years. Your dentist will provide you with care instructions to help extend the life of your night guard."
+    },
+    {
+      "q": "How do I clean and care for my night guard?",
+      "a": "To keep your night guard clean and in good condition, rinse it with cool water after each use and brush it gently with a soft toothbrush and non-abrasive toothpaste. You should also soak it in a denture cleaner or a mixture of water and mild mouthwash once a week. Always store your night guard in its protective case when not in use, and avoid exposing it to extreme heat, which can cause it to warp."
+    }
+  ]
+}

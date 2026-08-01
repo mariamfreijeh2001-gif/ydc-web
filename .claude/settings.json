@@ -2,7 +2,31 @@
   "permissions": {
     "allow": [
       "Bash(grep -rhoiE \"\\\\bYDC\\\\b[^\\\\\"]{0,80}\" \"c:/Users/maria/.claude/projects/c--Users-maria-Projects-Alkhlejia-Aldwaliya/\")",
-      "PowerShell(Start-Process \"c:\\\\Users\\\\maria\\\\Projects\\\\YDC Web\\\\index.html\")"
+      "PowerShell(Start-Process \"c:\\\\Users\\\\maria\\\\Projects\\\\YDC Web\\\\index.html\")",
+      "Bash(node ref-screens.mjs)",
+      "Bash(npx playwright *)",
+      "Bash(npx --yes create-next-app@latest . --typescript --eslint --app --no-tailwind --no-src-dir --import-alias \"@/*\" --use-npm --skip-install --yes)",
+      "Bash(npm -v)",
+      "Bash(node)",
+      "Bash(node scripts/import.mjs)",
+      "Bash(curl -sL \"https://younes.dental/wp-content/uploads/elementor/css/post-54488.css\")",
+      "Bash(node -e \"const s=require\\('./content/services/all-on-4.json'\\); console.log\\(JSON.stringify\\({intro:s.intro,restorative:s.restorative,visits:s.visits,pricing:s.pricing,candidates:{...s.candidates,items:s.candidates.items.length}},null,1\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(awk '{printf \"%.1f MB  %s\\\\n\", $1/1048576, $2}')",
+      "Bash(rm -rf public/media content/services content/cases content/doctors.json content/reviews.json)",
+      "Bash(npx next *)",
+      "Bash(node scripts/capture.mjs /)",
+      "Bash(node -e \"const p=require\\('./content/pages/services.json'\\); console.log\\(JSON.stringify\\({hero:p.hero,why:{...p.why,reasons:p.why.reasons.map\\(r=>r.title+' :: '+r.icon\\)},how:p.how,faqCount:p.faq.items.length},null,1\\)\\)\")",
+      "Bash(rm -rf public/media/icons)",
+      "Bash(node -e \"const s=require\\('./content/services/all-on-4.json'\\); console.log\\('subheading:', JSON.stringify\\(s.pricing.subheading\\)\\); console.log\\('note:', JSON.stringify\\(s.pricing.note.slice\\(0,60\\)\\)\\); console.log\\('restorative.image:', s.restorative.image\\);\")",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3111 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; Get-NetTCPConnection -LocalPort 3111 -State Listen -ErrorAction SilentlyContinue | Measure-Object | Select-Object -ExpandProperty Count)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3111 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; \"dev stopped\")",
+      "Bash(rm -rf .next)",
+      "Bash(curl -s -o /dev/null -w \"  /before-after/allon4-n-d/ -> %{http_code} %{redirect_url}\\\\n\" http://localhost:3222/before-after/allon4-n-d/)",
+      "Bash(curl -sL -o /dev/null -w \"  followed -> %{http_code} %{url_effective}\\\\n\" http://localhost:3222/before-after/allon4-n-d)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\maria\\.claude\\projects\\c--Users-maria-Projects-YDC-Web\\memory"
     ]
   }
 }

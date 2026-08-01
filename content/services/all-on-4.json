@@ -1,0 +1,146 @@
+{
+  "slug": "all-on-4",
+  "title": "All on 4",
+  "category": "Dental Implants",
+  "image": "/media/2024/08/All-on-4-og-Full-resolution.webp",
+  "intro": {
+    "heading": "What is the All-On-4 Treatment Concept?",
+    "blocks": [
+      {
+        "text": "The All-On-4 treatment concept is an innovative, cost-effective solution that offers patients a fixed full-arch prosthesis on the same day as their surgery. This procedure provides immediate oral rehabilitation, making it an ideal choice for edentulous patients (those without teeth) or individuals with failing dentition.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Immediate Oral Rehabilitation",
+        "kind": "subheading"
+      },
+      {
+        "text": "The All-On-4 procedure allows patients to achieve a full set of teeth with immediate results, overcoming many of the frustrations and limitations associated with traditional dental implant methods. Using only four strategically placed implants, this advanced technique supports a full arch of up to 12 teeth. Whether used for the upper jaw, lower jaw, or both, All-On-4 ensures that your new teeth look, feel, and function like natural teeth—all in just one day.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose All-on-4 at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-24.webp",
+        "title": "Full Arch Support with 4 Implants",
+        "text": "Achieve a stable and functional full-arch restoration using just four implants, ensuring both durability and efficiency."
+      },
+      {
+        "icon": "/media/2024/08/a.webp",
+        "title": "Immediate Function & Results",
+        "text": "Enjoy a complete set of teeth on the same day as your surgery, providing immediate functionality and a beautiful smile."
+      },
+      {
+        "icon": "/media/2024/08/a-23.webp",
+        "title": "Graftless Procedure",
+        "text": "Eliminate the need for bone grafting by utilizing existing bone, making the process simpler and more comfortable"
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get All-On-4?",
+    "text": "This treatment is ideal for patients with dentures, those planning to have failing teeth removed and replaced with implants, or individuals with missing teeth. The All-on-4 treatment provides a stable, long-term alternative to traditional dentures.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Diabetics with uncontrolled diabetes",
+      "Patients undergoing radio or chemotherapy",
+      "Patients taking bisphosphonate therapy",
+      "Patients who have had heart surgery in the past 6 months"
+    ],
+    "image": "/media/2024/08/Beige-Minimalist-Carousel-Instagram-Post-39.webp"
+  },
+  "restorative": {
+    "eyebrow": "Dental Implant Restorative Options",
+    "heading": "Zir-Arch",
+    "paragraphs": [
+      "At Younes Dental Clinic, we offer screw-retained zirconia crowns for all our dental implants, along with one temporary restoration during the healing process. Our in-house digital dental lab is specialized in crafting beautiful, natural-looking, and hygienic zirconia crowns.",
+      "Unlike most other clinics that offer cemented metal ceramic crowns and bridges over implants—which can be harmful to the patient’s bone and oral health—our zirconia crowns provide a superior, long-lasting, and biocompatible solution.",
+      "Find out the benefits of each type below."
+    ],
+    "cta": {
+      "label": "Zir-Arch",
+      "href": "/services/all-on-4/"
+    },
+    "image": "/media/2024/08/Dental-Implants-3-scaled.webp"
+  },
+  "visits": [
+    {
+      "label": "First Visit",
+      "subtitle": "Consultation & Diagnosis",
+      "points": [
+        {
+          "title": "Consultation with Our Dental Specialists",
+          "text": "Meet with our experts for a comprehensive assessment of your oral and systemic health."
+        },
+        {
+          "title": "Diagnosis & Planning",
+          "text": "Includes facial aesthetic evaluation, X-Rays, Panoramic, 3D CBCT Scan, and advanced implant planning with 3D-printed surgical guides. Medication (antibiotics and sedatives) prescribed if needed."
+        }
+      ]
+    },
+    {
+      "label": "Second Visit",
+      "subtitle": "Operation",
+      "points": [
+        {
+          "title": "Surgical Steps",
+          "text": "Tooth extraction, alveoloplasty/alveolectomy, implant placement using guided surgery, and bone grafting as needed. Suture and temporary prosthesis placement included."
+        },
+        {
+          "title": "Temporary Prosthesis",
+          "text": "Digital impressions are taken and sent to the lab for the design and fabrication of a temporary arch, using 3D printing or milling from acrylic."
+        },
+        {
+          "title": "Postoperative Care",
+          "text": "Receive instructions on oral hygiene, diet (soft diet for at least 10 weeks), and medication. We also advise on when to make an appointment if complications arise."
+        }
+      ]
+    },
+    {
+      "label": "Third Visit",
+      "subtitle": "Final Crown (4-6months later)",
+      "points": [
+        {
+          "title": "Final Crown Placement",
+          "text": "Final digital impressions are taken and sent to the lab for designing and fabricating the zirconia crown using advanced digital technology. The temporary teeth are then replaced with your permanent zirconia teeth."
+        }
+      ]
+    }
+  ],
+  "pricing": {
+    "heading": "Pricing Plans",
+    "subheading": "Cost per Arch",
+    "note": "The price does not determine the quality of the treatment. The cost of implants is consistent, but there may be slight variations depending on extractions, bone loss, infections, and restoration options.",
+    "plans": [
+      {
+        "title": "Surgical Phase Cost",
+        "price": "3900$",
+        "note": "Implant Placement And Temporary Prosthesis",
+        "icon": "moon"
+      },
+      {
+        "title": "Restorative Phase",
+        "price": "3600$",
+        "note": "ZirArch Full Arch Final Zirconia Restoration after 6 months",
+        "icon": null
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How long will the implants last?",
+      "a": "With proper care and diligent oral hygiene, dental implants are designed to last a lifetime. Following your dentist's instructions is key to ensuring their longevity."
+    },
+    {
+      "q": "Why are the implants tilted?",
+      "a": "Tilting the implants strategically helps avoid critical structures and eliminates the need for grafting. This approach also allows us to place longer, more stable implants, enhancing the overall success of the procedure."
+    },
+    {
+      "q": "What happens if an implant fails?",
+      "a": "While there's a small 2-3% chance that an implant may fail, there's no need to worry. All our implants come with a lifetime warranty, and we will replace any implant that does not succeed."
+    }
+  ]
+}

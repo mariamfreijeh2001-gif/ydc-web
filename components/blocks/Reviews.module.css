@@ -1,0 +1,79 @@
+.section {
+  background: var(--c-bg);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 46px;
+}
+
+.sub {
+  margin-top: 10px;
+  font-size: var(--fs-meta);
+  color: var(--c-tertiary);
+}
+
+/* Five cards: three on the first row, two left-aligned beneath — as on the live site. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 28px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  text-align: center;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  color: var(--c-star);
+}
+
+.quote {
+  margin: 0;
+  font-size: var(--fs-tertiary);
+  line-height: 1.7;
+  color: var(--c-text);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--c-secondary);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,174 @@
+.heroSection {
+  padding-top: 12px;
+}
+
+/* ---- Hero with floating card -------------------------------------------- */
+
+.hero {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: clamp(340px, 38vw, 520px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 40px;
+  background: var(--c-alternate);
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroCard {
+  position: relative;
+  width: min(460px, 100%);
+  background: var(--c-bg);
+  border-radius: var(--radius-md);
+  padding: 40px 38px;
+  box-shadow: var(--shadow-float);
+}
+
+.eyebrow,
+.eyebrowCenter {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--ls-h6);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-tertiary);
+  margin-bottom: 14px;
+}
+
+.eyebrowCenter {
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.heroText {
+  margin-top: 18px;
+  font-size: var(--fs-tertiary);
+  line-height: 1.75;
+  color: var(--c-text);
+}
+
+/* ---- Welcome + Mission -------------------------------------------------- */
+
+.welcome,
+.mission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 46px;
+  align-items: center;
+}
+
+.welcomeMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-alternate);
+}
+
+.cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.welcomeBody,
+.missionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.body {
+  font-size: var(--fs-tertiary);
+  line-height: 1.8;
+  color: var(--c-text);
+}
+
+.missionMedia {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-alternate);
+}
+
+.collage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 8px 0 0;
+}
+
+.collageItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-alternate);
+}
+
+/* ---- Team --------------------------------------------------------------- */
+
+.teamHead {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 0;
+}
+
+.teamCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+/* ---- Dark services band ------------------------------------------------- */
+
+.darkHeading {
+  margin-bottom: 34px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    justify-content: center;
+    padding: 28px;
+  }
+
+  .welcome,
+  .mission {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .missionMedia {
+    aspect-ratio: 4 / 3;
+  }
+
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .heroCard {
+    padding: 26px 22px;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+  }
+}

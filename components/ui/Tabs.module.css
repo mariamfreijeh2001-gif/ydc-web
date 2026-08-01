@@ -1,0 +1,113 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 26px;
+  border: 1px solid var(--c-border);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  background: var(--c-bg);
+  text-align: left;
+  color: var(--c-tertiary);
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.tab:hover {
+  color: var(--c-primary);
+}
+
+.tabActive {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+}
+
+.tabActive:hover {
+  color: #fff;
+}
+
+.tabLabel {
+  font-size: var(--fs-meta);
+  font-weight: 700;
+}
+
+.tabSub {
+  font-size: var(--fs-taxonomy);
+  letter-spacing: 0.2px;
+  opacity: 0.85;
+}
+
+/* Dark teal panel, matching the theme. */
+.panel {
+  background: var(--c-primary);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
+  padding: 38px 40px;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+}
+
+.point {
+  position: relative;
+  padding-left: 22px;
+  font-size: var(--fs-tertiary);
+  line-height: 1.7;
+}
+
+.point::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-accent);
+}
+
+.pointTitle {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fs-accent);
+}
+
+.pointText {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .tab {
+    flex: 1 1 100%;
+    border: 1px solid var(--c-border);
+    border-radius: 12px;
+  }
+
+  .tabActive {
+    border-color: var(--c-primary);
+  }
+
+  .panel {
+    border-radius: var(--radius-md);
+    padding: 26px 22px;
+    margin-top: 8px;
+  }
+}

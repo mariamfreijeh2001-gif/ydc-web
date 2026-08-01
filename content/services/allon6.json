@@ -1,0 +1,130 @@
+{
+  "slug": "allon6",
+  "title": "All on 6",
+  "category": "Dental Implants",
+  "image": "/media/2024/08/All-on-4-converted-to-all-on-6-FINAL-FINAL.webp",
+  "intro": {
+    "heading": "What is the All-On-6 Treatment Concept?",
+    "blocks": [
+      {
+        "text": "The All-On-6 treatment concept is an innovative, cost-effective solution that offers patients a fixed full-arch prosthesis on the same day as their surgery. This advanced technique allows for immediate oral rehabilitation, transforming the smiles and lives of those with edentulous (toothless) conditions or failing dentition.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Immediate Oral Rehabilitation",
+        "kind": "subheading"
+      },
+      {
+        "text": "The All-On-6 procedure provides patients with an immediate outcome, overcoming many of the frustrations and limitations associated with traditional dental implant treatments. By utilizing just six implants to support an entire arch of up to 14 teeth, this method ensures that patients can leave the clinic with teeth that look, feel, and function like natural teeth—all in just one day.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Whether used in the upper jaw, lower jaw, or both, the All-On-6 concept delivers a stable, durable, and aesthetically pleasing solution for patients seeking to regain their confidence and quality of life.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose All-on-6 at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-24.webp",
+        "title": "Full Arch Support with 6 Implants",
+        "text": "Achieve a stable and functional full-arch restoration using just six implants, ensuring both durability and efficiency."
+      },
+      {
+        "icon": "/media/2024/08/a.webp",
+        "title": "Immediate Function & Results",
+        "text": "Enjoy a complete set of teeth on the same day as your surgery, providing immediate functionality and a beautiful smile."
+      },
+      {
+        "icon": "/media/2024/08/a-23.webp",
+        "title": "Graftless Procedure",
+        "text": "Eliminate the need for bone grafting by utilizing existing bone, making the process simpler and more comfortable."
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get All-on-6?",
+    "text": "This treatment is ideal for patients with dentures, those planning to have failing teeth removed and replaced with implants, or individuals with missing teeth. The All-on-6 treatment provides a stable, long-term alternative to traditional dentures.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Diabetics with uncontrolled diabetes",
+      "Patients undergoing radio or chemotherapy",
+      "Patients taking bisphosphonate therapy",
+      "Patients who have had heart surgery in the past 6 months"
+    ],
+    "image": "/media/2024/08/Beige-Minimalist-Carousel-Instagram-Post-40.webp"
+  },
+  "restorative": {
+    "eyebrow": "All-On-6 Restorative Options",
+    "heading": "Zir-Arch",
+    "paragraphs": [
+      "We provide Zirconia permanent restoration options for your All-On-6 procedure, along with one temporary restoration. Unlike most clinics that offer only a single Acrylic restoration, we ensure you have access to the highest quality materials. Discover the benefits of each type below."
+    ],
+    "cta": {
+      "label": "Zir-Arch",
+      "href": "/services/allon6/"
+    },
+    "image": "/media/2024/08/Dental-Implants-3-scaled.webp"
+  },
+  "visits": [
+    {
+      "label": "First Visit",
+      "subtitle": "Consultation & Diagnosis",
+      "points": [
+        {
+          "title": "Consultation with Our Dental Specialists",
+          "text": "Meet with our experts for a comprehensive assessment of your oral and systemic health."
+        },
+        {
+          "title": "Diagnosis & Planning",
+          "text": "Includes facial aesthetic evaluation, X-Rays, Panoramic, 3D CBCT Scan, and advanced implant planning with 3D-printed surgical guides. Medication (antibiotics and sedatives) prescribed if needed."
+        }
+      ]
+    },
+    {
+      "label": "Second Visit",
+      "subtitle": "Operation",
+      "points": [
+        {
+          "title": "Surgical Steps",
+          "text": "Tooth extraction, alveoloplasty/alveolectomy, implant placement using guided surgery, and bone grafting as needed. Suture and temporary prosthesis placement included."
+        },
+        {
+          "title": "Temporary Prosthesis",
+          "text": "Digital impressions are taken and sent to the lab for the design and fabrication of a temporary arch, using 3D printing or milling from acrylic."
+        },
+        {
+          "title": "Postoperative Care",
+          "text": "Receive instructions on oral hygiene, diet (soft diet for at least 10 weeks), and medication. We also advise on when to make an appointment if complications arise."
+        }
+      ]
+    },
+    {
+      "label": "Third Visit",
+      "subtitle": "Final Crown (4-6 months later)",
+      "points": [
+        {
+          "title": "Final Crown Placement",
+          "text": "Final digital impressions are taken and sent to the lab for designing and fabricating the zirconia crown using advanced digital technology. The temporary teeth are then replaced with your permanent zirconia teeth."
+        }
+      ]
+    }
+  ],
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long will the implants last?",
+      "a": "With proper care and diligent oral hygiene, dental implants are designed to last a lifetime. Following your dentist's instructions is key to ensuring their longevity."
+    },
+    {
+      "q": "Why are the implants tilted?",
+      "a": "Tilting the implants strategically helps avoid critical structures and eliminates the need for grafting. This approach also allows us to place longer, more stable implants, enhancing the overall success of the procedure."
+    },
+    {
+      "q": "What happens if an implant fails?",
+      "a": "While there's a small 2-3% chance that an implant may fail, there's no need to worry. All our implants come with a lifetime warranty, and we will replace any implant that does not succeed."
+    }
+  ]
+}

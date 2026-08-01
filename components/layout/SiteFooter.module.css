@@ -1,0 +1,161 @@
+.footer {
+  /* Soft cyan wash bleeding in from the bottom-right, as on the live site. */
+  background:
+    radial-gradient(70rem 40rem at 110% 130%, rgba(203, 242, 254, 0.55), transparent 62%),
+    var(--c-alternate);
+  padding-top: 84px;
+}
+
+.inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+  padding-bottom: 72px;
+}
+
+/* ---- Oversized ghost nav ------------------------------------------------ */
+
+.nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.navLink {
+  font-size: var(--fs-h3);
+  line-height: 1.28;
+  letter-spacing: var(--ls-h3);
+  font-weight: 500;
+  color: var(--c-tertiary);
+}
+
+.navLink:hover {
+  color: var(--c-secondary);
+}
+
+.mission {
+  color: var(--c-text);
+  max-width: 46ch;
+}
+
+/* ---- Contact column ----------------------------------------------------- */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: right;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  color: var(--c-tertiary);
+  line-height: 1.75;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.contactList a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  color: var(--c-secondary);
+  font-weight: 700;
+  font-size: var(--fs-meta);
+}
+
+.contactList a:hover {
+  color: var(--c-primary);
+}
+
+/* ---- Bottom bar --------------------------------------------------------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 26px 34px;
+  border-top: 1px solid var(--c-border);
+}
+
+.copy {
+  font-size: var(--fs-meta);
+  color: var(--c-tertiary);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.social {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c-bg);
+  color: var(--c-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.social:hover {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    padding-top: 64px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    padding-bottom: 48px;
+  }
+
+  .contact {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .contactList a,
+  .address {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

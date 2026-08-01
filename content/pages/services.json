@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "title": "Services",
+    "intro": "Explore our services to see how we can help you maintain a healthy, beautiful smile.",
+    "image": "/media/2024/09/13-e1725452412121.webp"
+  },
+  "why": {
+    "eyebrow": "Why Choose Us",
+    "heading": "Dedicated to Your Smile and Well-being",
+    "text": "At Younes Dental Clinic, we don’t just care for your teeth—we care for you. Our commitment goes beyond providing exceptional dental services; we are devoted to creating an experience that fosters trust, comfort, and long-lasting relationships. By leveraging cutting-edge technology and advanced techniques, our team delivers personalized care tailored to meet your unique needs. Choose us for a brighter, healthier smile and a dental partner you can trust for life.",
+    "reasons": [
+      {
+        "title": "World-Class Clinic",
+        "text": "Younes Dental Clinic is renowned globally, attracting patients from the US, Canada, EU, MENA, and Australia. Our reputation is built on delivering exceptional dental care, no matter where you call home.",
+        "icon": "/media/icons/why-1.svg"
+      },
+      {
+        "title": "Digital In-House Lab",
+        "text": "With our state-of-the-art digital in-house lab, we specialize in full arch prosthesis. Utilizing cutting-edge CAD/CAM technology and our innovative Zir-Arch technique, we create precise and stunning results.",
+        "icon": "/media/icons/why-2.webp"
+      },
+      {
+        "title": "Latest Technologies",
+        "text": "Every procedure at our clinic is digitally planned and executed using the latest dental software and 3D technology, ensuring the highest accuracy and success rate for our patients.",
+        "icon": "/media/icons/why-0.webp"
+      },
+      {
+        "title": "Experienced Surgeons",
+        "text": "Our team of surgeons brings vast experience to every surgery, performing thousands of implant placements each year with expertise and precision.",
+        "icon": "/media/icons/why-4.webp"
+      },
+      {
+        "title": "Budget Accessible to All",
+        "text": "We believe in making top-tier dental care accessible. Our simplified treatment plans are designed to deliver successful outcomes that fit within your budget.",
+        "icon": "/media/icons/why-5.webp"
+      },
+      {
+        "title": "Specialized in Complex Cases",
+        "text": "Handling complex cases with confidence, our clinic utilizes the latest medical technology and advanced surgical techniques to achieve predictable and exceptional results",
+        "icon": "/media/icons/why-3.webp"
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "How It Works",
+    "heading": "Your Journey to a Healthier Smile Begins Here",
+    "steps": [
+      {
+        "title": "Make an Appointment",
+        "text": "Scheduling your visit is simple and convenient. Choose a time that works best for you, and let us take care of the rest. We're here to make your experience as seamless as possible.",
+        "icon": "/media/2024/08/Layer-3.1.webp"
+      },
+      {
+        "title": "Receive Expert Dental Care",
+        "text": "Our highly trained and experienced dental professionals are committed to providing you with the highest standard of care. Whether it's a routine check-up or a specialized treatment, you’re in expert hands.",
+        "icon": "/media/2024/08/Layer-2.1.webp"
+      },
+      {
+        "title": "Radiate Confidence",
+        "text": "Leave our clinic with a smile that not only looks great but feels great too. Our personalized care ensures that you leave feeling confident and happy with your results.",
+        "icon": "/media/2024/08/Layer-4.1.webp"
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Questions & Answers",
+    "heading": "Frequently Ask Question",
+    "items": [
+      {
+        "q": "How often should I see a dentist if my teeth feel fine?",
+        "a": "Even if your teeth feel fine, it's important to see a dentist regularly. Some dental issues, like cavities or gum disease, may not show symptoms until they are more advanced. Regular check-ups can help catch these issues early, ensuring a healthy smile for life."
+      },
+      {
+        "q": "What can I expect during a dental cleaning at Younes Dental Clinic?",
+        "a": "During your dental cleaning, our hygienist will thoroughly clean your teeth, removing plaque and tartar buildup. We will also check your gums for any signs of disease and polish your teeth, leaving you with a fresh, clean smile."
+      },
+      {
+        "q": "How do I know if I need dental implants?",
+        "a": "Dental implants are an excellent solution if you're missing one or more teeth. They provide a permanent, natural-looking replacement that functions like your natural teeth. If you're considering implants, our experienced surgeons can assess your situation and recommend the best treatment plan."
+      },
+      {
+        "q": "What are the benefits of using the latest dental technology?",
+        "a": "Utilizing the latest dental technology, such as 3D imaging and CAD/CAM systems, allows us to provide more accurate diagnoses, create precise treatment plans, and deliver superior results. This means less time in the chair and more effective treatments for you."
+      },
+      {
+        "q": "How long do dental implants last?",
+        "a": "Dental implants are designed to be a permanent solution for tooth loss. With proper care, including regular dental visits and good oral hygiene, your implants can last a lifetime."
+      },
+      {
+        "q": "What should I do if I suspect I have gum disease?",
+        "a": "If you notice symptoms like red, swollen, or bleeding gums, it's important to see a dentist as soon as possible. Gum disease is most treatable in its early stages, and our periodontal care can help prevent it from progressing."
+      }
+    ]
+  }
+}

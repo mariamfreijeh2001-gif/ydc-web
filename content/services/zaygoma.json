@@ -1,0 +1,132 @@
+{
+  "slug": "zaygoma",
+  "title": "Zaygoma",
+  "category": "Dental Implants",
+  "image": "/media/2024/08/Zygoma-og-Full-resolution.webp",
+  "intro": {
+    "heading": "What Are Zygomatic Implants (Zygoma Implants)?",
+    "blocks": [
+      {
+        "text": "Zygomatic implants are a revolutionary solution for patients experiencing significant bone loss, particularly in the upper jaw. Unlike traditional implants that are placed in the jawbone, zygomatic implants are much longer and are securely anchored into the cheekbone (zygoma), a dense bone that provides exceptional support and stability. This innovative approach eliminates the need for bone grafts or sinus lifts, allowing patients to regain a full, natural smile even with severe bone loss.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "These specialized implants are especially beneficial for those with moderate to extreme resorption in the maxilla, making it possible to replace all upper teeth in a single day. Zygomatic implants can be combined with traditional or pterygoid implants in All-On-4 or All-On-6 configurations, providing a comprehensive and lasting dental restoration.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Zygomatic Implants: Our Specialty",
+        "kind": "subheading"
+      },
+      {
+        "text": "At Younes Dental, we pride ourselves on being at the forefront of this advanced procedure. Dr. Ali Younes, our lead surgeon, is the only dentist in Lebanon who routinely places zygomatic implants with immediate loading. With over five years of experience and a 100% success rate, Dr. Younes has successfully restored smiles for countless patients who were previously considered unsuitable for traditional implants due to severe bone loss.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "During your consultation, we’ll explore all your options and determine if zygomatic implants are the right solution for you. This procedure has given thousands of people worldwide a new lease on life, and with the expertise of our team, you can trust that your smile is in the best hands.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Zygomatic Implants at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-20.webp",
+        "title": "Immediate Solution for Severe Bone Loss",
+        "text": "Zygomatic implants offer a groundbreaking alternative for patients with significant bone loss, eliminating the need for bone grafts or sinus lifts. This innovative approach allows for full mouth restoration, even in cases of extreme resorption, providing immediate, long-lasting results."
+      },
+      {
+        "icon": "/media/2024/08/a-21.webp",
+        "title": "Expertise & Success Rate",
+        "text": "At Younes Dental Clinic, our lead surgeon, Dr. Ali Younes, is the only dentist in Lebanon who routinely performs zygomatic implant procedures with immediate loading. With over five years of experience and a 100% success rate, you can trust that your smile is in the best hands."
+      },
+      {
+        "icon": "/media/2024/08/a.webp",
+        "title": "Quick Recovery & Minimal Discomfort",
+        "text": "Patients undergoing zygomatic implant surgery experience minimal discomfort and a surprisingly quick recovery time. Most patients return to their normal routines within just a few days, enjoying their new smile without the lengthy healing periods required by traditional procedures"
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get Zygomatic Implants?",
+    "text": "If you’ve been told that you’re not a candidate for traditional dental implants due to severe bone loss, zygomatic implants might be the ideal solution for you. Zygomatic implants offer a significant advantage over procedures like bone grafting, which often have lower success rates and require extended healing periods. With zygomatic implants, you can have your teeth placed on the same day as the procedure, bypassing the months-long wait typically associated with bone grafting. Before the advent of zygomatic implants, patients with significant bone loss in the upper jaw had no choice but to undergo bone grafting—a procedure that could take six months to a year before implants could be placed. At Younes Dental Clinic, zygomatic implants have transformed this landscape. With an exceptionally high success rate, our clinic has become a destination for patients from around the world seeking full mouth restorations in just one day, without the need for bone grafting.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Diabetics with uncontrolled diabetes",
+      "Patients undergoing radio or chemotherapy",
+      "Patients taking bisphosphonate therapy",
+      "Patients who have had heart surgery in the past 6 months"
+    ],
+    "image": "/media/2024/08/Beige-Minimalist-Carousel-Instagram-Post-43-e1724682182720.webp"
+  },
+  "restorative": {
+    "eyebrow": "Zaygoma Restorative Options",
+    "heading": "Zir-Arch",
+    "paragraphs": [
+      "At Younes Dental Clinic, we offer screw-retained zirconia crowns for all our dental implants, along with one temporary restoration during the healing process. Our in-house digital dental lab is specialized in crafting beautiful, natural-looking, and hygienic zirconia crowns.",
+      "Unlike most other clinics that offer cemented metal ceramic crowns and bridges over implants—which can be harmful to the patient’s bone and oral health—our zirconia crowns provide a superior, long-lasting, and biocompatible solution.",
+      "Find out the benefits of each type below."
+    ],
+    "cta": {
+      "label": "Zir-Arch",
+      "href": "/services/zaygoma/"
+    },
+    "image": "/media/2024/08/Dental-Implants-3-scaled.webp"
+  },
+  "visits": [
+    {
+      "label": "First Visit",
+      "subtitle": "Consultation & Diagnosis",
+      "points": [
+        {
+          "title": "Consultation with Our Dental Specialists",
+          "text": "Meet with our experts for a comprehensive assessment of your oral and systemic health."
+        },
+        {
+          "title": "Diagnosis & Planning",
+          "text": "Includes facial aesthetic evaluation, X-Rays, Panoramic, 3D CBCT Scan, and advanced implant planning with 3D-printed surgical guides. Medication (antibiotics and sedatives) prescribed if needed."
+        }
+      ]
+    },
+    {
+      "label": "Second Visit",
+      "subtitle": "Operation",
+      "points": [
+        {
+          "title": "Surgical Steps",
+          "text": "Tooth extraction, alveoloplasty/alveolectomy, implant placement using guided surgery, and bone grafting as needed. Suture and temporary prosthesis placement included."
+        },
+        {
+          "title": "Temporary Prosthesis",
+          "text": "Digital impressions are taken and sent to the lab for the design and fabrication of a temporary arch, using 3D printing or milling from acrylic."
+        },
+        {
+          "title": "Postoperative Care",
+          "text": "Receive instructions on oral hygiene, diet (soft diet for at least 10 weeks), and medication. We also advise on when to make an appointment if complications arise."
+        }
+      ]
+    },
+    {
+      "label": "Third Visit",
+      "subtitle": "Final Crown (4-6 months later)",
+      "points": [
+        {
+          "title": "Final Crown Placement",
+          "text": "Final digital impressions are taken and sent to the lab for designing and fabricating the zirconia crown using advanced digital technology. The temporary teeth are then replaced with your permanent zirconia teeth."
+        }
+      ]
+    }
+  ],
+  "pricing": null,
+  "faq": [
+    {
+      "q": "Will Zygomatic Implants Hurt?",
+      "a": "Patients undergoing zygomatic implant surgery experience no pain during the procedure, as they are comfortably asleep under anesthesia. This method is the safest and most comfortable option for full mouth restorations. While pain medications are available for post-operative care, many patients find they only need over-the-counter pain relievers like Tylenol or Advil, as discomfort is typically minimal."
+    },
+    {
+      "q": "Recovery Time",
+      "a": "Recovery from zygomatic dental implant surgery is remarkably similar to that of traditional dental implants. Many patients are pleasantly surprised by the ease of recovery. Some may experience minor bruising around the lower eyelids, but within 3-5 days, most patients can return to their regular routines. At Younes Dental Clinic, patient care is our top priority. We continually invest in the latest technologies and training to ensure we provide the best possible care. We believe in empowering our patients to make informed decisions by offering comprehensive information on every treatment option. We are always ready to discuss the best treatment plans to help our patients achieve their desired outcomes. Like natural teeth, implants require commitment to maintenance; it’s essential to follow our instructions and advice to ensure the best long-term results. Always remember to brush and clean your implants after each meal."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "slug": "therapeuticdentalservices",
+  "title": "Therapeutic Dental Services",
+  "category": "Therapeutic",
+  "image": "/media/2024/08/Your-paragraph-text-35.webp",
+  "intro": {
+    "heading": "Therapeutic Dental Services",
+    "blocks": [
+      {
+        "text": "At Younes Dental Clinic, we offer a comprehensive range of therapeutic dental services designed to restore your oral health and alleviate discomfort. Whether you’re dealing with cavities, infection, or the need for retreatment, our experienced team is here to provide effective and compassionate care.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Fillings",
+        "kind": "subheading"
+      },
+      {
+        "text": "Cavities are one of the most common dental issues, and if left untreated, they can lead to more serious problems. Our dental fillings are designed to repair cavities and restore the structure and function of your tooth. We use high-quality, tooth-colored materials that blend seamlessly with your natural teeth, ensuring that your smile remains both healthy and aesthetically pleasing.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Root Canal Treatment",
+        "kind": "subheading"
+      },
+      {
+        "text": "When a tooth’s pulp becomes infected or inflamed, it can cause significant pain and, if untreated, lead to more severe dental issues. Root canal treatment is a highly effective procedure to save the tooth and eliminate the infection. Our skilled dentists perform root canals with precision and care, using advanced techniques to ensure the procedure is as comfortable as possible. After treatment, your tooth will be restored with a crown or filling to maintain its strength and function.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Root Canal Retreatment",
+        "kind": "subheading"
+      },
+      {
+        "text": "In some cases, a tooth that has undergone root canal treatment may require retreatment. This can happen if the initial procedure did not completely remove the infection, or if new decay or damage has occurred. Our root canal retreatment services are designed to address these issues, giving your tooth a second chance at full recovery. Using the latest technology and methods, we carefully retreat the tooth to ensure long-lasting results.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why ChooseTherapeutic Dental Services at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-6.webp",
+        "title": "Advanced Technology",
+        "text": "We utilize cutting-edge dental technology to ensure our therapeutic treatments, including fillings and root canals, are effective, efficient, and comfortable. This technology allows for precise diagnosis and treatment, leading to better outcomes and a more pleasant patient experience"
+      },
+      {
+        "icon": "/media/2024/08/a-7.webp",
+        "title": "Pain Management & Comfort",
+        "text": "Your comfort is our top priority. We employ modern pain management techniques to minimize discomfort during procedures. Our gentle approach, combined with effective anesthesia, ensures that your treatment is as painless and stress-free as possible."
+      },
+      {
+        "icon": "/media/2024/08/a-10.webp",
+        "title": "Natural-Looking Restorations",
+        "text": "Our restorative materials are carefully selected to match the natural appearance of your teeth. Whether it’s a filling or a crown, the results are both functional and aesthetically pleasing, allowing you to maintain a beautiful, natural-looking smile."
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get Therapeutic Dental Treatment ?",
+    "text": "Therapeutic dental treatments, such as fillings, root canals, and root canal retreatments, are suitable for individuals experiencing a range of dental issues. If you have cavities, tooth decay, or damage that affects the integrity of your teeth, these treatments can help restore your oral health. Patients with persistent tooth pain, sensitivity, or infection are also ideal candidates, as these treatments can alleviate discomfort and prevent further complications. Additionally, individuals who have previously undergone root canal treatment but are experiencing new symptoms may benefit from root canal retreatment to address any unresolved issues.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Patients with severely decayed or damaged teeth that may require extraction rather than restoration.",
+      "Individuals with untreated gum disease or other significant oral health issues that need to be managed before restorative treatments can be effective.",
+      "Those who have a history of complications or allergic reactions to the materials used in dental restorations, although alternatives may be available."
+    ],
+    "image": "/media/2024/08/Your-paragraph-text-34-e1725298701715.webp"
+  },
+  "restorative": null,
+  "visits": null,
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long does a filling or root canal treatment last?",
+      "a": "Fillings and root canal treatments are designed to be long-lasting solutions. With proper care, fillings can last 10 to 15 years or more, while a successful root canal treatment can last a lifetime. Regular dental check-ups and good oral hygiene are key to maintaining the longevity of these treatments."
+    },
+    {
+      "q": "Is the process of getting a filling or root canal painful?",
+      "a": "Thanks to modern dental techniques and anesthesia, the process of getting a filling or root canal is typically not painful. While you may experience some discomfort during and after the procedure, this is usually minimal and can be managed with over-the-counter pain relievers. Most patients find the relief from pain and discomfort after treatment to be well worth it."
+    },
+    {
+      "q": "What should I do if my tooth hurts after a root canal?",
+      "a": "It’s normal to experience some sensitivity or discomfort for a few days after a root canal. However, if the pain persists or worsens, it’s important to contact your dentist. Persistent pain could indicate a complication, and your dentist may need to reassess the treatment or consider a root canal retreatment."
+    },
+    {
+      "q": "How can I prevent the need for future fillings or root canals?",
+      "a": "It’s normal to experience some sensitivity or discomfort for a few days after a root canal. However, if the pain persists or worsens, it’s important to contact your dentist. Persistent pain could indicate a complication, and your dentist may need to reassess the treatment or consider a root canal retreatment."
+    }
+  ]
+}

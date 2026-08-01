@@ -1,0 +1,120 @@
+{
+  "slug": "aligners",
+  "title": "Aligners",
+  "category": "Orthodontic",
+  "image": "/media/2024/08/Your-paragraph-text-10.webp",
+  "intro": {
+    "heading": "Aligners at Younes Dental Clinic",
+    "blocks": [
+      {
+        "text": "For those seeking a discreet and comfortable alternative to traditional braces, our Clear Smile Aligners offer the ideal solution. Utilizing cutting-edge 3D technology combined with advanced orthodontic practices, our aligners are custom-made to fit your unique dental profile. As your treatment progresses, these precisely calibrated trays gently and effectively move your teeth into their optimal position.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "In-House Production of Clear Aligners",
+        "kind": "subheading"
+      },
+      {
+        "text": "At Younes Dental Clinic, we take pride in our innovative approach to orthodontic care. Our process begins with a simple 3D intraoral scan, allowing us to design the perfect alignment plan for your teeth. From there, we produce your custom aligners in-house, ensuring that every step of your invisible orthodontic treatment is handled with precision and care, resulting in a beautifully aligned smile.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Clear Smile Aligners?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-17.webp",
+        "title": "Invisible & Removable",
+        "text": "The aligners are transparent, making them nearly invisible when worn. They can also be easily removed for eating, drinking, and cleaning, providing flexibility and discretion."
+      },
+      {
+        "icon": "/media/2024/08/a-18.webp",
+        "title": "Comfortable & Easy to Clean",
+        "text": "Made from smooth plastic, the aligners are more comfortable to wear than traditional braces. With no wires or brackets to cause irritation, they are also easy to clean, allowing for better oral hygiene."
+      },
+      {
+        "icon": "/media/2024/08/a-19.webp",
+        "title": "No Food Restrictions",
+        "text": "Enjoy the freedom to eat whatever you like without worrying about damaging your orthodontic device. Clear Smile Aligners eliminate the food restrictions often associated with traditional braces."
+      }
+    ]
+  },
+  "candidates": null,
+  "restorative": {
+    "eyebrow": "",
+    "heading": "Who Can Benefit from Clear Aligners?",
+    "paragraphs": [
+      "Clear aligners are ideal for individuals seeking a discreet and comfortable orthodontic solution. They are particularly effective for those with mild to moderate alignment issues, including crowded teeth, gapped teeth, and minor bite problems. Clear aligners provide a modern alternative to traditional braces, allowing patients to achieve a straighter smile without the inconvenience of metal brackets and wires."
+    ],
+    "cta": null,
+    "image": "/media/2024/08/28-e1724422742244.webp"
+  },
+  "visits": [
+    {
+      "label": "First Visit",
+      "subtitle": "Consultation & 3D Intraoral Scan",
+      "points": [
+        {
+          "title": "Get a Consultation",
+          "text": "Meet with one of our dental specialists to discuss your orthodontic needs."
+        },
+        {
+          "title": "3D Intraoral Scan",
+          "text": "We take a detailed scan of your teeth to create an accurate digital model."
+        }
+      ]
+    },
+    {
+      "label": "Second Visit",
+      "subtitle": "Personalized Treatment Plan & Start Wearing Your Aligners",
+      "points": [
+        {
+          "title": "Personalized Treatment Plan",
+          "text": "Clear Smile Aligners will design a customized treatment plan based on your unique dental structure."
+        },
+        {
+          "title": "Wear Your Aligners",
+          "text": ""
+        },
+        {
+          "title": "",
+          "text": "Wear your aligners for 22 hours a day."
+        },
+        {
+          "title": "",
+          "text": "Change to the next set of aligners every two weeks."
+        }
+      ]
+    },
+    {
+      "label": "Third Visit",
+      "subtitle": "Final Adjustment & Achieve Your Perfect Smile",
+      "points": [
+        {
+          "title": "Final Adjustments",
+          "text": "As you progress through the aligners, your dental specialist will make any necessary adjustments."
+        },
+        {
+          "title": "Achieve Your Perfect Smile",
+          "text": "Over time, you'll see gradual improvements leading to your perfect smile."
+        }
+      ]
+    }
+  ],
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long do I need to wear the aligners each day?",
+      "a": "You should wear your aligners for 22 hours a day. This allows them to gradually and effectively shift your teeth into the desired position. They should only be removed for eating, drinking, and cleaning."
+    },
+    {
+      "q": "Are Clear Smile Aligners painful to wear?",
+      "a": "Most patients experience mild discomfort during the first few days of wearing a new set of aligners. This is normal and indicates that the aligners are working to move your teeth. The discomfort usually subsides as your mouth adjusts."
+    },
+    {
+      "q": "How long will my treatment take?",
+      "a": "The length of treatment varies depending on the complexity of your case. On average, treatment with Clear Smile Aligners can take anywhere from 6 to 18 months. Your dental specialist will provide a more accurate timeline during your consultation."
+    }
+  ]
+}

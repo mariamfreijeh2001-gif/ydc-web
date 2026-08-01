@@ -1,0 +1,153 @@
+/*
+ * Younes Dental Clinic — design tokens.
+ *
+ * Values transcribed verbatim from the live WordPress site so the rebuild matches
+ * pixel-for-pixel. Sources:
+ *   wp-content/uploads/elementor/css/post-55.css          (Elementor global kit)
+ *   wp-content/themes/dentissimo/assets/css/default-vars.min.css
+ *
+ * Do not "improve" these numbers — they are the design contract.
+ */
+
+:root {
+  /* ---- Color ------------------------------------------------------------ */
+  --c-primary: #004a5e; /* deep teal: buttons, links, dark sections */
+  --c-secondary: #222222; /* headings */
+  --c-text: #666b68; /* body copy */
+  --c-accent: #cbf2fe; /* pale cyan: button fills, panels, chips */
+  --c-tertiary: #a5aea8; /* link hover, muted meta */
+  --c-bg: #ffffff;
+  --c-alternate: #f6f7f7; /* footer / card / alt section surface */
+  --c-border: #dfe4e1;
+  --c-surface-2: #e7eae9;
+
+  --c-primary-hover: #00637c;
+  --c-on-primary: #ffffff;
+  --c-whatsapp: #25d366;
+  --c-star: #004a5e;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container: 1280px;
+  --container-pad: 20px;
+
+  --radius-card: 40px;
+  --radius-md: 20px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+
+  --header-h: 88px;
+
+  /* Vertical rhythm between page sections. */
+  --section-y: 120px;
+  --gap: 24px;
+
+  /* ---- Typography ------------------------------------------------------- */
+  /* --font-sans is injected by next/font in app/layout.tsx */
+  --f-body: var(--font-sans), sans-serif;
+
+  --fs-h1: 68px;
+  --lh-h1: 1.1;
+  --ls-h1: -2px;
+
+  --fs-h2: 56px;
+  --lh-h2: 1.15;
+  --ls-h2: -1px;
+
+  --fs-h3: 42px;
+  --lh-h3: 1.2;
+  --ls-h3: -1px;
+
+  --fs-h4: 30px;
+  --lh-h4: 1.25;
+  --ls-h4: 0px;
+
+  --fs-h5: 21px;
+  --lh-h5: 1.45;
+  --ls-h5: 0px;
+
+  --fs-h6: 13px;
+  --lh-h6: 1.55;
+  --ls-h6: 3px;
+
+  --fs-text: 17px;
+  --lh-text: 1.65;
+
+  --fs-accent: 16px; /* 500 weight */
+  --fs-tertiary: 15px;
+  --lh-tertiary: 1.6;
+  --fs-meta: 14px;
+  --lh-meta: 1.7;
+  --fs-small: 15px;
+  --lh-small: 1.75;
+
+  --fs-taxonomy: 12px; /* 600 weight, uppercase, +2px tracking */
+  --ls-taxonomy: 2px;
+
+  --fs-button: 16px; /* 700 weight */
+  --lh-button: 1.5;
+
+  --fs-blockquote: 30px;
+  --lh-blockquote: 1.35;
+
+  --fs-large: 20px; /* Elementor custom "a038c45" style */
+  --lh-large: 1.5;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.3s;
+
+  --shadow-card: 0 18px 40px -24px rgba(15, 44, 48, 0.28);
+  --shadow-float: 0 24px 60px -28px rgba(15, 44, 48, 0.32);
+}
+
+/* Tablet — Elementor breakpoint 1024px */
+@media (max-width: 1024px) {
+  :root {
+    --fs-h1: 62px;
+    --fs-h2: 48px;
+    --fs-h3: 36px;
+    --ls-h3: 0px;
+    --fs-h4: 24px;
+    --fs-h5: 19px;
+    --fs-h6: 12px;
+    --fs-text: 16px;
+    --fs-accent: 15px;
+    --fs-tertiary: 14px;
+    --fs-meta: 13px;
+    --fs-small: 14px;
+    --fs-taxonomy: 11px;
+    --fs-button: 15px;
+    --fs-blockquote: 26px;
+    --fs-large: 18px;
+
+    --section-y: 90px;
+    --radius-card: 32px;
+  }
+}
+
+/* Mobile — Elementor breakpoint 767px */
+@media (max-width: 767px) {
+  :root {
+    --fs-h1: 44px;
+    --ls-h1: -1px;
+    --fs-h2: 36px;
+    --fs-h3: 26px;
+    --fs-h4: 20px;
+    --fs-h5: 16px;
+    --fs-h6: 10px;
+    --fs-text: 15px;
+    --fs-accent: 14px;
+    --fs-tertiary: 13px;
+    --fs-meta: 12px;
+    --fs-small: 13px;
+    --fs-taxonomy: 10px;
+    --fs-button: 14px;
+    --fs-blockquote: 20px;
+    --fs-large: 16px;
+
+    --section-y: 64px;
+    --container-pad: 16px;
+    --radius-card: 24px;
+    --header-h: 64px;
+  }
+}

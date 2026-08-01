@@ -1,0 +1,37 @@
+.section {
+  position: relative;
+}
+
+.space-default {
+  padding-block: var(--section-y);
+}
+
+.space-tight {
+  padding-block: calc(var(--section-y) / 2);
+}
+
+.space-none {
+  padding-block: 0;
+}
+
+.default {
+  background: var(--c-bg);
+}
+
+.alt {
+  background: var(--c-alternate);
+}
+
+.dark {
+  background: var(--c-primary);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dark :global(h1),
+.dark :global(h2),
+.dark :global(h3),
+.dark :global(h4),
+.dark :global(h5),
+.dark :global(h6) {
+  color: #fff;
+}

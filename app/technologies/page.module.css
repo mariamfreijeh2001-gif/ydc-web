@@ -1,0 +1,83 @@
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 92px);
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Odd rows put the image first, as on the live page. */
+.reversed {
+  grid-template-columns: 340px 1fr;
+}
+
+.reversed .body {
+  order: 2;
+}
+
+.reversed .media {
+  order: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.text {
+  font-size: var(--fs-tertiary);
+  line-height: 1.8;
+  color: var(--c-secondary);
+  max-width: 90ch;
+}
+
+.media {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .row,
+  .reversed {
+    grid-template-columns: 1fr 260px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .row,
+  .reversed {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .reversed .body,
+  .reversed .media {
+    order: initial;
+  }
+
+  .img {
+    max-width: 240px;
+  }
+}

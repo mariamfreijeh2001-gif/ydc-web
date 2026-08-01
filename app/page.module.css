@@ -1,0 +1,72 @@
+/* ---- Intro band --------------------------------------------------------- */
+
+.intro {
+  display: grid;
+  grid-template-columns: 216px 1fr;
+  gap: clamp(28px, 8vw, 128px);
+  align-items: start;
+}
+
+.pullQuote {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-weight: 500;
+  color: var(--c-secondary);
+  margin: 0;
+}
+
+.introBody {
+  font-size: var(--fs-large);
+  line-height: var(--lh-large);
+  color: var(--c-secondary);
+  margin: 0;
+}
+
+/* ---- Section headers ---------------------------------------------------- */
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 34px;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: var(--c-secondary);
+}
+
+.viewAll:hover {
+  color: var(--c-primary);
+}
+
+/* ---- Service grid ------------------------------------------------------- */
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .serviceGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "ydc-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Younes Dental Clinic — younes.dental",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "import": "node scripts/import.mjs",
+    "capture": "node scripts/capture.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.30.0",
+    "eslint-config-next": "^15.5.4",
+    "playwright": "^1.56.0",
+    "sharp": "^0.34.2",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,98 @@
+.root {
+  position: relative;
+  --per-view: 4;
+  --gap: 22px;
+}
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  /*
+   * A definite track size, not minmax(0, …): with more items than fit, a zero minimum
+   * lets grid shrink every track to squeeze them all in instead of overflowing and
+   * scrolling.
+   */
+  grid-auto-columns: calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  gap: var(--gap);
+  margin: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* Room for the lifted card hover state. */
+  padding-block: 6px;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track > li {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  padding-inline: 8px;
+}
+
+.arrow {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--c-secondary);
+  box-shadow: var(--shadow-card);
+  transition:
+    opacity var(--dur) var(--ease),
+    background var(--dur) var(--ease);
+}
+
+.arrow:hover:not(:disabled) {
+  background: #fff;
+}
+
+.arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Arrows sitting on the dark teal About Us band. */
+.light .arrow {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.light .arrow:hover:not(:disabled) {
+  background: #fff;
+  color: var(--c-primary);
+}
+
+@media (max-width: 1024px) {
+  .root {
+    --per-view: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .track {
+    grid-auto-columns: 80%;
+  }
+
+  .controls {
+    display: none;
+  }
+}

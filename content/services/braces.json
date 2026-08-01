@@ -1,0 +1,83 @@
+{
+  "slug": "braces",
+  "title": "Braces",
+  "category": "Orthodontic",
+  "image": "/media/2024/08/Your-paragraph-text-29.webp",
+  "intro": {
+    "heading": "Braces: Traditional Orthodontic Solutions",
+    "blocks": [
+      {
+        "text": "At Younes Dental Clinic, we offer traditional braces as a reliable and effective solution for correcting various dental alignment issues. Braces have been the cornerstone of orthodontic treatment for decades, providing proven results for both children and adults. Whether you’re dealing with crowding, spacing, or bite problems, our skilled orthodontists will guide you through the process to achieve a healthier, straighter smile.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Why Choose Braces?",
+        "kind": "subheading"
+      },
+      {
+        "text": "Braces are a versatile option for correcting a wide range of orthodontic problems, including:",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Types of Braces",
+        "kind": "paragraph"
+      },
+      {
+        "text": "Ceramic Braces Ceramic braces work just like metal braces but are made of clear or tooth-colored materials, making them less noticeable. This option is popular among teens and adults who want a more discreet treatment.",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Braces at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-30.webp",
+        "title": "Effective for All Ages",
+        "text": "Braces are a versatile orthodontic solution that can effectively treat a wide range of dental alignment issues in both children and adults. Whether you’re correcting minor crowding or addressing more complex bite problems, braces are a reliable option that delivers consistent and long-lasting results"
+      },
+      {
+        "icon": "/media/2024/08/a-31.webp",
+        "title": "Durable and Reliable",
+        "text": "Traditional metal braces are known for their durability and strength. Made from high-quality stainless steel, they are designed to withstand the forces of daily chewing and speaking, ensuring that your treatment progresses smoothly without frequent adjustments or replacements."
+      },
+      {
+        "icon": "/media/2024/08/a-33.webp",
+        "title": "Customizable Appearance",
+        "text": "deallWhile braces are often associated with metal brackets, modern options include ceramic braces that blend in with your natural tooth color, making them less noticeable. Additionally, patients can personalize their braces with different colored bands, allowing for a more customized and aesthetically pleasing treatment experience."
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get Braces ?",
+    "text": "Braces are suitable for individuals of all ages who need to correct dental alignment issues, including crowded, spaced, or misaligned teeth. Children and adolescents often benefit from early intervention, as braces can guide teeth into their proper positions while the jaw is still developing. However, adults can also achieve excellent results with braces, addressing both aesthetic concerns and functional issues like bite problems. Braces are particularly effective for those dealing with overbites, underbites, crossbites, and open bites, improving not just the appearance of the smile but also overall oral health and function.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Patients with Severe Gum Disease",
+      "Individuals with Poor Oral Hygiene",
+      "Patients with Unresolved Dental Issues"
+    ],
+    "image": "/media/2024/08/Your-paragraph-text-31-e1725452704260.webp"
+  },
+  "restorative": null,
+  "visits": null,
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long will I need to wear braces?",
+      "a": "The duration of orthodontic treatment with braces varies depending on the complexity of the case. On average, most patients wear braces for 18 to 24 months. However, some treatments may be shorter or longer, depending on how much adjustment is needed. Your orthodontist will provide a more accurate estimate during your consultation."
+    },
+    {
+      "q": "Are braces painful?",
+      "a": "It’s common to experience some discomfort after the initial placement of braces and following adjustments. This discomfort is typically mild and can be managed with over-the-counter pain relievers. The pressure exerted by braces is necessary to move teeth into the correct position, but any soreness usually subsides within a few days."
+    },
+    {
+      "q": "How often will I need to visit the dentist during treatment?",
+      "a": "Regular visits to the orthodontist are essential for the success of your treatment. Typically, you’ll need to visit the clinic every 4 to 6 weeks for adjustments. These appointments allow the orthodontist to tighten the braces, make necessary corrections, and ensure that your treatment is progressing as planned."
+    },
+    {
+      "q": "Can I still eat my favorite foods with braces?",
+      "a": "While wearing braces, it’s important to avoid certain foods that can damage the brackets or wires. Hard, sticky, or chewy foods like nuts, candy, and chewing gum should be avoided. However, there are plenty of braces-friendly foods you can enjoy, such as soft fruits, vegetables, pasta, and dairy products. Your orthodontist will provide a detailed list of foods to avoid and offer tips for maintaining a healthy diet during your treatment."
+    }
+  ]
+}

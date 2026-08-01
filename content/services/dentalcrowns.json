@@ -1,0 +1,84 @@
+{
+  "slug": "dentalcrowns",
+  "title": "Dental Crowns",
+  "category": "Cosmetic",
+  "image": "/media/2024/08/DentalcrownattoothLondonSE1.webp",
+  "intro": {
+    "heading": "Dental Crowns",
+    "blocks": [
+      {
+        "text": "For individuals with damaged teeth that interfere with daily activities, dental crowns offer an effective solution to restore, repair, and enhance teeth that may seem beyond hope. Crowns have long been a trusted and sought-after treatment for those with dental issues, as well as for individuals looking to achieve a beautiful, brand-new smile. This treatment can significantly improve both your appearance and quality of life.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "What is a Dental Crown?",
+        "kind": "subheading"
+      },
+      {
+        "text": "A dental crown is a fixed, tooth-shaped cap that completely covers a damaged tooth. Whether dealing with a broken, chipped, worn, or discolored tooth, or a tooth that has undergone root canal treatment, a dental crown restores the tooth’s natural appearance and function. Crowns are crafted to match the shape, size, and color of your existing teeth, providing a durable and aesthetically pleasing solution that mimics the properties of a healthy, natural tooth.",
+        "kind": "paragraph"
+      },
+      {
+        "text": "When Should You Consider Dental Crown Treatment?",
+        "kind": "subheading"
+      },
+      {
+        "text": "Your dentist may recommend a dental crown if your teeth are unhealthy, at high risk of fracture, or have large cracks or decay. Crowns are also commonly advised after a tooth has undergone root canal treatment, particularly for posterior teeth. Additionally, crowns can be a great option for those looking to change the shape or position of their teeth, or to improve their bite (occlusion), especially when orthodontic treatment is not an option. Dental crown treatment can address a variety of dental issues, including:",
+        "kind": "paragraph"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Why Choose Dental Crowns at Younes Dental Clinic?",
+    "items": [
+      {
+        "icon": "/media/2024/08/a-11.webp",
+        "title": "One-Day Crowns",
+        "text": "Thanks to advanced CAD/CAM digital technology, we can design and create your dental crown in a single day. This innovative process typically takes just 2-3 hours, allowing for the final placement of your custom crown during the same visit."
+      },
+      {
+        "icon": "/media/2024/08/a-12.webp",
+        "title": "Natural Appearance & Function",
+        "text": "Our zirconia crowns are meticulously crafted in our in-house digital dental lab to ensure a natural look and feel. Unlike metal ceramic crowns, zirconia crowns are biocompatible and provide a long-lasting, beautiful smile that blends seamlessly with your natural teeth."
+      },
+      {
+        "icon": "/media/2024/08/a-13.webp",
+        "title": "Minimizes Tooth Wear",
+        "text": "Unlike ceramic crowns, zirconia crowns do not cause abrasion to your natural teeth, offering a gentler, more comfortable solution for restoring your smile."
+      }
+    ]
+  },
+  "candidates": {
+    "heading": "Who Can Get Dental Crowns?",
+    "text": "Dental crowns are an excellent solution for individuals with various dental issues that affect their ability to chew, speak, or smile with confidence. This treatment is particularly suitable for patients with broken, chipped, or cracked teeth that are beyond the repair of simpler treatments. If you have a tooth that has undergone root canal therapy, a dental crown can help restore its strength and appearance. Crowns are also ideal for teeth with large cavities or decay that cannot be effectively treated with fillings. Additionally, dental crowns can improve the appearance of misshapen or discolored teeth, making them a versatile choice for both restorative and cosmetic needs.",
+    "listHeading": "This procedure is not recommended for",
+    "items": [
+      "Patients with severely decayed or damaged teeth that may require extraction instead of restoration.",
+      "Individuals with untreated gum disease, as the underlying issues need to be addressed before placing a crown.",
+      "Those with insufficient tooth structure to support a crown, unless additional procedures like a buildup or post are performed.",
+      "Patients who grind their teeth excessively, unless they use a night guard to protect their crowns."
+    ],
+    "image": "/media/2024/08/Your-paragraph-text-53.webp"
+  },
+  "restorative": null,
+  "visits": null,
+  "pricing": null,
+  "faq": [
+    {
+      "q": "How long do dental crowns last?",
+      "a": "Dental crowns are designed to be durable and long-lasting. With proper care, including good oral hygiene and regular dental check-ups, crowns can last anywhere from 10 to 15 years, or even longer. The longevity of a crown also depends on the material used and how well you maintain it."
+    },
+    {
+      "q": "What materials are dental crowns made from?",
+      "a": "Dental crowns can be made from a variety of materials, including porcelain, zirconia, metal, and porcelain-fused-to-metal. At Younes Dental Clinic, we primarily use zirconia for its durability, natural appearance, and biocompatibility. The choice of material depends on the location of the tooth, your aesthetic preferences, and your dentist’s recommendation."
+    },
+    {
+      "q": "Is getting a dental crown painful?",
+      "a": "The process of getting a dental crown is generally not painful. Local anesthesia is used to numb the area, ensuring that you are comfortable throughout the procedure. Some patients may experience mild discomfort after the anesthesia wears off, but this can typically be managed with over-the-counter pain relievers."
+    },
+    {
+      "q": "What can I eat after getting a dental crown?",
+      "a": "After getting a dental crown, it's best to avoid very hard or sticky foods for a few days to allow the crown to properly settle. Once the crown has fully set, you can eat most foods as normal. However, it’s advisable to avoid biting down on hard objects (like ice) to prevent damaging the crown."
+    }
+  ]
+}

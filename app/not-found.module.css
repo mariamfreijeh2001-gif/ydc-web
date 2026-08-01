@@ -1,0 +1,35 @@
+.wrap {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.code {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--ls-h6);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-primary);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+}
+
+.text {
+  color: var(--c-text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
