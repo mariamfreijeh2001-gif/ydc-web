@@ -28,7 +28,13 @@ export function ServiceCard({ service, tone = 'image', priority = false }: Props
           alt=""
           fill
           priority={priority}
-          sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          /*
+           * Landscape (~16:9) photos cover-cropped into a portrait card, so the source
+           * must be ~2.4x the card's width to fill its height without upscaling —
+           * `sizes` describes the box, not the post-crop need. Kept in `vw` because
+           * Next only derives a sensible srcset from viewport-relative units.
+           */
+          sizes="(max-width: 767px) 190vw, (max-width: 1024px) 115vw, 75vw"
           className={styles.image}
           quality={IMAGE_QUALITY}
         />

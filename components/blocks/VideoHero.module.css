@@ -1,11 +1,18 @@
+/*
+ * Live hero geometry at 1440: the video panel is inset 40px from each side (1360 wide),
+ * rounded, ~765px tall, with the two headlines sitting near its top rather than
+ * anchored to the bottom.
+ */
 .hero {
   position: relative;
   isolation: isolate;
-  /* Fills the viewport below the sticky header, as on the live site. */
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  align-items: flex-end;
+  width: calc(100% - 2 * var(--container-wide-gutter));
+  margin-inline: auto;
+  height: clamp(420px, 53vw, 765px);
+  border-radius: var(--radius-card);
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
   background: #0b1416;
 }
 
@@ -23,10 +30,10 @@
   inset: 0;
   z-index: -1;
   background: linear-gradient(
-    to top,
-    rgba(6, 16, 18, 0.68) 0%,
-    rgba(6, 16, 18, 0.18) 46%,
-    rgba(6, 16, 18, 0.34) 100%
+    to bottom,
+    rgba(6, 16, 18, 0.52) 0%,
+    rgba(6, 16, 18, 0.22) 42%,
+    rgba(6, 16, 18, 0.3) 100%
   );
 }
 
@@ -34,13 +41,13 @@
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding: 0 var(--container-pad) clamp(46px, 7vw, 96px);
+  padding: clamp(40px, 5.5vw, 78px) var(--container-pad) 0;
 }
 
 .title {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   margin: 0;
   color: #fff;
   font-size: var(--fs-h2);
@@ -56,6 +63,6 @@
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 68svh;
+    height: clamp(360px, 90vw, 480px);
   }
 }

@@ -1,9 +1,10 @@
 /* ---- Intro band --------------------------------------------------------- */
 
+/* Live: 218px quote column, 40px gutter, 1022px body — 1280 total. */
 .intro {
   display: grid;
-  grid-template-columns: 216px 1fr;
-  gap: clamp(28px, 8vw, 128px);
+  grid-template-columns: 218px 1fr;
+  gap: 40px;
   align-items: start;
 }
 
@@ -30,6 +31,11 @@
   align-items: flex-start;
   gap: 8px;
   margin-bottom: 34px;
+}
+
+/* Headings span the container on the live site rather than shrink-wrapping. */
+.sectionHead > h2 {
+  width: 100%;
 }
 
 .viewAll {

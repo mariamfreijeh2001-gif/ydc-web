@@ -23,7 +23,8 @@ export function CaseCard({ item, variant = 'default', priority = false }: Props)
           alt={`${item.title} — patient result`}
           fill
           priority={priority}
-          sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          /* Square/portrait covers cropped into a portrait card — see ServiceCard. */
+          sizes="(max-width: 767px) 140vw, (max-width: 1024px) 80vw, 55vw"
           className={styles.image}
           quality={IMAGE_QUALITY}
         />

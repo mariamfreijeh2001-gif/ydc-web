@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   twitter: { card: 'summary_large_image' },
-  icons: { icon: '/favicon.svg' },
+  // Icons come from app/icon.png and app/apple-icon.png (the clinic's own logo mark,
+  // the same artwork the WordPress site used), which Next links automatically.
   alternates: { canonical: '/' },
 };
 
