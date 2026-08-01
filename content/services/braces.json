@@ -34,17 +34,23 @@
       {
         "icon": "/media/2024/08/a-30.webp",
         "title": "Effective for All Ages",
-        "text": "Braces are a versatile orthodontic solution that can effectively treat a wide range of dental alignment issues in both children and adults. Whether you’re correcting minor crowding or addressing more complex bite problems, braces are a reliable option that delivers consistent and long-lasting results"
+        "text": "Braces are a versatile orthodontic solution that can effectively treat a wide range of dental alignment issues in both children and adults. Whether you’re correcting minor crowding or addressing more complex bite problems, braces are a reliable option that delivers consistent and long-lasting results",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-31.webp",
         "title": "Durable and Reliable",
-        "text": "Traditional metal braces are known for their durability and strength. Made from high-quality stainless steel, they are designed to withstand the forces of daily chewing and speaking, ensuring that your treatment progresses smoothly without frequent adjustments or replacements."
+        "text": "Traditional metal braces are known for their durability and strength. Made from high-quality stainless steel, they are designed to withstand the forces of daily chewing and speaking, ensuring that your treatment progresses smoothly without frequent adjustments or replacements.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-33.webp",
         "title": "Customizable Appearance",
-        "text": "deallWhile braces are often associated with metal brackets, modern options include ceramic braces that blend in with your natural tooth color, making them less noticeable. Additionally, patients can personalize their braces with different colored bands, allowing for a more customized and aesthetically pleasing treatment experience."
+        "text": "deallWhile braces are often associated with metal brackets, modern options include ceramic braces that blend in with your natural tooth color, making them less noticeable. Additionally, patients can personalize their braces with different colored bands, allowing for a more customized and aesthetically pleasing treatment experience.",
+        "iconW": 90,
+        "iconH": 90
       }
     ]
   },

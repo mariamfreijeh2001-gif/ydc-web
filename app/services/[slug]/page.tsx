@@ -62,7 +62,12 @@ export default async function ServiceDetailPage({ params }: Params) {
                 alt={service.title}
                 fill
                 priority
-                sizes="(max-width: 1280px) 100vw, 1280px"
+                /*
+                 * Some featured photos are far wider than 16:9, so covering the banner
+                 * crops them heavily and needs a source well past the banner's own
+                 * width — `sizes` has to describe the crop, not the box.
+                 */
+                sizes="(max-width: 767px) 200vw, 150vw"
                 className={styles.featuredImg}
                 quality={IMAGE_QUALITY}
               />
@@ -102,11 +107,21 @@ export default async function ServiceDetailPage({ params }: Params) {
               {service.features.items.map((item) => (
                 <li key={item.title} className={styles.feature}>
                   {item.icon ? (
+                    /*
+                     * Rendered at its own pixel size (capped at 120), which is what the
+                     * live theme does — one icon is 120x120, the others 80x80. Sized
+                     * inline so no stylesheet rule can stretch a small icon up.
+                     */
                     <Image
                       src={item.icon}
                       alt=""
-                      width={64}
-                      height={64}
+                      width={item.iconW ?? 120}
+                      height={item.iconH ?? 120}
+                      sizes={`${Math.min(item.iconW ?? 120, 120)}px`}
+                      style={{
+                        width: Math.min(item.iconW ?? 120, 120),
+                        height: 'auto',
+                      }}
                       className={styles.featureIcon}
                       quality={IMAGE_QUALITY}
                     />
@@ -131,7 +146,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                     src={service.candidates.image}
                     alt=""
                     fill
-                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    sizes="(max-width: 1024px) 130vw, 105vw"
                     className={styles.splitImg}
                     quality={IMAGE_QUALITY}
                   />
@@ -171,7 +186,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                     src={service.restorative.image}
                     alt=""
                     fill
-                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    sizes="(max-width: 1024px) 130vw, 105vw"
                     className={styles.splitImg}
                     quality={IMAGE_QUALITY}
                   />

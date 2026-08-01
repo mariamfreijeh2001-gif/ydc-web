@@ -20,7 +20,14 @@ export type Service = {
   intro: { heading: string; blocks: IntroBlock[] } | null;
   features: {
     eyebrow: string;
-    items: { icon: string | null; title: string; text: string }[];
+    items: {
+      icon: string | null;
+      /** Natural pixel size — the theme renders each icon at its own dimensions. */
+      iconW?: number;
+      iconH?: number;
+      title: string;
+      text: string;
+    }[];
   } | null;
   candidates: {
     heading: string;

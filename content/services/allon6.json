@@ -30,17 +30,23 @@
       {
         "icon": "/media/2024/08/a-24.webp",
         "title": "Full Arch Support with 6 Implants",
-        "text": "Achieve a stable and functional full-arch restoration using just six implants, ensuring both durability and efficiency."
+        "text": "Achieve a stable and functional full-arch restoration using just six implants, ensuring both durability and efficiency.",
+        "iconW": 120,
+        "iconH": 120
       },
       {
         "icon": "/media/2024/08/a.webp",
         "title": "Immediate Function & Results",
-        "text": "Enjoy a complete set of teeth on the same day as your surgery, providing immediate functionality and a beautiful smile."
+        "text": "Enjoy a complete set of teeth on the same day as your surgery, providing immediate functionality and a beautiful smile.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-23.webp",
         "title": "Graftless Procedure",
-        "text": "Eliminate the need for bone grafting by utilizing existing bone, making the process simpler and more comfortable."
+        "text": "Eliminate the need for bone grafting by utilizing existing bone, making the process simpler and more comfortable.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

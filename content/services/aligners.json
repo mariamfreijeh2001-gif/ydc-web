@@ -26,17 +26,23 @@
       {
         "icon": "/media/2024/08/a-17.webp",
         "title": "Invisible & Removable",
-        "text": "The aligners are transparent, making them nearly invisible when worn. They can also be easily removed for eating, drinking, and cleaning, providing flexibility and discretion."
+        "text": "The aligners are transparent, making them nearly invisible when worn. They can also be easily removed for eating, drinking, and cleaning, providing flexibility and discretion.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-18.webp",
         "title": "Comfortable & Easy to Clean",
-        "text": "Made from smooth plastic, the aligners are more comfortable to wear than traditional braces. With no wires or brackets to cause irritation, they are also easy to clean, allowing for better oral hygiene."
+        "text": "Made from smooth plastic, the aligners are more comfortable to wear than traditional braces. With no wires or brackets to cause irritation, they are also easy to clean, allowing for better oral hygiene.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-19.webp",
         "title": "No Food Restrictions",
-        "text": "Enjoy the freedom to eat whatever you like without worrying about damaging your orthodontic device. Clear Smile Aligners eliminate the food restrictions often associated with traditional braces."
+        "text": "Enjoy the freedom to eat whatever you like without worrying about damaging your orthodontic device. Clear Smile Aligners eliminate the food restrictions often associated with traditional braces.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

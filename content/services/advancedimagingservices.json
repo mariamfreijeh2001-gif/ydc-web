@@ -34,17 +34,23 @@
       {
         "icon": "/media/2024/08/a-3.webp",
         "title": "Unmatched Imaging Accuracy",
-        "text": "Our Ray Scan and Ray Face machines provide exceptionally accurate and detailed imaging, allowing us to capture high-definition X-rays, 3D CBCT scans, and precise facial data. This level of detail ensures that we can diagnose and plan treatments with the highest level of precision, improving both the effectiveness and outcomes of your dental care."
+        "text": "Our Ray Scan and Ray Face machines provide exceptionally accurate and detailed imaging, allowing us to capture high-definition X-rays, 3D CBCT scans, and precise facial data. This level of detail ensures that we can diagnose and plan treatments with the highest level of precision, improving both the effectiveness and outcomes of your dental care.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-4.webp",
         "title": "Seamless Integration for Comprehensive Care",
-        "text": "The ability of Ray Face technology to integrate facial scans with intraoral and CBCT images creates a full digital model of your facial and dental structures. This comprehensive approach enhances the accuracy of treatment planning, particularly for cosmetic and reconstructive procedures, leading to results that are not only functional but also aesthetically pleasing and personalized."
+        "text": "The ability of Ray Face technology to integrate facial scans with intraoral and CBCT images creates a full digital model of your facial and dental structures. This comprehensive approach enhances the accuracy of treatment planning, particularly for cosmetic and reconstructive procedures, leading to results that are not only functional but also aesthetically pleasing and personalized.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-5.webp",
         "title": "Enhanced Patient Experience",
-        "text": "With rapid scan times and non-invasive procedures, our imaging services are designed with your comfort in mind. The Ray Face scanner captures a complete facial scan in less than 0.5 seconds, minimizing any discomfort or inconvenience. This technology also allows for better communication and visualization of treatment outcomes, helping you to fully understand and engage with your dental care process."
+        "text": "With rapid scan times and non-invasive procedures, our imaging services are designed with your comfort in mind. The Ray Face scanner captures a complete facial scan in less than 0.5 seconds, minimizing any discomfort or inconvenience. This technology also allows for better communication and visualization of treatment outcomes, helping you to fully understand and engage with your dental care process.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

@@ -26,17 +26,23 @@
       {
         "icon": "/media/2024/08/a-28.webp",
         "title": "Customized Fit for Maximum Comfort",
-        "text": "Our night guards are custom-made to fit the unique contours of your teeth and mouth, ensuring a comfortable fit. Unlike over-the-counter options, a custom night guard stays securely in place throughout the night, providing reliable protection without discomfort."
+        "text": "Our night guards are custom-made to fit the unique contours of your teeth and mouth, ensuring a comfortable fit. Unlike over-the-counter options, a custom night guard stays securely in place throughout the night, providing reliable protection without discomfort.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-27.webp",
         "title": "Durable and Long-Lasting Protection",
-        "text": "Made from high-quality materials, our night guards are designed to withstand the pressure of teeth grinding and jaw clenching over time. This durability ensures that your night guard will continue to protect your teeth and jaw for years, reducing the risk of dental wear and damage."
+        "text": "Made from high-quality materials, our night guards are designed to withstand the pressure of teeth grinding and jaw clenching over time. This durability ensures that your night guard will continue to protect your teeth and jaw for years, reducing the risk of dental wear and damage.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-29.webp",
         "title": "Improves Sleep Quality",
-        "text": "By preventing the negative effects of bruxism and jaw clenching, night guards can significantly improve your sleep quality. Alleviating jaw pain, headaches, and discomfort helps you wake up feeling refreshed and pain-free, enhancing your overall well-being"
+        "text": "By preventing the negative effects of bruxism and jaw clenching, night guards can significantly improve your sleep quality. Alleviating jaw pain, headaches, and discomfort helps you wake up feeling refreshed and pain-free, enhancing your overall well-being",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

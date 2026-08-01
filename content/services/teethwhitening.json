@@ -34,17 +34,23 @@
       {
         "icon": "/media/2024/08/a-14.webp",
         "title": "Immediate and Long-Lasting Results",
-        "text": "Our in-office whitening treatments offer immediate results, brightening your teeth by several shades in just one visit. Additionally, with proper care and maintenance, the effects of professional whitening can last for months, giving you a long-lasting, radiant smile."
+        "text": "Our in-office whitening treatments offer immediate results, brightening your teeth by several shades in just one visit. Additionally, with proper care and maintenance, the effects of professional whitening can last for months, giving you a long-lasting, radiant smile.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-15.webp",
         "title": "Safe and Customized Treatment",
-        "text": "Unlike over-the-counter whitening products, our professional whitening services are tailored to your specific needs and are performed under the supervision of experienced dental professionals. This ensures that your teeth and gums remain healthy, with minimal risk of sensitivity or other side effects."
+        "text": "Unlike over-the-counter whitening products, our professional whitening services are tailored to your specific needs and are performed under the supervision of experienced dental professionals. This ensures that your teeth and gums remain healthy, with minimal risk of sensitivity or other side effects.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-16.webp",
         "title": "Convenient Take-Home Options",
-        "text": "For those who prefer the convenience of whitening at home, our custom take-home kits provide professional-grade results with the flexibility to whiten at your own pace. These kits include everything you need to achieve a brighter smile in the comfort of your own home, with results that are consistent and effective."
+        "text": "For those who prefer the convenience of whitening at home, our custom take-home kits provide professional-grade results with the flexibility to whiten at your own pace. These kits include everything you need to achieve a brighter smile in the comfort of your own home, with results that are consistent and effective.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

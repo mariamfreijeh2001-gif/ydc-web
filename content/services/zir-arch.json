@@ -22,17 +22,23 @@
       {
         "icon": "/media/2024/08/a-14.webp",
         "title": "Longevity & Durability",
-        "text": "Zir-Arch bridges are made from monolithic zirconia, known for its exceptional strength and resilience. These bridges are engineered to endure the forces of biting and chewing without fracturing or chipping, ensuring long-lasting performance and providing peace of mind."
+        "text": "Zir-Arch bridges are made from monolithic zirconia, known for its exceptional strength and resilience. These bridges are engineered to endure the forces of biting and chewing without fracturing or chipping, ensuring long-lasting performance and providing peace of mind.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/Your-paragraph-text-47.webp",
         "title": "Natural Aesthetics & Comfort",
-        "text": "Zirconia closely replicates the natural appearance of teeth, allowing Zir-Arch bridges to blend seamlessly with your smile. Thanks to its high strength and precise implant positioning, Zir-Arch bridges are slim, comfortable, and virtually indistinguishable from natural teeth."
+        "text": "Zirconia closely replicates the natural appearance of teeth, allowing Zir-Arch bridges to blend seamlessly with your smile. Thanks to its high strength and precise implant positioning, Zir-Arch bridges are slim, comfortable, and virtually indistinguishable from natural teeth.",
+        "iconW": 1350,
+        "iconH": 809
       },
       {
         "icon": "/media/2024/08/a-9.webp",
         "title": "Biocompatibility & Hygiene",
-        "text": "Zirconia is highly biocompatible, meaning it rarely causes allergic reactions or adverse tissue responses. This makes it a safe and reliable choice for dental restorations. Additionally, its smooth, non-porous surface resists bacterial adhesion, promoting excellent oral hygiene and reducing the risk of plaque buildup and gum disease."
+        "text": "Zirconia is highly biocompatible, meaning it rarely causes allergic reactions or adverse tissue responses. This makes it a safe and reliable choice for dental restorations. Additionally, its smooth, non-porous surface resists bacterial adhesion, promoting excellent oral hygiene and reducing the risk of plaque buildup and gum disease.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

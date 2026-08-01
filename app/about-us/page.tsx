@@ -134,7 +134,7 @@ export default function AboutPage() {
           <Carousel label="Our services" tone="light">
             {services.map((service) => (
               <li key={service.slug}>
-                <ServiceCard service={service} tone="dark" />
+                <ServiceCard service={service} />
               </li>
             ))}
           </Carousel>

@@ -42,17 +42,23 @@
       {
         "icon": "/media/2024/01/tooth-xray-spot.svg",
         "title": "Pain-Free Treatment",
-        "text": "Our skilled professionals ensure that your veneer procedure is completely pain-free. With our advanced techniques and caring approach, we make your comfort our top priority"
+        "text": "Our skilled professionals ensure that your veneer procedure is completely pain-free. With our advanced techniques and caring approach, we make your comfort our top priority",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/01/tooth-xray-1.svg",
         "title": "Modern Equipment",
-        "text": "At Younes Dental Clinic, we utilize cutting-edge technology to deliver the best results. From state-of-the-art CT machines and microscopes to advanced CEREC systems that allow for same-day crowns, our equipment is designed to provide precise, efficient, and high-quality care."
+        "text": "At Younes Dental Clinic, we utilize cutting-edge technology to deliver the best results. From state-of-the-art CT machines and microscopes to advanced CEREC systems that allow for same-day crowns, our equipment is designed to provide precise, efficient, and high-quality care.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/01/vineer-1.svg",
         "title": "Customized Aesthetic Solutions",
-        "text": "We understand that every smile is unique, which is why we offer personalized veneer solutions tailored to your specific needs and aesthetic goals. Our team works closely with you to design veneers that perfectly match your natural teeth, ensuring a seamless, beautiful, and natural-looking result."
+        "text": "We understand that every smile is unique, which is why we offer personalized veneer solutions tailored to your specific needs and aesthetic goals. Our team works closely with you to design veneers that perfectly match your natural teeth, ensuring a seamless, beautiful, and natural-looking result.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

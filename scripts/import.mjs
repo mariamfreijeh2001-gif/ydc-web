@@ -694,6 +694,29 @@ async function importAssets(index) {
   return { copied, fetched, missing, renames, bytesIn, bytesOut };
 }
 
+/**
+ * Record the real pixel size of each feature icon on the service that owns it.
+ *
+ * The live theme renders these at their natural size (120x120 for one, 80x80 for the
+ * next two on All-on-4), so hard-coding a square box both distorts them and makes
+ * next/image request the wrong resolution.
+ */
+async function attachIconSizes(services) {
+  for (const service of services) {
+    for (const item of service.features?.items ?? []) {
+      if (!item.icon) continue;
+      try {
+        const meta = await sharp(path.join(ROOT, 'public', item.icon)).metadata();
+        item.iconW = meta.width;
+        item.iconH = meta.height;
+      } catch {
+        item.iconW = 120;
+        item.iconH = 120;
+      }
+    }
+  }
+}
+
 /** Deep-rewrite every `/media/...` string in a parsed content tree. */
 function remap(value, renames) {
   if (typeof value === 'string') return renames.get(value) ?? value;
@@ -752,7 +775,9 @@ async function main() {
 
   // -- write content with asset paths pointing at the final filenames
   console.log('\nWriting content…');
-  for (const s of services) await writeJson(`services/${s.slug}.json`, remap(s, renames));
+  const remapped = services.map((s) => remap(s, renames));
+  await attachIconSizes(remapped);
+  for (const s of remapped) await writeJson(`services/${s.slug}.json`, s);
   console.log(`  services: ${services.length}`);
   for (const c of cases) await writeJson(`cases/${c.slug}.json`, remap(c, renames));
   console.log(`  cases: ${cases.length}`);

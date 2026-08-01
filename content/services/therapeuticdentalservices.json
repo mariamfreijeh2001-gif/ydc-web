@@ -42,17 +42,23 @@
       {
         "icon": "/media/2024/08/a-6.webp",
         "title": "Advanced Technology",
-        "text": "We utilize cutting-edge dental technology to ensure our therapeutic treatments, including fillings and root canals, are effective, efficient, and comfortable. This technology allows for precise diagnosis and treatment, leading to better outcomes and a more pleasant patient experience"
+        "text": "We utilize cutting-edge dental technology to ensure our therapeutic treatments, including fillings and root canals, are effective, efficient, and comfortable. This technology allows for precise diagnosis and treatment, leading to better outcomes and a more pleasant patient experience",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-7.webp",
         "title": "Pain Management & Comfort",
-        "text": "Your comfort is our top priority. We employ modern pain management techniques to minimize discomfort during procedures. Our gentle approach, combined with effective anesthesia, ensures that your treatment is as painless and stress-free as possible."
+        "text": "Your comfort is our top priority. We employ modern pain management techniques to minimize discomfort during procedures. Our gentle approach, combined with effective anesthesia, ensures that your treatment is as painless and stress-free as possible.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-10.webp",
         "title": "Natural-Looking Restorations",
-        "text": "Our restorative materials are carefully selected to match the natural appearance of your teeth. Whether it’s a filling or a crown, the results are both functional and aesthetically pleasing, allowing you to maintain a beautiful, natural-looking smile."
+        "text": "Our restorative materials are carefully selected to match the natural appearance of your teeth. Whether it’s a filling or a crown, the results are both functional and aesthetically pleasing, allowing you to maintain a beautiful, natural-looking smile.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

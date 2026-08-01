@@ -34,17 +34,23 @@
       {
         "icon": "/media/2024/08/a-20.webp",
         "title": "Immediate Solution for Severe Bone Loss",
-        "text": "Zygomatic implants offer a groundbreaking alternative for patients with significant bone loss, eliminating the need for bone grafts or sinus lifts. This innovative approach allows for full mouth restoration, even in cases of extreme resorption, providing immediate, long-lasting results."
+        "text": "Zygomatic implants offer a groundbreaking alternative for patients with significant bone loss, eliminating the need for bone grafts or sinus lifts. This innovative approach allows for full mouth restoration, even in cases of extreme resorption, providing immediate, long-lasting results.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-21.webp",
         "title": "Expertise & Success Rate",
-        "text": "At Younes Dental Clinic, our lead surgeon, Dr. Ali Younes, is the only dentist in Lebanon who routinely performs zygomatic implant procedures with immediate loading. With over five years of experience and a 100% success rate, you can trust that your smile is in the best hands."
+        "text": "At Younes Dental Clinic, our lead surgeon, Dr. Ali Younes, is the only dentist in Lebanon who routinely performs zygomatic implant procedures with immediate loading. With over five years of experience and a 100% success rate, you can trust that your smile is in the best hands.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a.webp",
         "title": "Quick Recovery & Minimal Discomfort",
-        "text": "Patients undergoing zygomatic implant surgery experience minimal discomfort and a surprisingly quick recovery time. Most patients return to their normal routines within just a few days, enjoying their new smile without the lengthy healing periods required by traditional procedures"
+        "text": "Patients undergoing zygomatic implant surgery experience minimal discomfort and a surprisingly quick recovery time. Most patients return to their normal routines within just a few days, enjoying their new smile without the lengthy healing periods required by traditional procedures",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

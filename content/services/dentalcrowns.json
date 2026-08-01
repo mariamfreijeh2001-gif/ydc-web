@@ -34,17 +34,23 @@
       {
         "icon": "/media/2024/08/a-11.webp",
         "title": "One-Day Crowns",
-        "text": "Thanks to advanced CAD/CAM digital technology, we can design and create your dental crown in a single day. This innovative process typically takes just 2-3 hours, allowing for the final placement of your custom crown during the same visit."
+        "text": "Thanks to advanced CAD/CAM digital technology, we can design and create your dental crown in a single day. This innovative process typically takes just 2-3 hours, allowing for the final placement of your custom crown during the same visit.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-12.webp",
         "title": "Natural Appearance & Function",
-        "text": "Our zirconia crowns are meticulously crafted in our in-house digital dental lab to ensure a natural look and feel. Unlike metal ceramic crowns, zirconia crowns are biocompatible and provide a long-lasting, beautiful smile that blends seamlessly with your natural teeth."
+        "text": "Our zirconia crowns are meticulously crafted in our in-house digital dental lab to ensure a natural look and feel. Unlike metal ceramic crowns, zirconia crowns are biocompatible and provide a long-lasting, beautiful smile that blends seamlessly with your natural teeth.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-13.webp",
         "title": "Minimizes Tooth Wear",
-        "text": "Unlike ceramic crowns, zirconia crowns do not cause abrasion to your natural teeth, offering a gentler, more comfortable solution for restoring your smile."
+        "text": "Unlike ceramic crowns, zirconia crowns do not cause abrasion to your natural teeth, offering a gentler, more comfortable solution for restoring your smile.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },

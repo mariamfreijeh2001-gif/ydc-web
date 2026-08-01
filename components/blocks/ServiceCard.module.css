@@ -46,14 +46,6 @@
   );
 }
 
-.dark {
-  background: color-mix(in srgb, #000 16%, var(--c-primary));
-}
-
-.dark .veil {
-  background: none;
-}
-
 .body {
   display: flex;
   flex-direction: column;

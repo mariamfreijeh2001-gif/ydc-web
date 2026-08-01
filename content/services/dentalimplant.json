@@ -26,17 +26,23 @@
       {
         "icon": "/media/2024/08/a.webp",
         "title": "Immediate Results",
-        "text": "Experience oral rehabilitation with immediate outcomes. At Younes Dental Clinic, we specialize in placing implants with teeth on the same day of surgery, so you can leave our clinic with a beautiful, functional smile right away."
+        "text": "Experience oral rehabilitation with immediate outcomes. At Younes Dental Clinic, we specialize in placing implants with teeth on the same day of surgery, so you can leave our clinic with a beautiful, functional smile right away.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-1.webp",
         "title": "Long-lasting Durability",
-        "text": "Our dental implants are securely anchored into the jawbone, providing unmatched stability and strength. This durable solution allows you to eat, speak, and smile with complete confidence, knowing your new teeth are as strong as natural ones."
+        "text": "Our dental implants are securely anchored into the jawbone, providing unmatched stability and strength. This durable solution allows you to eat, speak, and smile with complete confidence, knowing your new teeth are as strong as natural ones.",
+        "iconW": 80,
+        "iconH": 80
       },
       {
         "icon": "/media/2024/08/a-2.webp",
         "title": "Natural Appearance & Function",
-        "text": "Crafted with precision in our in-house digital dental lab, our zirconia crowns offer a natural-looking and biocompatible solution. Unlike metal ceramic crowns, our zirconia crowns ensure a beautiful, long-lasting smile that seamlessly blends with your natural teeth."
+        "text": "Crafted with precision in our in-house digital dental lab, our zirconia crowns offer a natural-looking and biocompatible solution. Unlike metal ceramic crowns, our zirconia crowns ensure a beautiful, long-lasting smile that seamlessly blends with your natural teeth.",
+        "iconW": 80,
+        "iconH": 80
       }
     ]
   },
