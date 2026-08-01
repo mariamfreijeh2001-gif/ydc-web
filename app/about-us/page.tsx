@@ -23,8 +23,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero with floating card */}
+      {/* Wide container, like the other page heroes — 40px gutters, not the 1280 box. */}
       <Section space="none" className={styles.heroSection}>
-        <Container>
+        <Container size="wide">
           <div className={styles.hero}>
             <Image
               src={about.hero.image}
@@ -128,7 +129,7 @@ export default function AboutPage() {
 
       {/* Dark teal services carousel */}
       <Section tone="dark" space="tight">
-        <Container>
+        <div className={styles.darkInner}>
           <h2 className={styles.darkHeading}>{about.services.heading}</h2>
           <Carousel label="Our services" tone="light">
             {services.map((service) => (
@@ -137,7 +138,7 @@ export default function AboutPage() {
               </li>
             ))}
           </Carousel>
-        </Container>
+        </div>
       </Section>
 
       <Reviews />

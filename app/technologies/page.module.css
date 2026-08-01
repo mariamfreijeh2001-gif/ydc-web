@@ -6,16 +6,20 @@
   margin: 0;
 }
 
+/*
+ * The artwork column is its natural width (live renders each at 219–275px), not a
+ * fixed track — so the copy takes ~1022px of the 1280 container, as on the live page.
+ */
 .row {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 48px;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
   align-items: center;
 }
 
 /* Odd rows put the image first, as on the live page. */
 .reversed {
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: auto 1fr;
 }
 
 .reversed .body {
@@ -60,10 +64,13 @@
 }
 
 @media (max-width: 1024px) {
-  .row,
-  .reversed {
-    grid-template-columns: 1fr 240px;
+  .row {
+    grid-template-columns: 1fr 200px;
     gap: 32px;
+  }
+
+  .reversed {
+    grid-template-columns: 200px 1fr;
   }
 }
 

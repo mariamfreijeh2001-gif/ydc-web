@@ -1,17 +1,32 @@
-/* ---- Overlay variant (/services/, /before-after/) ----------------------- */
+/*
+ * Notched hero. Live geometry at a 1440 viewport:
+ *   panel  x=40  y=85   1360 x 640, radius 40
+ *   notch  x=40  y=527   680 x 198, radius 0 50px 0 0, white
+ *   corner pieces 50 x 50 at the notch's top-left and bottom-right
+ */
 
-.overlay {
-  position: relative;
-  max-width: var(--container);
-  margin: 12px auto 0;
-  padding-inline: var(--container-pad);
+.hero {
+  padding-top: 12px;
 }
 
-.media {
+/*
+ * Only the photo is rounded. The notch overlays it with a square bottom-left corner
+ * that simply covers the photo's rounded corner — matching the live site, and avoiding
+ * the hairline you get from stacking two identical anti-aliased arcs.
+ */
+.frame {
+  position: relative;
+  width: calc(100% - 2 * var(--container-wide-gutter));
+  margin-inline: auto;
+  height: clamp(360px, 44vw, 640px);
+}
+
+.panel {
   position: absolute;
-  inset: 12px var(--container-pad) 0;
+  inset: 0;
   border-radius: var(--radius-card);
   overflow: hidden;
+  background: var(--c-bg);
 }
 
 .image {
@@ -19,36 +34,80 @@
   object-position: center;
 }
 
-.scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.94) 0%,
-    rgba(255, 255, 255, 0.55) 34%,
-    rgba(255, 255, 255, 0.06) 72%
-  );
-}
+/* The white block carved out of the panel's bottom-left corner. */
+.notch {
+  --notch-corner: 50px;
 
-.overlayInner {
-  position: relative;
-  min-height: clamp(280px, 32vw, 420px);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(680px, 72%);
+  background: var(--c-bg);
+  /* Only the convex top-right round; the frame's clip handles the bottom-left. */
+  border-radius: 0 var(--notch-corner) 0 0;
+  padding: 40px 0 34px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 60px 0 34px;
+  gap: 14px;
 }
 
-.overlayTitle {
+/*
+ * Concave joins. Each is a square of page background with a quarter-circle bitten out,
+ * so the notch reads as an inverted corner rather than a pasted-on rectangle.
+ */
+.notch::before,
+.notch::after {
+  content: '';
+  position: absolute;
+  width: var(--notch-corner);
+  height: var(--notch-corner);
+  background: var(--c-bg);
+}
+
+/* Above the notch, against the panel's left edge. */
+.notch::before {
+  left: 0;
+  bottom: 100%;
+  -webkit-mask: radial-gradient(circle at 100% 0, transparent var(--notch-corner), #000 0);
+  mask: radial-gradient(circle at 100% 0, transparent var(--notch-corner), #000 0);
+}
+
+/* To the right of the notch, along the panel's bottom edge. */
+.notch::after {
+  left: 100%;
+  bottom: 0;
+  -webkit-mask: radial-gradient(circle at 100% 0, transparent var(--notch-corner), #000 0);
+  mask: radial-gradient(circle at 100% 0, transparent var(--notch-corner), #000 0);
+}
+
+.title {
   margin: 0;
 }
 
-.overlayIntro {
-  margin-top: 12px;
-  max-width: 62ch;
+.intro {
+  padding-right: 24px;
   font-size: var(--fs-tertiary);
   line-height: var(--lh-tertiary);
   color: var(--c-text);
+}
+
+@media (max-width: 1024px) {
+  .notch {
+    width: min(680px, 84%);
+    padding: 30px 0 26px;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel {
+    height: clamp(300px, 78vw, 420px);
+  }
+
+  .notch {
+    --notch-corner: 28px;
+    width: 92%;
+    padding: 22px 0 18px;
+  }
 }
 
 /* ---- Centered variant (/technologies/) ---------------------------------- */
@@ -57,10 +116,10 @@
   padding-block: 48px 12px;
 }
 
+/* Same 1280 content box as Container's default, so headings line up across pages. */
 .centeredInner {
-  max-width: var(--container);
+  width: min(100% - 2 * var(--container-pad), var(--container));
   margin-inline: auto;
-  padding-inline: var(--container-pad);
 }
 
 .centeredTitle {
@@ -78,11 +137,6 @@
 }
 
 @media (max-width: 767px) {
-  .overlayInner {
-    min-height: 240px;
-    padding: 48px 0 24px;
-  }
-
   .centered {
     padding-block: 28px 8px;
   }

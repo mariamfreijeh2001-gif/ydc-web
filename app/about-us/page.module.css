@@ -12,7 +12,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 40px;
+  /* Live card sits ~60px in from the panel's right edge. */
+  padding: 40px 60px 40px 40px;
   background: var(--c-alternate);
 }
 
@@ -21,9 +22,10 @@
   object-position: center;
 }
 
+/* Live card holds a 558px content column. */
 .heroCard {
   position: relative;
-  width: min(460px, 100%);
+  width: min(634px, 100%);
   background: var(--c-bg);
   border-radius: var(--radius-md);
   padding: 40px 38px;
@@ -59,12 +61,18 @@
 
 /* ---- Welcome + Mission -------------------------------------------------- */
 
+/* Live splits these ~62/38 in favour of the image, not 50/50. */
 .welcome,
 .mission {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.62fr 1fr;
   gap: 46px;
   align-items: center;
+}
+
+/* Mission reverses it: copy on the left, the tall portrait on the right. */
+.mission {
+  grid-template-columns: 1fr 1fr;
 }
 
 .welcomeMedia {
@@ -137,6 +145,12 @@
 }
 
 /* ---- Dark services band ------------------------------------------------- */
+
+/* Live uses a slightly wider container here: 1320 content, 60px gutters. */
+.darkInner {
+  width: calc(100% - 120px);
+  margin-inline: auto;
+}
 
 .darkHeading {
   margin-bottom: 34px;
