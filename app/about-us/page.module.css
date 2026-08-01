@@ -14,7 +14,7 @@
   align-items: center;
   /* Live card sits ~60px in from the panel's right edge. */
   padding: 40px 60px 40px 40px;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 .heroImg {
@@ -54,7 +54,7 @@
 
 .heroText {
   margin-top: 18px;
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.75;
   color: var(--c-text);
 }
@@ -85,7 +85,7 @@
   aspect-ratio: 696 / 463;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 .cover {
@@ -101,7 +101,7 @@
 }
 
 .body {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.8;
   color: var(--c-text);
 }
@@ -111,7 +111,7 @@
   aspect-ratio: 624 / 684;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 /* Two ~308px squares with a 20px gutter, filling the copy column. */
@@ -127,7 +127,7 @@
   aspect-ratio: 1;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 /* ---- Team --------------------------------------------------------------- */

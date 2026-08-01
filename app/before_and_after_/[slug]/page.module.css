@@ -52,7 +52,7 @@
   aspect-ratio: 1;
   border-radius: var(--radius-card);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 .coverImg {
@@ -83,7 +83,7 @@
 }
 
 .bodyText {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.8;
   color: var(--c-text);
 }

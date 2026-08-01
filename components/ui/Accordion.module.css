@@ -57,7 +57,7 @@
 .answer {
   max-width: 90ch;
   color: var(--c-text);
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.75;
 }
 

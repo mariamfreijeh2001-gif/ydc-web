@@ -16,7 +16,7 @@
   aspect-ratio: 3 / 2;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
   padding: 0;
 }
 

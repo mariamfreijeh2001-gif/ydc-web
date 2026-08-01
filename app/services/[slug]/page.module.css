@@ -12,7 +12,7 @@
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-card);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 .featuredImg {
@@ -34,7 +34,7 @@
   flex-direction: column;
   gap: 18px;
   max-width: 106ch;
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.75;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .featureText {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.7;
   color: var(--c-text);
 }
@@ -110,7 +110,7 @@
   aspect-ratio: 600 / 850;
   border-radius: var(--radius-card);
   overflow: hidden;
-  background: var(--c-alternate);
+  background: var(--c-bg);
 }
 
 .splitImg {
@@ -127,7 +127,7 @@
 }
 
 .splitText {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.75;
 }
 
@@ -150,7 +150,7 @@
   gap: 12px;
   padding: 14px 0;
   border-bottom: 1px solid var(--c-border);
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.6;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .panelText {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.75;
   color: var(--c-secondary);
 }
@@ -209,7 +209,7 @@
 
 .pricingNote {
   margin-top: 16px;
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   color: var(--c-text);
 }
 
@@ -272,7 +272,7 @@
 }
 
 .planNote {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.6;
 }
 

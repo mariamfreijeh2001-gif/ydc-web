@@ -68,7 +68,7 @@
 .point {
   position: relative;
   padding-left: 22px;
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.7;
 }
 

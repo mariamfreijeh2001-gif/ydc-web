@@ -44,7 +44,7 @@
 }
 
 .text {
-  font-size: var(--fs-tertiary);
+  font-size: var(--fs-text);
   line-height: 1.8;
   color: var(--c-secondary);
   max-width: 90ch;
