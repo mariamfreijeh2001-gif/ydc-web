@@ -780,6 +780,26 @@ async function importAssets(index) {
  * next two on All-on-4), so hard-coding a square box both distorts them and makes
  * next/image request the wrong resolution.
  */
+/**
+ * Record each service banner's own aspect ratio.
+ *
+ * These photos run from 1.27:1 to 2.79:1, so a single frame ratio always crops one end
+ * of the range badly — a 1.27 close-up lost a third of its height to a 16:9 box. The
+ * page frames each banner at its own ratio instead, clamped so neither extreme
+ * dominates the top of the page.
+ */
+async function attachImageRatios(services) {
+  for (const service of services) {
+    if (!service.image) continue;
+    try {
+      const meta = await sharp(path.join(ROOT, 'public', service.image)).metadata();
+      service.imageRatio = Number((meta.width / meta.height).toFixed(3));
+    } catch {
+      /* Leave it unset; the page falls back to 16:9. */
+    }
+  }
+}
+
 async function attachIconSizes(services) {
   for (const service of services) {
     for (const item of service.features?.items ?? []) {
@@ -856,6 +876,7 @@ async function main() {
   console.log('\nWriting content…');
   const remapped = services.map((s) => remap(s, renames));
   await attachIconSizes(remapped);
+  await attachImageRatios(remapped);
   for (const s of remapped) await writeJson(`services/${s.slug}.json`, s);
   console.log(`  services: ${services.length}`);
   for (const c of cases) await writeJson(`cases/${c.slug}.json`, remap(c, renames));

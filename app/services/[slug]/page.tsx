@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { ServiceCard } from "@/components/blocks/ServiceCard";
+import { ServiceJsonLd } from "@/components/ServiceJsonLd";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -10,12 +11,32 @@ import { Accordion } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon, CloseIcon } from "@/components/ui/Icon";
 import { Tabs } from "@/components/ui/Tabs";
-import { contact } from "@/content/site";
 import { getService, relatedServices, services } from "@/lib/content";
+import { metaDescription } from "@/lib/seo";
 import styles from "./page.module.css";
 import { IMAGE_QUALITY } from "@/components/ui/image";
 
 type Params = { params: Promise<{ slug: string }> };
+
+/**
+ * One description, used for the meta tag, the OG card and the MedicalProcedure graph.
+ *
+ * Takes the first paragraph with something to say, rather than the first paragraph.
+ * Some imports open with a stray title fragment marked up as body copy — Zir-Arch's
+ * is "Zir-Arch Zirconia Over Implants" — which made a 31-character search snippet.
+ */
+function serviceDescription(
+  service: NonNullable<ReturnType<typeof getService>>,
+) {
+  const paragraphs = (service.intro?.blocks ?? [])
+    .filter((b) => b.kind === "paragraph")
+    .map((b) => b.text.trim());
+
+  return metaDescription(
+    paragraphs.find((t) => t.length >= 80) ?? paragraphs[0],
+    `${service.title} at Younes Dental Clinic — book a consultation with our implant and cosmetic dentistry team in Lebanon.`,
+  );
+}
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -26,10 +47,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const service = getService(slug);
   if (!service) return {};
 
-  const description =
-    service.intro?.blocks
-      .find((b) => b.kind === "paragraph")
-      ?.text.slice(0, 155) ?? `${service.title} at Younes Dental Clinic.`;
+  const description = serviceDescription(service);
 
   return {
     title: service.title,
@@ -53,30 +71,54 @@ export default async function ServiceDetailPage({ params }: Params) {
     service.candidates?.listHeading ?? "",
   );
 
+  /*
+   * Frame the banner at the photo's own shape so nothing worth seeing is cropped away.
+   * Clamped: the widest source is 2.79:1, which would read as a letterbox strip, and the
+   * narrowest is 1.27:1, which would push everything below it off the screen.
+   */
+  const bannerRatio = Math.min(2, Math.max(1.45, service.imageRatio ?? 16 / 9));
+
   return (
     <>
+      <ServiceJsonLd
+        service={service}
+        description={serviceDescription(service)}
+      />
+
       {/* Title + featured image */}
       <Section space="none" className={styles.head}>
         <Container>
-          <h1 className={styles.title}>{service.title}</h1>
-          {service.image ? (
-            <div className={styles.featured}>
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                priority
-                /*
-                 * Some featured photos are far wider than 16:9, so covering the banner
-                 * crops them heavily and needs a source well past the banner's own
-                 * width — `sizes` has to describe the crop, not the box.
-                 */
-                sizes="(max-width: 767px) 200vw, 150vw"
-                className={styles.featuredImg}
-                quality={IMAGE_QUALITY}
-              />
-            </div>
-          ) : null}
+          {/*
+            Title and banner move as one block, so the heading always sits on the
+            image's left edge — a centred frame under a container-width title read as
+            a mistake rather than a choice.
+          */}
+          <div
+            className={styles.headStack}
+            style={
+              { "--banner-ar": String(bannerRatio) } as React.CSSProperties
+            }
+          >
+            <h1 className={styles.title}>{service.title}</h1>
+            {service.image ? (
+              <div className={styles.featured}>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  priority
+                  /*
+                   * The frame now matches the photo's own shape, so barely anything is
+                   * cropped and `sizes` can describe the box itself — no more asking for
+                   * a source one and a half times the width to survive the crop.
+                   */
+                  sizes="(max-width: 1360px) 95vw, 1280px"
+                  className={styles.featuredImg}
+                  quality={IMAGE_QUALITY}
+                />
+              </div>
+            ) : null}
+          </div>
         </Container>
       </Section>
 
@@ -179,7 +221,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                  * rather than hard-coded, so a list of positives would still tick.
                  */}
                 <ul
-                  className={`${styles.checkList} ${excludes ? styles.excludeList : ''}`}
+                  className={`${styles.checkList} ${excludes ? styles.excludeList : ""}`}
                 >
                   {service.candidates.items.map((item) => (
                     <li key={item}>
@@ -273,11 +315,13 @@ export default async function ServiceDetailPage({ params }: Params) {
                 photo and we&rsquo;ll come back with a plan.
               </p>
             </div>
+            {/*
+              One action, not two. WhatsApp already has a permanent button floating on
+              every page, so offering it again here alongside a second choice split the
+              attention of a section whose only job is to get one message sent.
+            */}
             <div className={styles.quoteActions}>
-              <Button href={contact.whatsappHref} variant="primary">
-                Ask on WhatsApp
-              </Button>
-              <Button href="/contacts/" variant="outline">
+              <Button href="/contacts/" variant="primary">
                 Contact the clinic
               </Button>
             </div>

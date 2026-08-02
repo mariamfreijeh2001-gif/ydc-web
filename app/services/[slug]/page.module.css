@@ -24,11 +24,32 @@
  * ends just shy of the fold rather than well above it. On a tall screen the 16:9 ratio
  * wins outright and the cap never applies.
  */
+/*
+ * The block is only as wide as the banner can be, so the title tracks the image's left
+ * edge at every screen height instead of running the full container width above a
+ * narrower frame.
+ */
+.headStack {
+  --banner-h: calc(100svh - var(--header-h) - 128px);
+
+  width: 100%;
+  max-width: calc(var(--banner-h) * var(--banner-ar, 1.78));
+  margin-inline: auto;
+}
+
 .featured {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: calc(100svh - var(--header-h) - 128px);
+  aspect-ratio: var(--banner-ar, 1.78);
+  max-height: var(--banner-h);
+  /*
+   * Pairing max-height with a matching max-width keeps the box at its intended ratio
+   * instead of letting it flatten. Capping the height alone made the frame progressively
+   * wider than its ratio — 1280x602 is 2.13:1 — and since the photo is cover-cropped,
+   * that extra width was thrown away as crop: on a short screen roughly a third of these
+   * close-ups was cut off. Now the frame shrinks instead of flattening, and because the
+   * ratio comes from the photo itself, almost nothing is cropped at all.
+   */
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-bg);

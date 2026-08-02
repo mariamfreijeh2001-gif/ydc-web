@@ -17,6 +17,8 @@ export type Service = {
   title: string;
   category: ServiceCategory;
   image: string | null;
+  /** The banner photo's own width/height, so the page can frame it without cropping. */
+  imageRatio?: number;
   intro: { heading: string; blocks: IntroBlock[] } | null;
   features: {
     eyebrow: string;
