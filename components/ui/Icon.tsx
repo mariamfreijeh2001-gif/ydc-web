@@ -135,3 +135,10 @@ export function SocialGlyph({ icon, ...p }: IconProps & { icon: SocialIcon }) {
     </svg>
   );
 }
+
+/** Corner arrows pointing outward — "view this larger". */
+export const ExpandIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5" />
+  </Svg>
+);

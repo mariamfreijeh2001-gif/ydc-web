@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Carousel } from '@/components/blocks/Carousel';
 import { DoctorCard } from '@/components/blocks/DoctorCard';
 import { PatientOrigins } from '@/components/blocks/PatientOrigins';
+import { PhotoFrame, PhotoViewer, type Photo } from '@/components/blocks/PhotoViewer';
 import { Reviews } from '@/components/blocks/Reviews';
 import { ServiceCard } from '@/components/blocks/ServiceCard';
 import { Container } from '@/components/layout/Container';
@@ -21,9 +22,21 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about-us/' },
 };
 
+/*
+ * Every photograph on the page, in reading order, so the lightbox can step through them
+ * as one set. Alt text is descriptive rather than decorative now that each one is a
+ * control a visitor can open.
+ */
+const PHOTOS: Photo[] = [
+  { src: about.welcome.image, alt: 'A patient being treated at Younes Dental Clinic' },
+  { src: about.mission.main, alt: 'Dr Ali Younes with a patient after treatment' },
+  { src: about.mission.collage[0], alt: 'Close-up of a finished smile' },
+  { src: about.mission.collage[1], alt: 'The Younes Dental Clinic team' },
+];
+
 export default function AboutPage() {
   return (
-    <>
+    <PhotoViewer photos={PHOTOS}>
       {/* Hero with floating card */}
       {/* Wide container, like the other page heroes — 40px gutters, not the 1280 box. */}
       <Section space="none" className={styles.heroSection}>
@@ -51,16 +64,13 @@ export default function AboutPage() {
       <Section space="tight">
         <Container>
           <div className={styles.welcome}>
-            <div className={styles.welcomeMedia}>
-              <Image
-                src={about.welcome.image}
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 100vw, 46vw"
-                className={styles.cover}
-                quality={IMAGE_QUALITY}
+            <Reveal>
+              <PhotoFrame
+                index={0}
+                className={styles.welcomeMedia}
+                sizes="(max-width: 1024px) 100vw, 60vw"
               />
-            </div>
+            </Reveal>
             <div className={styles.welcomeBody}>
               <h2>{about.welcome.heading}</h2>
               <p className={styles.body}>{about.welcome.text}</p>
@@ -77,30 +87,26 @@ export default function AboutPage() {
               <h2>{about.mission.heading}</h2>
               <p className={styles.body}>{about.mission.text}</p>
               <ul className={styles.collage}>
-                {about.mission.collage.map((src) => (
+                {about.mission.collage.map((src, i) => (
                   <li key={src} className={styles.collageItem}>
-                    <Image
-                      src={src}
-                      alt=""
-                      fill
-                      sizes="(max-width: 1024px) 45vw, 22vw"
-                      className={styles.cover}
-                      quality={IMAGE_QUALITY}
-                    />
+                    <Reveal delay={120 + i * 110}>
+                      <PhotoFrame
+                        index={2 + i}
+                        className={styles.collageFrame}
+                        sizes="(max-width: 1024px) 45vw, 26vw"
+                      />
+                    </Reveal>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className={styles.missionMedia}>
-              <Image
-                src={about.mission.main}
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 100vw, 46vw"
-                className={styles.cover}
-                quality={IMAGE_QUALITY}
+            <Reveal className={styles.missionReveal}>
+              <PhotoFrame
+                index={1}
+                className={styles.missionMedia}
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </Reveal>
           </div>
         </Container>
       </Section>
@@ -152,6 +158,6 @@ export default function AboutPage() {
       />
 
       <Reviews variant="marquee" />
-    </>
+    </PhotoViewer>
   );
 }

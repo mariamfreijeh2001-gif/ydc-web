@@ -1,0 +1,195 @@
+/* ---- Frame -------------------------------------------------------------- */
+
+.frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--c-bg);
+  cursor: zoom-in;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s var(--ease);
+}
+
+.frame:hover .img,
+.frame:focus-visible .img {
+  transform: scale(1.06);
+}
+
+/* Darkens from the corner the cue sits in, so the icon stays legible on a pale photo. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, rgba(8, 22, 25, 0.42), transparent 46%);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease);
+}
+
+.cue {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--c-primary);
+  transform: translateY(10px) scale(0.9);
+  opacity: 0;
+  transition:
+    transform 0.45s var(--ease),
+    opacity 0.45s var(--ease);
+}
+
+.frame:hover .scrim,
+.frame:focus-visible .scrim,
+.frame:hover .cue,
+.frame:focus-visible .cue {
+  opacity: 1;
+}
+
+.frame:hover .cue,
+.frame:focus-visible .cue {
+  transform: none;
+}
+
+/*
+ * Touch devices get no hover, so the cue is simply always there — otherwise nothing
+ * would say the photo can be opened.
+ */
+@media (hover: none) {
+  .cue {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img,
+  .frame:hover .img,
+  .frame:focus-visible .img {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Lightbox ----------------------------------------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(6, 18, 21, 0.92);
+  animation: fade 0.25s var(--ease);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.stage {
+  position: relative;
+  width: min(1180px, 92vw);
+  height: min(78vh, 800px);
+  margin: 0;
+  animation: rise 0.35s var(--ease);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+}
+
+.stageImg {
+  object-fit: contain;
+}
+
+.close,
+.nav {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transition:
+    background var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.close:hover,
+.nav:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.06);
+}
+
+.close {
+  top: clamp(14px, 3vw, 28px);
+  right: clamp(14px, 3vw, 28px);
+}
+
+.nav {
+  top: 50%;
+  margin-top: -23px;
+}
+
+.prev {
+  left: clamp(10px, 2.5vw, 30px);
+}
+
+.next {
+  right: clamp(10px, 2.5vw, 30px);
+}
+
+.counter {
+  position: absolute;
+  bottom: clamp(14px, 3vw, 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 767px) {
+  .stage {
+    height: 64vh;
+  }
+
+  .cue {
+    left: 12px;
+    bottom: 12px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .stage {
+    animation: none;
+  }
+}

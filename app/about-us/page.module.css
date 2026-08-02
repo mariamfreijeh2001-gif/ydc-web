@@ -61,12 +61,20 @@
 
 /* ---- Welcome + Mission -------------------------------------------------- */
 
-/* Live at 1440: 696px image, 100px gutter, 484px copy. */
+/*
+ * Live at 1440: 696px image, 100px gutter, 484px copy. Stretched rather than centred —
+ * the copy runs taller than the photo's natural 3:2, and centring left a band of empty
+ * page above and below the picture.
+ */
 .welcome {
   display: grid;
   grid-template-columns: 1.44fr 1fr;
-  gap: 100px;
-  align-items: center;
+  gap: clamp(36px, 6vw, 100px);
+  align-items: stretch;
+}
+
+.welcome > * {
+  min-width: 0;
 }
 
 /*
@@ -81,11 +89,9 @@
 }
 
 .welcomeMedia {
-  position: relative;
-  aspect-ratio: 696 / 463;
+  /* A floor only; the row's height is what actually sizes it. */
+  min-height: 463px;
   border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-bg);
 }
 
 .cover {
@@ -97,6 +103,7 @@
 .missionBody {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 18px;
 }
 
@@ -107,11 +114,8 @@
 }
 
 .missionMedia {
-  position: relative;
   aspect-ratio: 624 / 684;
   border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-bg);
 }
 
 /* Two ~308px squares with a 20px gutter, filling the copy column. */
@@ -123,11 +127,12 @@
 }
 
 .collageItem {
-  position: relative;
+  aspect-ratio: 1;
+}
+
+.collageFrame {
   aspect-ratio: 1;
   border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-bg);
 }
 
 /* ---- Team --------------------------------------------------------------- */
@@ -191,4 +196,32 @@
   .team {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- Interactive photo frames ------------------------------------------- */
+
+/*
+ * The frames are buttons, so Reveal's wrapper has to stretch or they collapse to
+ * their content — which for a `fill` image is nothing at all.
+ */
+.welcome > *,
+.mission > * {
+  min-width: 0;
+}
+
+.welcomeMedia,
+.missionMedia,
+.collageFrame {
+  display: block;
+  height: 100%;
+}
+
+.missionReveal {
+  display: block;
+  height: 100%;
+}
+
+.collageItem > * {
+  display: block;
+  height: 100%;
 }
