@@ -42,7 +42,7 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label={`${site.name} — home`}>
-          <Image src={LOGO} alt={site.name} width={230} height={44} priority
+          <Image src={LOGO} alt={site.name} width={280} height={56} priority
   quality={IMAGE_QUALITY}
 />
         </Link>

@@ -1,9 +1,17 @@
 .head {
-  padding-top: 34px;
+  padding-top: 24px;
 }
 
+/*
+ * A step down from the site's h1 size. The banner is the hero on these pages, not the
+ * word above it, and at 68px the title ate enough of a short screen (a laptop with a
+ * bookmarks bar leaves ~680px) to push the image's bottom edge past the fold.
+ */
 .title {
-  margin-bottom: 26px;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  margin-bottom: 18px;
 }
 
 /*
@@ -11,15 +19,16 @@
  * off a 900px screen once the header and title were counted. Cap the height so the
  * title and the whole image are taken in together; the photo just crops a little more.
  *
- * The subtraction is the header plus the title block above it (34px padding, one line
- * of h1, 26px margin) and a little breathing room — tuned so the banner ends just shy
- * of the fold rather than well above it. On a tall screen the 16:9 ratio wins outright.
+ * The subtraction is the header plus the title block above it (24px padding, one line
+ * of the reduced title, 18px margin) and a little breathing room — tuned so the banner
+ * ends just shy of the fold rather than well above it. On a tall screen the 16:9 ratio
+ * wins outright and the cap never applies.
  */
 .featured {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: calc(100svh - var(--header-h) - 158px);
+  max-height: calc(100svh - var(--header-h) - 128px);
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-bg);
@@ -145,23 +154,29 @@
 
 /* ---- Split sections ----------------------------------------------------- */
 
+/*
+ * The text column runs slightly wider than the photo. It carries a heading, a paragraph
+ * and a list, and every extra character per line is a line the section doesn't grow by.
+ */
 .split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 24px;
   align-items: stretch;
 }
 
 /*
- * `width: 100%` is load-bearing: a grid item with an aspect ratio ignores stretch
- * alignment, so capping the height would otherwise shrink the box's width to match
- * the ratio and leave a bare strip of page beside the photo.
+ * No aspect ratio: the photo takes the height of whatever sits beside it, so the two
+ * columns always start and finish level. Fixing the ratio instead left the photo short
+ * of the text on wordier pages and put a bare strip of page beside it.
+ *
+ * The floor only matters on the sparsest pages, where the text alone would give a
+ * letterbox rather than a portrait.
  */
 .splitMedia {
   position: relative;
   width: 100%;
-  aspect-ratio: 600 / 850;
-  max-height: calc(100svh - 260px);
+  min-height: 440px;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-bg);
@@ -178,6 +193,17 @@
   justify-content: center;
   gap: 13px;
   padding-block: 8px;
+}
+
+/*
+ * h3-sized, not the site's h2. These headings sit in a half-width column where 56px
+ * wrapped every one of them onto two or three lines.
+ */
+.splitBody > h2 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  margin: 0;
 }
 
 .splitText {

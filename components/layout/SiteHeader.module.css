@@ -27,8 +27,13 @@
   flex: 0 0 auto;
 }
 
+/*
+ * The asset carries about 20% transparent padding top and bottom, so the mark reads
+ * roughly a fifth smaller than its box — the sizes here are set against what's actually
+ * visible, not the frame. Still well clear of the 104px header.
+ */
 .logo img {
-  width: clamp(150px, 16vw, 200px);
+  width: clamp(180px, 19vw, 245px);
   height: auto;
 }
 
