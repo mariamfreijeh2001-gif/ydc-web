@@ -21,10 +21,14 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-/* Antarctica is dropped and the far north trimmed: neither carries any meaning here. */
-const LAT_TOP = 78;
-const LAT_BOTTOM = -56;
-const COLS = 190;
+/*
+ * Cropped to the inhabited band. Antarctica and the high Arctic are dropped, which
+ * removes a lot of empty ocean and — because equirectangular badly exaggerates area
+ * near the poles — stops Greenland from dominating the top of the frame.
+ */
+const LAT_TOP = 72;
+const LAT_BOTTOM = -45;
+const COLS = 200;
 
 const src = process.argv[2];
 if (!src) {

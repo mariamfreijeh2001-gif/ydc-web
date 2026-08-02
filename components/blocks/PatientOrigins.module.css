@@ -28,6 +28,10 @@
   display: block;
 }
 
+.stage {
+  position: relative;
+}
+
 .figure {
   position: relative;
   margin: 0;
@@ -50,45 +54,59 @@
 
 .arc {
   fill: none;
-  stroke: var(--c-primary);
-  stroke-width: 2.5;
+  stroke: url(#po-route);
+  stroke-width: 3;
   stroke-linecap: round;
-  opacity: 0.55;
-  /*
-   * Drawn on by animating the dash offset from a full dash length down to zero. The
-   * length is comfortably longer than any route on the map, so no path is left short.
-   */
-  stroke-dasharray: 3000;
-  stroke-dashoffset: 3000;
+  /* Dashed like a flight path, and drawn on by shrinking the offset to zero. */
+  stroke-dasharray: 14 12;
+  stroke-dashoffset: 900;
+  opacity: 0;
 }
 
 /* Reveal stamps its own hashed `shown` class on the wrapper when it scrolls into view. */
 .reveal[class*='shown'] .arc {
-  animation: draw 1.5s var(--ease) forwards;
+  animation: draw 1.6s var(--ease) forwards;
 }
 
 @keyframes draw {
+  from {
+    stroke-dashoffset: 900;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
   to {
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
-/* ---- Markers ------------------------------------------------------------ */
-
-.origin {
+/* A light travelling along the route, so the map reads as journeys in progress. */
+.pulse {
+  fill: var(--c-primary);
+  offset-rotate: 0deg;
   opacity: 0;
 }
 
-.reveal[class*='shown'] .origin {
-  animation: pop 0.5s var(--ease) forwards;
+.reveal[class*='shown'] .pulse {
+  animation: fly 5.5s linear infinite;
 }
 
-@keyframes pop {
-  from {
+@keyframes fly {
+  0% {
+    offset-distance: 0%;
     opacity: 0;
   }
-  to {
+  12% {
     opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
   }
 }
 
@@ -96,26 +114,54 @@
   fill: var(--c-bg);
   stroke: var(--c-primary);
   stroke-width: 3.5;
+  opacity: 0;
 }
 
-.label {
-  font-size: 25px;
-  font-weight: 600;
-  fill: var(--c-secondary);
+.reveal[class*='shown'] .originDot {
+  animation: appear 0.5s var(--ease) forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * Singling out a region: everything else steps back rather than disappearing, so the
+ * shape of the whole network stays readable.
+ */
+.route {
+  transition: opacity 0.35s var(--ease);
+}
+
+.focused .route {
+  opacity: 0.18;
+}
+
+.focused .route.on {
+  opacity: 1;
+}
+
+.focused .on .arc {
+  stroke-width: 4.5;
+}
+
+/* ---- Clinic ------------------------------------------------------------- */
+
+.glow {
+  opacity: 0;
+}
+
+.reveal[class*='shown'] .glow {
+  animation: appear 1.2s var(--ease) 0.6s forwards;
 }
 
 .clinicDot {
   fill: var(--c-primary);
 }
 
-.clinicLabel {
-  font-size: 29px;
-  font-weight: 700;
-  fill: var(--c-primary);
-}
-
-/* Two rings on an offset cycle, so the clinic reads as the destination. */
-.pulse {
+.ring {
   fill: none;
   stroke: var(--c-primary);
   stroke-width: 3;
@@ -124,51 +170,131 @@
   opacity: 0;
 }
 
-.reveal[class*='shown'] .pulse {
-  animation: pulse 2.2s var(--ease) infinite;
+.reveal[class*='shown'] .ring {
+  animation: pulse 2.6s var(--ease) infinite;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(0.6);
-    opacity: 0.7;
+    transform: scale(0.55);
+    opacity: 0.75;
   }
   70% {
     opacity: 0;
   }
   100% {
-    transform: scale(2.6);
+    transform: scale(2.8);
     opacity: 0;
+  }
+}
+
+/*
+ * An HTML label rather than SVG text: it stays at a readable size whatever the map
+ * scales to, instead of shrinking with the viewBox.
+ */
+.pin {
+  position: absolute;
+  transform: translate(18px, -50%);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--c-primary);
+  color: #fff;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0, 74, 94, 0.28);
+  pointer-events: none;
+}
+
+/* ---- Legend ------------------------------------------------------------- */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 18px 9px 14px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-pill);
+  background: var(--c-bg);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--c-secondary);
+  transition:
+    background 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.chip:hover,
+.chipOn {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.chipDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  transition: background 0.3s var(--ease);
+}
+
+.chip:hover .chipDot,
+.chipOn .chipDot {
+  background: var(--c-accent);
+}
+
+@media (max-width: 767px) {
+  .heading {
+    font-size: var(--fs-h4);
+  }
+
+  .pin {
+    font-size: 11px;
+    padding: 5px 10px;
+    transform: translate(12px, -50%);
+  }
+
+  .legend {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 7px 14px 7px 11px;
+    font-size: var(--fs-taxonomy);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .arc {
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 
-  .origin {
+  .originDot,
+  .glow {
     opacity: 1;
   }
 
   .reveal[class*='shown'] .arc,
-  .reveal[class*='shown'] .origin,
+  .reveal[class*='shown'] .originDot,
+  .reveal[class*='shown'] .glow,
+  .reveal[class*='shown'] .ring,
   .reveal[class*='shown'] .pulse {
     animation: none;
   }
-}
 
-@media (max-width: 767px) {
-  /* Labels are sized in map units, so they need to grow as the map shrinks. */
-  .label {
-    font-size: 30px;
-  }
-
-  .clinicLabel {
-    font-size: 34px;
-  }
-
-  .heading {
-    font-size: var(--fs-h4);
+  .pulse {
+    opacity: 0;
   }
 }

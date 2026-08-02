@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Reveal } from '@/components/ui/Reveal';
@@ -12,61 +16,52 @@ import styles from './PatientOrigins.module.css';
  * nothing beyond that is asserted. No patient counts, no cities: we don't have that
  * data and a dental practice is not the place to make it up.
  *
- * The map itself is a dot grid generated from country polygons by
- * scripts/world-dots.mjs, which is also where the projection below comes from.
+ * The map is a dot grid generated from country polygons by scripts/world-dots.mjs,
+ * which is also where the projection below comes from.
+ *
+ * Region names live in the legend rather than on the map. Labelling five markers on a
+ * map this wide meant either tiny type or collisions around the eastern Mediterranean,
+ * where Lebanon and MENA sit almost on top of each other — and a legend can do
+ * something a label can't, which is let you pick out one route at a time.
  */
 
 const W = map.cols * 10;
 const H = map.rows * 10;
 
 /** Equirectangular, matching the generated map exactly. */
-const x = (lon: number) => ((lon + 180) / 360) * W;
-const y = (lat: number) => ((map.latTop - lat) / (map.latTop - map.latBottom)) * H;
+const px = (lon: number) => ((lon + 180) / 360) * W;
+const py = (lat: number) => ((map.latTop - lat) / (map.latTop - map.latBottom)) * H;
 
 const CLINIC = { lat: 33.89, lon: 35.5 };
 
-type Origin = {
-  label: string;
-  lat: number;
-  lon: number;
-  anchor: 'start' | 'middle' | 'end';
-  /** Label offset from the marker, in map units. */
-  dx?: number;
-  dy?: number;
-};
-
-/*
- * MENA sits low and east of the Gulf and labels below its marker: anywhere closer to
- * Lebanon and the two labels print on top of each other.
- */
-const ORIGINS: Origin[] = [
-  { label: 'Canada', lat: 56.1, lon: -106.3, anchor: 'middle', dy: -26 },
-  { label: 'United States', lat: 39.8, lon: -98.6, anchor: 'middle', dy: -26 },
-  { label: 'Europe', lat: 50.1, lon: 9.0, anchor: 'middle', dy: -26 },
-  { label: 'MENA', lat: 19.5, lon: 51, anchor: 'start', dx: 20, dy: 34 },
-  { label: 'Australia', lat: -25.3, lon: 133.8, anchor: 'middle', dy: -26 },
+const ORIGINS = [
+  { label: 'Canada', lat: 56.1, lon: -106.3 },
+  { label: 'United States', lat: 39.8, lon: -98.6 },
+  { label: 'Europe', lat: 50.1, lon: 9.0 },
+  { label: 'MENA', lat: 21, lon: 47 },
+  { label: 'Australia', lat: -25.3, lon: 133.8 },
 ];
 
 /**
  * A flight path, bowed away from the straight line so the routes fan out instead of
- * overlapping into a single smear across the middle of the map.
+ * collapsing into one smear across the middle of the map.
  */
 function arc(fromLon: number, fromLat: number, toLon: number, toLat: number) {
-  const x1 = x(fromLon);
-  const y1 = y(fromLat);
-  const x2 = x(toLon);
-  const y2 = y(toLat);
+  const x1 = px(fromLon);
+  const y1 = py(fromLat);
+  const x2 = px(toLon);
+  const y2 = py(toLat);
   const dx = x2 - x1;
   const dy = y2 - y1;
-  const mx = (x1 + x2) / 2;
-  const my = (y1 + y2) / 2;
-  // Perpendicular offset, scaled to the span so long hops bow more than short ones.
   const length = Math.hypot(dx, dy);
-  const bow = length * 0.16;
-  const cx = mx + (dy / length) * bow;
-  const cy = my - (dx / length) * bow;
+  // Perpendicular offset, scaled to the span so long hops bow more than short ones.
+  const bow = length * 0.18;
+  const cx = (x1 + x2) / 2 + (dy / length) * bow;
+  const cy = (y1 + y2) / 2 - (dx / length) * bow;
   return `M${x1.toFixed(1)} ${y1.toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
 }
+
+const ROUTES = ORIGINS.map((o) => ({ ...o, d: arc(o.lon, o.lat, CLINIC.lon, CLINIC.lat) }));
 
 export function PatientOrigins({
   eyebrow,
@@ -77,8 +72,17 @@ export function PatientOrigins({
   heading: string;
   text: string;
 }) {
-  const cx = x(CLINIC.lon);
-  const cy = y(CLINIC.lat);
+  /*
+   * Hovering and pinning are tracked separately on purpose. Browsers fire a synthetic
+   * mouseenter before the click on a tap, so a single piece of state driven by both
+   * would set the route and immediately toggle it straight back off.
+   */
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const active = hovered ?? pinned;
+
+  const cx = px(CLINIC.lon);
+  const cy = py(CLINIC.lat);
 
   return (
     <Section space="tight" tone="alt">
@@ -90,50 +94,113 @@ export function PatientOrigins({
         </div>
 
         <Reveal className={styles.reveal}>
-          <figure className={styles.figure}>
-            <svg
-              className={styles.svg}
-              viewBox={`0 0 ${W} ${H}`}
-              role="img"
-              aria-label={`World map showing patients travelling to Lebanon from ${ORIGINS.map((o) => o.label).join(', ')}`}
-            >
-              {ORIGINS.map((origin, i) => (
-                <path
-                  key={origin.label}
-                  className={styles.arc}
-                  style={{ animationDelay: `${i * 220}ms` }}
-                  d={arc(origin.lon, origin.lat, CLINIC.lon, CLINIC.lat)}
-                />
-              ))}
+          <div className={`${styles.stage} ${active ? styles.focused : ''}`}>
+            <figure className={styles.figure}>
+              <svg
+                className={styles.svg}
+                viewBox={`0 0 ${W} ${H}`}
+                role="img"
+                aria-label={`World map: patients travel to Lebanon from ${ORIGINS.map((o) => o.label).join(', ')}`}
+              >
+                <defs>
+                  {/* Routes fade in from their origin rather than starting hard. */}
+                  <linearGradient id="po-route" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="var(--c-primary)" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="var(--c-primary)" stopOpacity="0.85" />
+                  </linearGradient>
+                  <radialGradient id="po-glow">
+                    <stop offset="0%" stopColor="var(--c-primary)" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="var(--c-primary)" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
 
-              {ORIGINS.map((origin, i) => (
-                <g
-                  key={origin.label}
-                  className={styles.origin}
-                  style={{ animationDelay: `${600 + i * 220}ms` }}
-                >
-                  <circle cx={x(origin.lon)} cy={y(origin.lat)} r={9} className={styles.originDot} />
-                  <text
-                    x={x(origin.lon) + (origin.dx ?? 0)}
-                    y={y(origin.lat) + (origin.dy ?? -26)}
-                    textAnchor={origin.anchor}
-                    className={styles.label}
+                <circle cx={cx} cy={cy} r={95} fill="url(#po-glow)" className={styles.glow} />
+
+                {ROUTES.map((route, i) => (
+                  <g
+                    key={route.label}
+                    className={`${styles.route} ${active === route.label ? styles.on : ''}`}
                   >
-                    {origin.label}
-                  </text>
-                </g>
-              ))}
+                    <path
+                      className={styles.arc}
+                      d={route.d}
+                      style={{ animationDelay: `${i * 200}ms` }}
+                    />
+                    {/*
+                     * A pulse running the route, offset per region so they don't all
+                     * arrive together. offset-path rather than SMIL, so the reduced
+                     * motion media query can switch it off.
+                     */}
+                    <circle
+                      className={styles.pulse}
+                      r={7}
+                      style={{ offsetPath: `path("${route.d}")`, animationDelay: `${i * 1.1}s` }}
+                    />
+                    <circle
+                      className={styles.originDot}
+                      cx={px(route.lon)}
+                      cy={py(route.lat)}
+                      r={8}
+                      style={{ animationDelay: `${700 + i * 200}ms` }}
+                    />
+                  </g>
+                ))}
 
-              <g className={styles.clinic}>
-                <circle cx={cx} cy={cy} r={13} className={styles.pulse} />
-                <circle cx={cx} cy={cy} r={13} className={styles.pulse} style={{ animationDelay: '1.1s' }} />
-                <circle cx={cx} cy={cy} r={9} className={styles.clinicDot} />
-                <text x={cx - 20} y={cy - 22} textAnchor="end" className={styles.clinicLabel}>
-                  Lebanon
-                </text>
-              </g>
-            </svg>
-          </figure>
+                <g className={styles.clinic}>
+                  <circle cx={cx} cy={cy} r={14} className={styles.ring} />
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={14}
+                    className={styles.ring}
+                    style={{ animationDelay: '1.2s' }}
+                  />
+                  <circle cx={cx} cy={cy} r={10} className={styles.clinicDot} />
+                </g>
+              </svg>
+
+              {/* Positioned in percentages so it tracks the map at any width. */}
+              <span
+                className={styles.pin}
+                style={{ left: `${(cx / W) * 100}%`, top: `${(cy / H) * 100}%` }}
+              >
+                Younes Dental, Lebanon
+              </span>
+            </figure>
+
+            <ul className={styles.legend}>
+              {ROUTES.map((route) => (
+                <li key={route.label}>
+                  <button
+                    type="button"
+                    className={`${styles.chip} ${active === route.label ? styles.chipOn : ''}`}
+                    /* Only a real mouse hovers; a tap must fall through to the click. */
+                    onPointerEnter={(e) => {
+                      if (e.pointerType === 'mouse') setHovered(route.label);
+                    }}
+                    onPointerLeave={(e) => {
+                      if (e.pointerType === 'mouse') setHovered(null);
+                    }}
+                    onFocus={() => setHovered(route.label)}
+                    onBlur={() => setHovered(null)}
+                    onClick={() => {
+                      /*
+                       * Clear the hover too. Some devices leave a stale hover behind
+                       * after a tap, which would keep the route lit even once it has
+                       * been un-pinned.
+                       */
+                      setHovered(null);
+                      setPinned((v) => (v === route.label ? null : route.label));
+                    }}
+                    aria-pressed={active === route.label}
+                  >
+                    <span className={styles.chipDot} aria-hidden="true" />
+                    {route.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </Container>
     </Section>
