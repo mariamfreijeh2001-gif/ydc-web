@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border-radius: var(--radius-card);
+  justify-content: flex-end;
+  border-radius: 32px;
   overflow: hidden;
   isolation: isolate;
   background: #14181a;
@@ -12,18 +12,15 @@
 }
 
 .card:hover {
-  color: #fff;
   transform: translateY(-4px);
 }
 
 .default {
   height: var(--card-h);
-  padding: 26px 26px 24px;
 }
 
-.compact {
-  aspect-ratio: 4 / 3;
-  padding: 0;
+.portrait {
+  aspect-ratio: 3 / 4;
 }
 
 .image {
@@ -43,58 +40,13 @@
   z-index: -1;
   background: linear-gradient(
     to bottom,
-    rgba(8, 18, 20, 0.66) 0%,
-    rgba(8, 18, 20, 0.16) 40%,
-    rgba(8, 18, 20, 0.46) 100%
+    rgba(8, 18, 20, 0.28) 0%,
+    rgba(8, 18, 20, 0.1) 40%,
+    rgba(8, 18, 20, 0.72) 100%
   );
 }
 
-.title {
-  font-size: var(--fs-h5);
-  line-height: var(--lh-h5);
-  font-weight: 500;
-}
-
-.cta {
-  align-self: flex-start;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.06);
-  font-size: var(--fs-meta);
-  font-weight: 700;
-  transition:
-    background var(--dur) var(--ease),
-    color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
-}
-
-.card:hover .cta {
-  background: #fff;
-  border-color: #fff;
-  color: var(--c-secondary);
-}
-
-.compactLabel {
-  position: absolute;
-  inset: 0;
-}
-
-
-/* ---- Home marquee card -------------------------------------------------- */
-
-.portrait {
-  aspect-ratio: 3 / 4;
-  padding: 0;
-  border-radius: 32px;
-  justify-content: flex-end;
-}
-
-.portrait .image {
-  object-position: center top;
-}
-
-.portraitBody {
+.body {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -103,14 +55,10 @@
   padding: 24px;
 }
 
-.portrait:hover .portraitBody {
-  transform: none;
-  opacity: 1;
-}
-
-/* A pill, so the treatment reads as a label over the photograph. */
-.portraitProcedure {
-  align-self: flex-start;
+/* Links to the service this treatment belongs to. Sits above the stretched card link. */
+.chip {
+  position: relative;
+  z-index: 2;
   padding: 7px 16px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.16);
@@ -121,15 +69,42 @@
   text-transform: uppercase;
   font-weight: 600;
   color: #fff;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
-.portraitView {
+a.chip:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--c-primary);
+}
+
+/*
+ * Stretched so the whole card opens the case, while the chip above it stays
+ * independently clickable.
+ */
+.view {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: var(--fs-meta);
   font-weight: 700;
   color: #fff;
+}
+
+.view::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.view:hover {
+  color: var(--c-accent);
+}
+
+.portrait .view {
   opacity: 0;
   transform: translateY(6px);
   transition:
@@ -137,8 +112,16 @@
     transform 0.35s var(--ease);
 }
 
-.portrait:hover .portraitView,
-.portrait:focus-visible .portraitView {
+/* Keep it visible whenever it could be used — hover, keyboard focus, or touch. */
+.portrait:hover .view,
+.portrait:focus-within .view {
   opacity: 1;
   transform: none;
+}
+
+@media (hover: none) {
+  .portrait .view {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -44,6 +44,33 @@ const CASES = ['allon4-n-d', 'cbgingivectomy-m-f', 'allon6-m-m'];
 const CATEGORY_ORDER = ['Dental Implants', 'Orthodontic', 'Therapeutic', 'Imaging', 'Cosmetic'];
 
 /*
+ * A patient case is an example of a treatment, so its title links through to the
+ * service that treatment belongs to. Matched against the case title, first hit wins —
+ * order matters, e.g. "All on 4 & C&B" should resolve to All-on-4, not Dental Crowns.
+ */
+const CASE_SERVICE_RULES = [
+  [/all[\s-]*on[\s-]*4/i, 'all-on-4'],
+  [/all[\s-]*on[\s-]*6/i, 'allon6'],
+  // The clinic also publishes All-on-3 and All-on-5 cases; both are implant work
+  // without a dedicated service page, so they point at Dental Implant.
+  [/all[\s-]*on[\s-]*[35]/i, 'dentalimplant'],
+  [/z[ay]goma/i, 'zaygoma'],
+  [/veneer/i, 'zir-maxveneers'],
+  [/c\s*&\s*b|crown|bridge/i, 'dentalcrowns'],
+  [/gingivectomy|esthetic/i, 'dentalcrowns'],
+  [/aligner/i, 'aligners'],
+  [/brace/i, 'braces'],
+  [/implant/i, 'dentalimplant'],
+];
+
+function serviceForCase(title) {
+  for (const [pattern, slug] of CASE_SERVICE_RULES) {
+    if (pattern.test(title)) return slug;
+  }
+  return null;
+}
+
+/*
  * Assets used by the hand-authored pages, or set through CSS/inline styles rather than
  * markup, so the HTML scan can't find them.
  */
@@ -330,9 +357,12 @@ function parseCase(item) {
     }
   }
 
-  // The title carries the procedure name before the patient initials.
+  /*
+   * The archived title is "<treatment> – <patient initials>". Only the treatment is
+   * ever published, and it links through to the service page for that treatment.
+   */
   record.procedure = record.title.split(/\s+[–-]\s+/)[0].trim();
-  record.initials = record.title.split(/\s+[–-]\s+/).slice(1).join(' – ').trim();
+  record.serviceSlug = serviceForCase(record.title);
 
   return record;
 }

@@ -7,8 +7,8 @@ import { BeforeAfterSlider } from '@/components/blocks/BeforeAfterSlider';
 import { Gallery } from '@/components/blocks/Gallery';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ArrowLeftIcon } from '@/components/ui/Icon';
-import { cases, getCase } from '@/lib/content';
+import { ArrowLeftIcon, ArrowUpRightIcon } from '@/components/ui/Icon';
+import { cases, getCase, getService } from '@/lib/content';
 import styles from './page.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
 
@@ -41,6 +41,9 @@ export default async function CasePage({ params }: Params) {
   const item = getCase(slug);
   if (!item) notFound();
 
+  // Cases are examples of a treatment, so they link back to that treatment's service.
+  const service = item.serviceSlug ? getService(item.serviceSlug) : undefined;
+
   return (
     <>
       <Section space="none" className={styles.head}>
@@ -50,9 +53,22 @@ export default async function CasePage({ params }: Params) {
             All cases
           </Link>
 
-          {/* Treatment only — patient initials are never shown. */}
-          <h1 className={styles.title}>{item.procedure}</h1>
+          {/*
+            The heading is the treatment, never patient initials, and it links through
+            to the service page for that treatment.
+          */}
+          <h1 className={styles.title}>
+            {service ? (
+              <Link href={`/services/${service.slug}/`} className={styles.titleLink}>
+                {item.procedure}
+                <ArrowUpRightIcon className={styles.titleArrow} width={22} height={22} />
+              </Link>
+            ) : (
+              item.procedure
+            )}
+          </h1>
           <p className={styles.meta}>
+            {service ? <span className={styles.chip}>{service.category}</span> : null}
             <time dateTime={item.date}>
               {new Date(item.date).toLocaleDateString('en-GB', {
                 day: 'numeric',

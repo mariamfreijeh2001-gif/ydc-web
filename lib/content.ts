@@ -57,8 +57,10 @@ export type PatientCase = {
   heading: string;
   body: string;
   gallery: string[];
+  /** Treatment name, e.g. "All on 4". Patient initials are never published. */
   procedure: string;
-  initials: string;
+  /** The service this treatment belongs to, so a case can link through to it. */
+  serviceSlug: string | null;
 };
 
 export type Doctor = {

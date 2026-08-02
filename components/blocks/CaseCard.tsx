@@ -3,24 +3,32 @@ import Link from 'next/link';
 
 import type { PatientCase } from '@/lib/content';
 import { ArrowUpRightIcon } from '@/components/ui/Icon';
-import styles from './CaseCard.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
+import styles from './CaseCard.module.css';
 
 type Props = {
   item: PatientCase;
   /**
    * `default` is the tall listing card. `portrait` is the home marquee card: a 3:4
-   * frame that suits the face photography, with the procedure revealed on hover.
+   * frame that suits the face photography.
    */
-  variant?: 'default' | 'compact' | 'portrait';
+  variant?: 'default' | 'portrait';
   priority?: boolean;
 };
 
+/**
+ * A patient case card carries two destinations: the whole card opens the case, and the
+ * treatment chip opens the service that treatment belongs to.
+ *
+ * The card-wide link is stretched with a pseudo-element rather than wrapping the
+ * markup, so the chip can sit above it as a second link without nesting one anchor
+ * inside another.
+ */
 export function CaseCard({ item, variant = 'default', priority = false }: Props) {
   const href = `/before_and_after_/${item.slug}/`;
 
   return (
-    <Link href={href} className={`${styles.card} ${styles[variant]}`}>
+    <article className={`${styles.card} ${styles[variant]}`}>
       {item.cover ? (
         <Image
           src={item.cover}
@@ -34,31 +42,22 @@ export function CaseCard({ item, variant = 'default', priority = false }: Props)
         />
       ) : null}
 
-      {variant === 'portrait' ? (
-        <>
-          <span className={styles.veil} />
-          <span className={styles.portraitBody}>
-            {/* Treatment only — patient initials are deliberately not shown. */}
-            <span className={styles.portraitProcedure}>{item.procedure}</span>
-            <span className={styles.portraitView} aria-hidden="true">
-              View case
-              <ArrowUpRightIcon width={13} height={13} />
-            </span>
-          </span>
-        </>
-      ) : variant === 'default' ? (
-        <>
-          <span className={styles.veil} />
-          <span className={styles.title}>{item.procedure}</span>
-          <span className={styles.cta} aria-hidden="true">
-            View Details
-          </span>
-        </>
-      ) : (
-        <span className={styles.compactLabel}>
-          <span className="visually-hidden">{item.procedure}</span>
-        </span>
-      )}
-    </Link>
+      <span className={styles.veil} />
+
+      <div className={styles.body}>
+        {item.serviceSlug ? (
+          <Link href={`/services/${item.serviceSlug}/`} className={styles.chip}>
+            {item.procedure}
+          </Link>
+        ) : (
+          <span className={styles.chip}>{item.procedure}</span>
+        )}
+
+        <Link href={href} className={styles.view}>
+          View case
+          <ArrowUpRightIcon width={13} height={13} />
+        </Link>
+      </div>
+    </article>
   );
 }

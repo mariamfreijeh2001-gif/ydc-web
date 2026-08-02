@@ -23,6 +23,31 @@
   letter-spacing: var(--ls-h2);
 }
 
+/* The treatment name doubles as the link to its service page. */
+.titleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+}
+
+.titleLink:hover {
+  color: var(--c-primary);
+}
+
+.titleArrow {
+  flex: 0 0 auto;
+  color: var(--c-tertiary);
+  transition:
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.titleLink:hover .titleArrow {
+  color: var(--c-primary);
+  transform: translate(2px, -2px);
+}
+
 .meta {
   display: flex;
   align-items: center;
