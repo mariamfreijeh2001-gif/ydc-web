@@ -88,11 +88,6 @@ export default async function ServiceDetailPage({ params }: Params) {
       {/* Title + featured image */}
       <Section space="none" className={styles.head}>
         <Container>
-          {/*
-            Title and banner move as one block, so the heading always sits on the
-            image's left edge — a centred frame under a container-width title read as
-            a mistake rather than a choice.
-          */}
           <div
             className={styles.headStack}
             style={
@@ -108,9 +103,8 @@ export default async function ServiceDetailPage({ params }: Params) {
                   fill
                   priority
                   /*
-                   * The frame now matches the photo's own shape, so barely anything is
-                   * cropped and `sizes` can describe the box itself — no more asking for
-                   * a source one and a half times the width to survive the crop.
+                   * The frame matches the photo's own shape, so there's little crop to
+                   * oversample for — `sizes` can describe the box itself.
                    */
                   sizes="(max-width: 1360px) 95vw, 1280px"
                   className={styles.featuredImg}

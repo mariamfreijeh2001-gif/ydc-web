@@ -3,53 +3,37 @@
 }
 
 /*
- * A step down from the site's h1 size. The banner is the hero on these pages, not the
- * word above it, and at 68px the title ate enough of a short screen (a laptop with a
- * bookmarks bar leaves ~680px) to push the image's bottom edge past the fold.
+ * Two steps down from the site's h1. The image is the hero on these pages; the title
+ * is a label above it, and every pixel it gives up is a pixel of photo that fits on
+ * screen (a laptop with a bookmarks bar leaves only ~680px).
  */
 .title {
-  font-size: var(--fs-h2);
-  line-height: var(--lh-h2);
-  letter-spacing: var(--ls-h2);
-  margin-bottom: 18px;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  margin-bottom: 16px;
 }
 
-/*
- * 16:9 across a 1280 container is 720px tall, which pushed the banner's own bottom edge
- * off a 900px screen once the header and title were counted. Cap the height so the
- * title and the whole image are taken in together; the photo just crops a little more.
- *
- * The subtraction is the header plus the title block above it (24px padding, one line
- * of the reduced title, 18px margin) and a little breathing room — tuned so the banner
- * ends just shy of the fold rather than well above it. On a tall screen the 16:9 ratio
- * wins outright and the cap never applies.
- */
-/*
- * The block is only as wide as the banner can be, so the title tracks the image's left
- * edge at every screen height instead of running the full container width above a
- * narrower frame.
- */
 .headStack {
-  --banner-h: calc(100svh - var(--header-h) - 128px);
+  --banner-h: calc(100svh - var(--header-h) - 110px);
 
   width: 100%;
-  max-width: calc(var(--banner-h) * var(--banner-ar, 1.78));
-  margin-inline: auto;
 }
 
+/*
+ * Full width, always. The banner is the page's hero and reads as one because it spans
+ * the whole content column — a frame narrower than the text below it looked like a
+ * mistake regardless of how little it cropped.
+ *
+ * Its ratio comes from the photo itself, so on a normal screen the picture is shown
+ * essentially whole. The height cap only bites on short windows, where the frame
+ * flattens and crops rather than pushing its own bottom edge past the fold.
+ */
 .featured {
   position: relative;
   width: 100%;
   aspect-ratio: var(--banner-ar, 1.78);
   max-height: var(--banner-h);
-  /*
-   * Pairing max-height with a matching max-width keeps the box at its intended ratio
-   * instead of letting it flatten. Capping the height alone made the frame progressively
-   * wider than its ratio — 1280x602 is 2.13:1 — and since the photo is cover-cropped,
-   * that extra width was thrown away as crop: on a short screen roughly a third of these
-   * close-ups was cut off. Now the frame shrinks instead of flattening, and because the
-   * ratio comes from the photo itself, almost nothing is cropped at all.
-   */
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-bg);
