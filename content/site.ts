@@ -42,21 +42,25 @@ export const contact = {
   whatsappHref:
     'https://wa.me/96181258176?text=Hello%2C%20I%20was%20checking%20out%20your%20website%20and%20I%20have%20a%20question.',
   whatsappLabel: 'How can I help you?',
-  /** Footer address block, one line per array entry. */
+  /** Footer address block — one line per clinic. */
   addressLines: [
-    'Lebanese Marine & Wildlife Museum, Jieta',
-    'Grotto road, Jieta',
-    'Center Marine 6th floor',
+    'Lebanese Marine & Wildlife Museum, Jieta Grotto road, Jieta',
+    'Center Marine 6th floor, Sour',
+    'Demco Towers, Antelias Highway, Antelias',
   ],
 } as const;
 
+/**
+ * A clinic is only rendered on /contacts/ once it has an address — see the note on
+ * the Antelias entry below. Everything except `name` is therefore optional.
+ */
 export type Clinic = {
   name: string;
-  image: string;
-  address: string;
-  serviceTimes: string;
-  directionsUrl: string;
-  mapEmbed: string;
+  image?: string;
+  address?: string;
+  serviceTimes?: string;
+  directionsUrl?: string;
+  mapEmbed?: string;
 };
 
 export const clinics: Clinic[] = [
@@ -78,7 +82,24 @@ export const clinics: Clinic[] = [
       'https://www.google.com/maps/place/Younes+dental+clinic/@33.2696731,35.2006683,17z/data=!3m1!4b1!4m6!3m5!1s0x151e7d9161f722c5:0xe117d9b7e31521a8!8m2!3d33.2696731!4d35.2006683!16s%2Fg%2F11byygwzts?entry=ttu',
     mapEmbed: 'https://maps.google.com/maps?q=33.2696731,35.2006683&z=15&output=embed',
   },
+  {
+    /*
+     * Antelias never appeared on the WordPress site. The address is confirmed; opening
+     * hours and an interior photo are still outstanding, and the card renders without
+     * them rather than repeating the other clinics' hours as an assumption.
+     * The map links are a search on the address itself, not asserted coordinates.
+     */
+    name: 'Antelias Clinic',
+    address: 'Demco Towers, Antelias Highway, Antelias',
+    directionsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Demco%20Towers%2C%20Antelias%20Highway%2C%20Antelias%2C%20Lebanon',
+    mapEmbed:
+      'https://maps.google.com/maps?q=Demco%20Towers%2C%20Antelias%20Highway%2C%20Antelias%2C%20Lebanon&z=15&output=embed',
+  },
 ];
+
+/** Clinics with enough detail to publish a location card. */
+export const publishedClinics = clinics.filter((c) => Boolean(c.address));
 
 export type Social = { label: string; href: string; icon: SocialIcon };
 export type SocialIcon = 'facebook' | 'instagram' | 'tiktok' | 'youtube' | 'linkedin';

@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { CaseCard } from '@/components/blocks/CaseCard';
 import { FlipCard } from '@/components/blocks/FlipCard';
-import { Marquee } from '@/components/blocks/Marquee';
 import { Reviews } from '@/components/blocks/Reviews';
 import { ServiceCard } from '@/components/blocks/ServiceCard';
 import { VideoHero } from '@/components/blocks/VideoHero';
@@ -134,7 +133,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Our Patients — continuous marquee */}
+      {/* Our Patients */}
       <Section space="tight">
         <Container size="wide">
           <Reveal as="header" className={styles.sectionHead}>
@@ -144,14 +143,22 @@ export default function HomePage() {
               <ArrowUpRightIcon width={14} height={14} />
             </Link>
           </Reveal>
-        </Container>
 
-        {/* Full-bleed so cards run off both edges of the screen. */}
-        <Marquee label="Patient before and after cases" duration={70} perView={4.5}>
-          {cases.map((item) => (
-            <CaseCard key={item.slug} item={item} variant="portrait" />
-          ))}
-        </Marquee>
+          {/*
+            A plain grid rather than a scroller: with a handful of published cases a
+            marquee just loops the same faces past. Switch back to <Marquee> once the
+            full set of cases is uploaded.
+          */}
+          <ul className={styles.patientGrid}>
+            {cases.map((item, i) => (
+              <li key={item.slug}>
+                <Reveal delay={i * 90}>
+                  <CaseCard item={item} variant="portrait" />
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </Section>
 
       {/* In-house lab */}

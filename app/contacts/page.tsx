@@ -5,14 +5,14 @@ import { ContactForm } from '@/components/blocks/ContactForm';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { ArrowUpRightIcon } from '@/components/ui/Icon';
-import { clinics, contact } from '@/content/site';
+import { contact, publishedClinics } from '@/content/site';
 import styles from './page.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
 
 export const metadata: Metadata = {
   title: 'Contacts',
   description:
-    'Visit Younes Dental Clinic in Jeita or Sour. Address, opening hours, directions and a contact form — or reach us by phone, e-mail or WhatsApp.',
+    'Visit Younes Dental Clinic in Jeita, Sour or Antelias. Addresses, opening hours, directions and a contact form — or reach us by phone, e-mail or WhatsApp.',
   alternates: { canonical: '/contacts/' },
 };
 
@@ -27,18 +27,26 @@ export default function ContactsPage() {
           <h1 className={styles.pageTitle}>Our Locations</h1>
 
           <ul className={styles.clinics}>
-            {clinics.map((clinic, i) => (
+            {publishedClinics.map((clinic, i) => (
               <li key={clinic.name} className={styles.clinic}>
                 <div className={styles.clinicMedia}>
-                  <Image
-                    src={clinic.image}
-                    alt={clinic.name}
-                    fill
-                    priority={i === 0}
-                    sizes="(max-width: 1024px) 100vw, 46vw"
-                    className={styles.cover}
-                    quality={IMAGE_QUALITY}
-                  />
+                  {clinic.image ? (
+                    <Image
+                      src={clinic.image}
+                      alt={clinic.name}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width: 1024px) 100vw, 46vw"
+                      className={styles.cover}
+                      quality={IMAGE_QUALITY}
+                    />
+                  ) : (
+                    /* No interior photo yet — a branded panel rather than someone
+                       else's clinic standing in for it. */
+                    <span className={styles.clinicPlaceholder} aria-hidden="true">
+                      {clinic.name.replace(/\s*Clinic$/, '')}
+                    </span>
+                  )}
                 </div>
 
                 <h2 className={styles.clinicName}>{clinic.name}</h2>
@@ -48,21 +56,32 @@ export default function ContactsPage() {
                     <p className={styles.label}>Address:</p>
                     <p className={styles.value}>{clinic.address}</p>
                   </div>
-                  <div>
-                    <p className={styles.label}>Service Times:</p>
-                    <p className={styles.value}>{clinic.serviceTimes}</p>
-                  </div>
+                  {clinic.serviceTimes ? (
+                    <div>
+                      <p className={styles.label}>Service Times:</p>
+                      <p className={styles.value}>{clinic.serviceTimes}</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className={styles.label}>Service Times:</p>
+                      <p className={styles.value}>
+                        <a href={contact.phoneHref}>Call {contact.phoneDisplay}</a>
+                      </p>
+                    </div>
+                  )}
                 </div>
 
-                <a
-                  className={styles.directions}
-                  href={clinic.directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Directions
-                  <ArrowUpRightIcon width={13} height={13} />
-                </a>
+                {clinic.directionsUrl ? (
+                  <a
+                    className={styles.directions}
+                    href={clinic.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Directions
+                    <ArrowUpRightIcon width={13} height={13} />
+                  </a>
+                ) : null}
               </li>
             ))}
           </ul>
@@ -83,18 +102,18 @@ export default function ContactsPage() {
               <div className={styles.clinicMeta}>
                 <div>
                   <p className={styles.label}>Address:</p>
-                  <p className={styles.value}>{clinics[0].address}</p>
+                  <p className={styles.value}>{publishedClinics[0].address}</p>
                 </div>
                 <div>
                   <p className={styles.label}>Service Times:</p>
-                  <p className={styles.value}>{clinics[0].serviceTimes}</p>
+                  <p className={styles.value}>{publishedClinics[0].serviceTimes}</p>
                 </div>
               </div>
             </div>
 
             <div className={styles.map}>
               <iframe
-                src={clinics[0].mapEmbed}
+                src={publishedClinics[0].mapEmbed}
                 title="Map showing Younes Dental Clinic, Jeita"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

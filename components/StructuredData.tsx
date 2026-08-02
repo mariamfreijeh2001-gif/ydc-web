@@ -1,8 +1,9 @@
-import { clinics, contact, site, socials } from '@/content/site';
+import { contact, publishedClinics, site, socials } from '@/content/site';
 
 /**
- * Schema.org `Dentist` markup so search engines can surface opening hours, the two
- * clinic locations and the aggregate Google rating.
+ * Schema.org `Dentist` markup so search engines can surface opening hours, the
+ * clinic locations and the aggregate Google rating. Only clinics with a confirmed
+ * address are listed — never publish a guessed address for a medical practice.
  */
 export function StructuredData() {
   const data = {
@@ -17,12 +18,12 @@ export function StructuredData() {
     priceRange: '$$',
     medicalSpecialty: 'Dentistry',
     sameAs: socials.map((s) => s.href),
-    address: clinics.map((clinic) => ({
+    address: publishedClinics.map((clinic) => ({
       '@type': 'PostalAddress',
       streetAddress: clinic.address,
       addressCountry: 'LB',
     })),
-    location: clinics.map((clinic) => ({
+    location: publishedClinics.map((clinic) => ({
       '@type': 'Place',
       name: clinic.name,
       address: { '@type': 'PostalAddress', streetAddress: clinic.address, addressCountry: 'LB' },

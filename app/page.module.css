@@ -194,6 +194,15 @@
   margin: 0;
 }
 
+/* ---- Our Patients ------------------------------------------------------- */
+
+.patientGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  margin: 0;
+}
+
 /* ---- A family of surgeons ----------------------------------------------- */
 
 .family {
@@ -373,7 +382,8 @@
 
   .serviceGrid,
   .stats,
-  .journey {
+  .journey,
+  .patientGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -387,7 +397,8 @@
 }
 
 @media (max-width: 767px) {
-  .serviceGrid {
+  .serviceGrid,
+  .patientGrid {
     grid-template-columns: 1fr;
   }
 

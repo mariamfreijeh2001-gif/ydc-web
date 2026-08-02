@@ -29,7 +29,7 @@ export const home = {
   stats: [
     { value: 250, suffix: '+', label: 'Five-star Google reviews' },
     { value: 4, suffix: '', label: 'Specialist surgeons' },
-    { value: 2, suffix: '', label: 'Clinics — Jeita & Sour' },
+    { value: 3, suffix: '', label: 'Clinics — Jeita, Sour & Antelias' },
     { value: 5, suffix: '', label: 'Continents our patients travel from' },
   ],
 
