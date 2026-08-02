@@ -71,6 +71,8 @@ export const clinics: Clinic[] = [
     image: '/media/2024/01/contacts-2.webp',
     address: 'Lebanese Marine & Wildlife Museum, Jieta Grotto road, Jeita',
     serviceTimes: 'Monday till Thursday, 9 am till 5 pm',
+    /* From the clinic's own Google listing. */
+    coords: { lat: 33.9486371, lng: 35.6335657 },
     directionsUrl:
       'https://www.google.com/maps/place/Younes+Dental+Ortho+Implant+Center+-+Dr+Ali+Younes/@33.9486484,35.6313896,17z/data=!3m1!4b1!4m5!3m4!1s0x151f3fd9bfc4402b:0xde80bc6b32bcfd5f!8m2!3d33.9486371!4d35.6335657',
     mapEmbed: 'https://maps.google.com/maps?q=33.9486371,35.6335657&z=15&output=embed',
@@ -98,6 +100,12 @@ export const clinics: Clinic[] = [
     image: '/media/2024/01/contacts-2.webp',
     address: 'Murex, Demco Towers, Antelias Highway, Antelias',
     serviceTimes: 'Monday till Friday, 9 am till 5 pm',
+    /*
+     * The town of Antelias, not the building — we haven't been given a pin for Demco
+     * Towers. It is accurate enough for a country-scale map, where a kilometre is about
+     * a pixel, and "Get directions" searches the full address rather than these numbers.
+     */
+    coords: { lat: 33.9137, lng: 35.5878 },
     directionsUrl:
       'https://www.google.com/maps/search/?api=1&query=Demco%20Towers%2C%20Antelias%20Highway%2C%20Antelias%2C%20Lebanon',
     mapEmbed:

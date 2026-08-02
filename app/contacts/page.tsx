@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 
-import { ClinicCard } from '@/components/blocks/ClinicCard';
+import { ClinicLocator } from '@/components/blocks/ClinicLocator';
 import { ContactForm } from '@/components/blocks/ContactForm';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
@@ -30,9 +30,9 @@ export default function ContactsPage() {
             <p className={styles.eyebrow}>Our clinics</p>
             <h1 className={styles.pageTitle}>Three clinics across Lebanon</h1>
             <p className={styles.headText}>
-              Jeita, Sour and Antelias — same team, same treatments, same equipment. Open the map
-              on any of them for directions, or call and we&rsquo;ll tell you which is easiest to
-              reach from where you are.
+              Jeita, Sour and Antelias — same team, same treatments, same equipment. All three
+              are on the map below; pick whichever is nearest, or call and we&rsquo;ll tell you
+              which is easiest to reach from where you are.
             </p>
           </div>
 
@@ -73,15 +73,9 @@ export default function ContactsPage() {
             </li>
           </ul>
 
-          <ul className={styles.clinics}>
-            {publishedClinics.map((clinic, i) => (
-              <li key={clinic.name}>
-                <Reveal delay={i * 90} className={styles.clinicReveal}>
-                  <ClinicCard clinic={clinic} priority={i === 0} />
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <Reveal>
+            <ClinicLocator clinics={publishedClinics} />
+          </Reveal>
         </Container>
       </Section>
 
