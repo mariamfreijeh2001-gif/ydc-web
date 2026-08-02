@@ -8,7 +8,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Accordion } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
-import { CheckIcon } from "@/components/ui/Icon";
+import { CheckIcon, CloseIcon } from "@/components/ui/Icon";
 import { Tabs } from "@/components/ui/Tabs";
 import { contact } from "@/content/site";
 import { getService, relatedServices, services } from "@/lib/content";
@@ -49,6 +49,9 @@ export default async function ServiceDetailPage({ params }: Params) {
   if (!service) notFound();
 
   const related = relatedServices(slug);
+  const excludes = /not recommended|not suitable|avoid/i.test(
+    service.candidates?.listHeading ?? "",
+  );
 
   return (
     <>
@@ -170,10 +173,23 @@ export default async function ServiceDetailPage({ params }: Params) {
                     {service.candidates.listHeading}
                   </h3>
                 ) : null}
-                <ul className={styles.checkList}>
+                {/*
+                 * These lists are contraindications on every service today, and a tick
+                 * beside "not recommended for" reads as approval. Driven off the heading
+                 * rather than hard-coded, so a list of positives would still tick.
+                 */}
+                <ul
+                  className={`${styles.checkList} ${excludes ? styles.excludeList : ''}`}
+                >
                   {service.candidates.items.map((item) => (
                     <li key={item}>
-                      <CheckIcon width={16} height={16} />
+                      <span className={styles.mark} aria-hidden="true">
+                        {excludes ? (
+                          <CloseIcon width={13} height={13} />
+                        ) : (
+                          <CheckIcon width={13} height={13} />
+                        )}
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}

@@ -627,6 +627,34 @@ async function indexDropFolder() {
 const RASTER = /.(png|jpe?g)$/i;
 
 /**
+ * Strip fully transparent borders from an image.
+ *
+ * Several of the split-section photos were exported from a square social-post template
+ * and carry wide transparent margins — one is only 65% real picture. Because they're
+ * placed with object-fit: cover, those margins are what the browser scales, so the photo
+ * floated inside its rounded frame looking small and square-cornered while the frame
+ * itself was the right size. Trimming makes the visible picture the whole asset.
+ */
+async function trimTransparentMargins(file) {
+  // Logos and icons are *meant* to carry transparent padding — only photos get trimmed.
+  if (/[\\/](icons|brand)[\\/]|logo/i.test(file)) return false;
+
+  // Read to a buffer so sharp never holds the file open — Windows refuses the write back.
+  const src = await fs.readFile(file);
+  const meta = await sharp(src).metadata();
+  if (!meta.hasAlpha || !meta.width || meta.width < 900) return false;
+
+  const trimmed = await sharp(src).trim({ threshold: 1 }).toBuffer({ resolveWithObject: true });
+  // Ignore a pixel or two of noise; only rewrite when a real margin came off.
+  if (trimmed.info.width >= meta.width - 2 && trimmed.info.height >= meta.height - 2) return false;
+  // A trim that eats most of the frame means the reference pixel was wrong, not a margin.
+  if (trimmed.info.width < meta.width * 0.4 || trimmed.info.height < meta.height * 0.4) return false;
+
+  await fs.writeFile(file, await sharp(trimmed.data).webp({ quality: 92, effort: 6 }).toBuffer());
+  return true;
+}
+
+/**
  * Re-encode an imported video to H.264 with the index at the front.
  *
  * The clinic's Clinic-Intro.mp4 was HEVC (hvc1), which most desktop browsers cannot
@@ -739,6 +767,7 @@ async function importAssets(index) {
 
     await fs.writeFile(dest, buf);
     if (/\.mp4$/i.test(dest)) await transcodeVideo(dest);
+    if (isRaster) await trimTransparentMargins(dest);
   }
 
   return { copied, fetched, missing, renames, bytesIn, bytesOut };

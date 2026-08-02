@@ -10,12 +10,16 @@
  * 16:9 across a 1280 container is 720px tall, which pushed the banner's own bottom edge
  * off a 900px screen once the header and title were counted. Cap the height so the
  * title and the whole image are taken in together; the photo just crops a little more.
+ *
+ * The subtraction is the header plus the title block above it (34px padding, one line
+ * of h1, 26px margin) and a little breathing room — tuned so the banner ends just shy
+ * of the fold rather than well above it. On a tall screen the 16:9 ratio wins outright.
  */
 .featured {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: calc(100svh - var(--header-h) - 200px);
+  max-height: calc(100svh - var(--header-h) - 158px);
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--c-bg);
@@ -213,10 +217,34 @@
   color: var(--c-secondary);
 }
 
-.checkList li svg {
+/* Badge rather than a bare glyph, so the marker holds its own beside 17px copy. */
+.mark {
   flex: 0 0 auto;
-  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--c-accent);
   color: var(--c-primary);
+  transition:
+    background 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.checkList li:hover .mark {
+  transform: scale(1.1);
+}
+
+/*
+ * Contraindications. The one place the site needs a "no" colour — kept desaturated so
+ * it sits beside the teal rather than shouting over it.
+ */
+.excludeList .mark {
+  background: #f7eceb;
+  color: #b0554c;
 }
 
 /* ---- Accent panel (restorative options) --------------------------------- */

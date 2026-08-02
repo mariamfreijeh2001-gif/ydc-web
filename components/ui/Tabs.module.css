@@ -3,111 +3,238 @@
   flex-direction: column;
 }
 
+/*
+ * The tabs read as a sequence of visits, so the step numbers carry the order — the old
+ * stacked boxes gave no sense that these were consecutive, and the inactive ones were
+ * so pale they looked disabled.
+ */
 .list {
+  position: relative;
   display: flex;
-  gap: 6px;
+  gap: 10px;
   flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
 .tab {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 200px;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px 26px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
   border: 1px solid var(--c-border);
-  border-bottom: 0;
-  border-radius: 14px 14px 0 0;
+  border-radius: var(--radius-md);
   background: var(--c-bg);
   text-align: left;
-  color: var(--c-tertiary);
+  color: var(--c-text);
+  overflow: hidden;
   transition:
-    background var(--dur) var(--ease),
-    color var(--dur) var(--ease);
+    transform 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+/* Teal fill that sweeps in from the left as a tab becomes the active one. */
+.tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--c-primary);
+  transition: transform 0.42s var(--ease);
 }
 
 .tab:hover {
-  color: var(--c-primary);
+  transform: translateY(-3px);
+  border-color: var(--c-primary);
+  box-shadow: var(--shadow-card);
 }
 
 .tabActive {
-  background: var(--c-primary);
   border-color: var(--c-primary);
-  color: #fff;
+}
+
+.tabActive::before {
+  transform: scaleX(1);
 }
 
 .tabActive:hover {
+  transform: none;
+}
+
+/* Everything after the sweep has to sit above it. */
+.tabNo,
+.tabBody {
+  position: relative;
+}
+
+.tabNo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--c-primary);
+  font-size: var(--fs-taxonomy);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+
+.tabActive .tabNo {
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
 
+.tabBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
 .tabLabel {
-  font-size: var(--fs-meta);
+  font-size: var(--fs-accent);
   font-weight: 700;
+  color: var(--c-secondary);
+  transition: color 0.35s var(--ease);
+}
+
+.tabActive .tabLabel {
+  color: #fff;
 }
 
 .tabSub {
-  font-size: var(--fs-taxonomy);
-  letter-spacing: 0.2px;
-  opacity: 0.85;
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+  color: var(--c-text);
+  transition: color 0.35s var(--ease);
 }
 
-/* Dark teal panel, matching the theme. */
+.tabActive .tabSub {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---- Panel -------------------------------------------------------------- */
+
 .panel {
   background: var(--c-primary);
   color: rgba(255, 255, 255, 0.85);
-  border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
-  padding: 38px 40px;
+  border-radius: var(--radius-md);
+  padding: 34px 38px;
+  /* Replays every time a panel goes from hidden to shown, i.e. on each tab change. */
+  animation: panelIn 0.45s var(--ease) both;
 }
 
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/*
+ * Two columns where there's room. A single column across a 1280 container ran to about
+ * 150 characters a line, well past comfortable reading.
+ */
 .points {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 22px 44px;
   margin: 0;
 }
 
 .point {
-  position: relative;
-  padding-left: 22px;
+  display: flex;
+  gap: 14px;
+  max-width: 64ch;
   font-size: var(--fs-text);
-  line-height: 1.7;
+  line-height: 1.65;
+  animation: pointIn 0.5s var(--ease) both;
 }
 
-.point::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 7px;
-  height: 7px;
+/* Staggered, so the list assembles rather than appearing all at once. */
+.point:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.point:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.point:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.point:nth-child(n + 4) {
+  animation-delay: 0.32s;
+}
+
+@keyframes pointIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.pointMark {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  background: var(--c-accent);
+  background: rgba(203, 242, 254, 0.16);
+  color: var(--c-accent);
+}
+
+.pointBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
 .pointTitle {
-  display: block;
   color: #fff;
   font-weight: 700;
   font-size: var(--fs-accent);
 }
 
-.pointText {
-  display: block;
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .point {
+    animation: none;
+  }
+
+  .tab,
+  .tab::before {
+    transition: none;
+  }
 }
 
 @media (max-width: 767px) {
   .tab {
     flex: 1 1 100%;
-    border: 1px solid var(--c-border);
-    border-radius: 12px;
-  }
-
-  .tabActive {
-    border-color: var(--c-primary);
+    padding: 13px 16px;
   }
 
   .panel {
-    border-radius: var(--radius-md);
-    padding: 26px 22px;
-    margin-top: 8px;
+    padding: 24px 20px;
+  }
+
+  .points {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 }

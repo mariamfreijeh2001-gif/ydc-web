@@ -2,6 +2,7 @@
 
 import { useId, useState } from 'react';
 
+import { CheckIcon } from '@/components/ui/Icon';
 import styles from './Tabs.module.css';
 
 type Tab = {
@@ -45,8 +46,13 @@ export function Tabs({ tabs }: { tabs: Tab[] }) {
             className={`${styles.tab} ${i === active ? styles.tabActive : ''}`}
             onClick={() => setActive(i)}
           >
-            <span className={styles.tabLabel}>{tab.label}</span>
-            {tab.subtitle ? <span className={styles.tabSub}>{tab.subtitle}</span> : null}
+            <span className={styles.tabNo} aria-hidden="true">
+              {i + 1}
+            </span>
+            <span className={styles.tabBody}>
+              <span className={styles.tabLabel}>{tab.label}</span>
+              {tab.subtitle ? <span className={styles.tabSub}>{tab.subtitle}</span> : null}
+            </span>
           </button>
         ))}
       </div>
@@ -64,8 +70,15 @@ export function Tabs({ tabs }: { tabs: Tab[] }) {
           <ul className={styles.points}>
             {tab.points.map((point) => (
               <li key={point.title || point.text} className={styles.point}>
-                {point.title ? <strong className={styles.pointTitle}>{point.title}</strong> : null}
-                <span className={styles.pointText}>{point.text}</span>
+                <span className={styles.pointMark} aria-hidden="true">
+                  <CheckIcon width={14} height={14} />
+                </span>
+                <span className={styles.pointBody}>
+                  {point.title ? (
+                    <strong className={styles.pointTitle}>{point.title}</strong>
+                  ) : null}
+                  <span>{point.text}</span>
+                </span>
               </li>
             ))}
           </ul>
