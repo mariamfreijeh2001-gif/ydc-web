@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { CaseCard } from '@/components/blocks/CaseCard';
+import { FlipCard } from '@/components/blocks/FlipCard';
 import { Marquee } from '@/components/blocks/Marquee';
 import { Reviews } from '@/components/blocks/Reviews';
 import { ServiceCard } from '@/components/blocks/ServiceCard';
@@ -39,29 +40,31 @@ export default function HomePage() {
     <>
       <VideoHero src={home.hero.video} lines={[...home.hero.lines]} eyebrow={home.hero.eyebrow} />
 
-      {/* Pull-quote + intro */}
+      {/* Statement + intro, with the stats built into the same band */}
       <Section id="intro" space="tight">
         <Container>
           <div className={styles.intro}>
-            <Reveal>
+            <Reveal className={styles.introLead}>
+              <p className={styles.eyebrow}>{home.intro.eyebrow}</p>
               <blockquote className={styles.quote}>
                 <span className={styles.quoteMark} aria-hidden="true">
                   “
                 </span>
                 {home.intro.quote}
               </blockquote>
+              <span className={styles.quoteRule} aria-hidden="true" />
             </Reveal>
-            <Reveal delay={120}>
+
+            <Reveal delay={120} className={styles.introBodyWrap}>
               <p className={styles.introBody}>{home.intro.body}</p>
+              <Link href={home.services.cta.href} className={styles.introLink}>
+                {home.services.cta.label}
+                <ArrowUpRightIcon width={14} height={14} />
+              </Link>
             </Reveal>
           </div>
-        </Container>
-      </Section>
 
-      {/* Stats */}
-      <Section space="none">
-        <Container>
-          <Reveal>
+          <Reveal delay={200}>
             <ul className={styles.stats}>
               {home.stats.map((stat) => (
                 <li key={stat.label} className={styles.stat}>
@@ -198,11 +201,8 @@ export default function HomePage() {
           <ol className={styles.journey}>
             {home.journey.steps.map((step, i) => (
               <li key={step.step}>
-                <Reveal delay={i * 90} className={styles.step}>
-                  <span className={styles.stepIndex}>{String(i + 1).padStart(2, '0')}</span>
-                  <span className={styles.stepLabel}>{step.step}</span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepText}>{step.text}</p>
+                <Reveal delay={i * 90}>
+                  <FlipCard index={i + 1} step={step.step} title={step.title} text={step.text} />
                 </Reveal>
               </li>
             ))}

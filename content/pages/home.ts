@@ -13,6 +13,7 @@ export const home = {
   },
 
   intro: {
+    eyebrow: 'Why Younes Dental',
     quote: 'The best way to maintain a healthy smile is to be proactive!',
     body: 'At Younes Dental, we prioritize comfort, care, and efficiency to provide brighter, healthier smiles using the latest technology and training. Our comprehensive and affordable services range from dental implants and veneers to Clear Aligners, traditional orthodontics, and preventative care for the whole family. We value building long-lasting relationships with our patients for lifelong smiles.',
   },

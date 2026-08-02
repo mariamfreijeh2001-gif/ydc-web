@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type { PatientCase } from '@/lib/content';
+import { ArrowUpRightIcon } from '@/components/ui/Icon';
 import styles from './CaseCard.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
 
@@ -23,7 +24,7 @@ export function CaseCard({ item, variant = 'default', priority = false }: Props)
       {item.cover ? (
         <Image
           src={item.cover}
-          alt={`${item.title} — patient result`}
+          alt={`${item.procedure} — patient result`}
           fill
           priority={priority}
           /* Square/portrait covers cropped into a portrait card — see ServiceCard. */
@@ -37,21 +38,25 @@ export function CaseCard({ item, variant = 'default', priority = false }: Props)
         <>
           <span className={styles.veil} />
           <span className={styles.portraitBody}>
+            {/* Treatment only — patient initials are deliberately not shown. */}
             <span className={styles.portraitProcedure}>{item.procedure}</span>
-            <span className={styles.portraitInitials}>{item.initials}</span>
+            <span className={styles.portraitView} aria-hidden="true">
+              View case
+              <ArrowUpRightIcon width={13} height={13} />
+            </span>
           </span>
         </>
       ) : variant === 'default' ? (
         <>
           <span className={styles.veil} />
-          <span className={styles.title}>{item.title}</span>
+          <span className={styles.title}>{item.procedure}</span>
           <span className={styles.cta} aria-hidden="true">
             View Details
           </span>
         </>
       ) : (
         <span className={styles.compactLabel}>
-          <span className="visually-hidden">{item.title}</span>
+          <span className="visually-hidden">{item.procedure}</span>
         </span>
       )}
     </Link>

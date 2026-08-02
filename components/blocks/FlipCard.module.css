@@ -1,0 +1,121 @@
+.card {
+  display: block;
+  width: 100%;
+  height: 320px;
+  padding: 0;
+  perspective: 1400px;
+  text-align: left;
+  background: none;
+}
+
+.inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease);
+}
+
+.card:hover .inner,
+.card:focus-visible .inner,
+.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 26px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+  justify-content: center;
+  background: var(--c-accent);
+  border-color: transparent;
+}
+
+.index {
+  font-size: var(--fs-h3);
+  line-height: 1;
+  letter-spacing: var(--ls-h3);
+  font-weight: 500;
+  color: var(--c-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.step {
+  font-size: var(--fs-taxonomy);
+  letter-spacing: var(--ls-taxonomy);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.back .step {
+  color: var(--c-primary);
+}
+
+.title {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-weight: 500;
+  color: #fff;
+  margin-top: auto;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.text {
+  font-size: var(--fs-tertiary);
+  line-height: 1.7;
+  color: var(--c-primary);
+}
+
+/*
+ * No 3D for reduced motion — the back simply cross-fades over the front, so the
+ * information is still reachable without any rotation.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .card:hover .inner,
+  .card:focus-visible .inner,
+  .flipped .inner {
+    transform: none;
+    transition: none;
+  }
+
+  .back {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+  }
+
+  .card:hover .back,
+  .card:focus-visible .back,
+  .flipped .back {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    height: 280px;
+  }
+}

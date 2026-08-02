@@ -98,13 +98,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 24px 24px 22px;
-  transform: translateY(6px);
-  opacity: 0.92;
-  transition:
-    transform 0.4s var(--ease),
-    opacity 0.4s var(--ease);
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px;
 }
 
 .portrait:hover .portraitBody {
@@ -112,16 +108,37 @@
   opacity: 1;
 }
 
+/* A pill, so the treatment reads as a label over the photograph. */
 .portraitProcedure {
+  align-self: flex-start;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: var(--fs-taxonomy);
   letter-spacing: var(--ls-taxonomy);
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--c-accent);
+  color: #fff;
 }
 
-.portraitInitials {
-  font-size: var(--fs-h5);
-  line-height: var(--lh-h5);
-  font-weight: 500;
+.portraitView {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.portrait:hover .portraitView,
+.portrait:focus-visible .portraitView {
+  opacity: 1;
+  transform: none;
 }

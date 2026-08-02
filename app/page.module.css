@@ -43,34 +43,64 @@
 
 .intro {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: clamp(32px, 6vw, 90px);
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(32px, 6vw, 96px);
   align-items: start;
+  margin-bottom: clamp(48px, 6vw, 84px);
+}
+
+.introLead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /*
- * The pull-quote carries the page's opening idea, so it gets real presence: display
- * size, a hanging quote mark and the brand teal, rather than sitting as small grey type.
+ * The statement carries the page's opening idea, so it gets display size and the brand
+ * accent rather than sitting as small grey body text.
  */
 .quote {
   position: relative;
   margin: 0;
-  padding-left: 30px;
-  font-size: var(--fs-h4);
-  line-height: 1.28;
+  font-size: var(--fs-h3);
+  line-height: 1.16;
+  letter-spacing: var(--ls-h3);
   font-weight: 500;
   color: var(--c-secondary);
-  border-left: 3px solid var(--c-accent);
+  text-wrap: balance;
 }
 
 .quoteMark {
   position: absolute;
-  left: 16px;
-  top: -0.36em;
-  font-size: 3.4em;
+  left: -0.44em;
+  top: -0.18em;
+  font-size: 2.6em;
   line-height: 1;
   color: var(--c-accent);
   pointer-events: none;
+}
+
+/* Grows in once the block reveals, so the eye lands on the statement first. */
+.quoteRule {
+  display: block;
+  width: 0;
+  height: 3px;
+  margin-top: 28px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transition: width 0.9s var(--ease) 0.25s;
+}
+
+/* Reveal adds its hashed `shown` class to this same element once it scrolls in. */
+.introLead[class*='shown'] .quoteRule {
+  width: 108px;
+}
+
+.introBodyWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
 }
 
 .introBody {
@@ -80,31 +110,69 @@
   margin: 0;
 }
 
+.introLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: var(--c-primary);
+}
+
+.introLink:hover {
+  color: var(--c-secondary);
+}
+
 /* ---- Stats -------------------------------------------------------------- */
 
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+  gap: var(--gap);
   margin: 0;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-border);
 }
 
 .stat {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  align-items: center;
-  text-align: center;
-  padding: 34px 24px;
-  background: var(--c-alternate);
+  gap: 8px;
+  padding: 32px 28px 30px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+/* Accent wipe that fills from the left on hover. */
+.stat::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transition: width 0.5s var(--ease);
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: var(--shadow-card);
+}
+
+.stat:hover::after {
+  width: 100%;
 }
 
 .statValue {
   font-size: var(--fs-h2);
-  line-height: 1.05;
+  line-height: 1.02;
   letter-spacing: var(--ls-h2);
   font-weight: 500;
   color: var(--c-primary);
@@ -113,8 +181,8 @@
 
 .statLabel {
   font-size: var(--fs-meta);
+  line-height: 1.5;
   color: var(--c-text);
-  max-width: 22ch;
 }
 
 /* ---- Service grid ------------------------------------------------------- */
@@ -267,44 +335,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
   margin: 0;
-  counter-reset: journey;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 100%;
-  padding-top: 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.stepIndex {
-  font-size: var(--fs-meta);
-  font-weight: 700;
-  color: var(--c-accent);
-  font-variant-numeric: tabular-nums;
-}
-
-.stepLabel {
-  font-size: var(--fs-taxonomy);
-  letter-spacing: var(--ls-taxonomy);
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.stepTitle {
-  font-size: var(--fs-h5);
-  line-height: var(--lh-h5);
-  color: #fff;
-  margin-top: 2px;
-}
-
-.stepText {
-  font-size: var(--fs-tertiary);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.76);
 }
 
 /* Closes the journey with an action, since the site quotes rather than lists prices. */

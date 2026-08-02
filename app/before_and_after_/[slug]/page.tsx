@@ -25,11 +25,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   const description = item.body.slice(0, 155);
   return {
-    title: item.title,
+    title: `${item.procedure} — before & after`,
     description,
     alternates: { canonical: `/before_and_after_/${item.slug}/` },
     openGraph: {
-      title: `${item.title} | Younes Dental Clinic`,
+      title: `${item.procedure} — before & after | Younes Dental Clinic`,
       description,
       images: item.cover ? [item.cover] : undefined,
     },
@@ -50,9 +50,9 @@ export default async function CasePage({ params }: Params) {
             All cases
           </Link>
 
-          <h1 className={styles.title}>{item.title}</h1>
+          {/* Treatment only — patient initials are never shown. */}
+          <h1 className={styles.title}>{item.procedure}</h1>
           <p className={styles.meta}>
-            <span className={styles.chip}>{item.procedure}</span>
             <time dateTime={item.date}>
               {new Date(item.date).toLocaleDateString('en-GB', {
                 day: 'numeric',
@@ -66,7 +66,7 @@ export default async function CasePage({ params }: Params) {
             <div className={styles.cover}>
               <Image
                 src={item.cover}
-                alt={item.title}
+                alt={`${item.procedure} — patient result`}
                 fill
                 priority
                 sizes="(max-width: 1280px) 100vw, 1280px"
@@ -83,7 +83,7 @@ export default async function CasePage({ params }: Params) {
         <Container>
           <div className={styles.split}>
             {item.before && item.after ? (
-              <BeforeAfterSlider before={item.before} after={item.after} alt={item.title} />
+              <BeforeAfterSlider before={item.before} after={item.after} alt={`${item.procedure} — patient result`} />
             ) : null}
 
             <div className={styles.body}>
@@ -103,7 +103,7 @@ export default async function CasePage({ params }: Params) {
         <Section space="tight">
           <Container>
             <h2 className="visually-hidden">Photo gallery</h2>
-            <Gallery images={item.gallery} caption={item.title} />
+            <Gallery images={item.gallery} caption={item.procedure} />
           </Container>
         </Section>
       ) : null}
