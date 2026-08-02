@@ -9,6 +9,7 @@
    */
   height: var(--card-h);
   padding: 30px 28px;
+  container-type: inline-size;
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
@@ -90,4 +91,15 @@
   .card {
     padding: 24px 22px;
   }
+}
+
+/* Shorter card for the home grid, where four sit in a row. */
+.compact {
+  height: clamp(320px, 30vw, 420px);
+  padding: 26px 24px;
+}
+
+.compact .title {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
 }

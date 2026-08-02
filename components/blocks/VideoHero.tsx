@@ -4,13 +4,16 @@ type Props = {
   src: string;
   poster?: string;
   lines: string[];
+  /** Small line above the headline. */
+  eyebrow?: string;
 };
 
 /**
- * Full-bleed autoplay/muted/looping clinic video with the two stacked headlines.
- * Muted + playsInline are required for autoplay to be allowed on iOS and Chrome.
+ * Full-bleed hero: exactly one viewport tall, so it fills the screen and then scrolls
+ * away. Muted + playsInline are required for autoplay to be permitted on iOS and
+ * Chrome; the video is decorative, so it's hidden from assistive tech.
  */
-export function VideoHero({ src, poster, lines }: Props) {
+export function VideoHero({ src, poster, lines, eyebrow }: Props) {
   return (
     <section className={styles.hero}>
       <video
@@ -28,14 +31,19 @@ export function VideoHero({ src, poster, lines }: Props) {
       <div className={styles.scrim} />
 
       <div className={styles.inner}>
+        {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
         <h1 className={styles.title}>
-          {lines.map((line) => (
-            <span key={line} className={styles.line}>
+          {lines.map((line, i) => (
+            <span key={line} className={styles.line} style={{ animationDelay: `${i * 120}ms` }}>
               {line}
             </span>
           ))}
         </h1>
       </div>
+
+      <a className={styles.cue} href="#intro" aria-label="Scroll to content">
+        <span className={styles.cueDot} />
+      </a>
     </section>
   );
 }

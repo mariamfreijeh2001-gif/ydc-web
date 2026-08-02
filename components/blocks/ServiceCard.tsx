@@ -7,6 +7,8 @@ import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   service: Service;
+  /** `compact` is the shorter card used on the home page grid. */
+  size?: 'default' | 'compact';
   priority?: boolean;
 };
 
@@ -15,11 +17,11 @@ type Props = {
  * "View Details" pill anchored bottom-left. The whole card is the link; the pill is
  * decorative so there's only one tab stop per card.
  */
-export function ServiceCard({ service, priority = false }: Props) {
+export function ServiceCard({ service, size = 'default', priority = false }: Props) {
   const href = `/services/${service.slug}/`;
 
   return (
-    <Link href={href} className={styles.card}>
+    <Link href={href} className={`${styles.card} ${styles[size]}`}>
       {service.image ? (
         <Image
           src={service.image}

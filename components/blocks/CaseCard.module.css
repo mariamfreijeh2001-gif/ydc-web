@@ -80,3 +80,48 @@
   inset: 0;
 }
 
+
+/* ---- Home marquee card -------------------------------------------------- */
+
+.portrait {
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border-radius: 32px;
+  justify-content: flex-end;
+}
+
+.portrait .image {
+  object-position: center top;
+}
+
+.portraitBody {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 24px 24px 22px;
+  transform: translateY(6px);
+  opacity: 0.92;
+  transition:
+    transform 0.4s var(--ease),
+    opacity 0.4s var(--ease);
+}
+
+.portrait:hover .portraitBody {
+  transform: none;
+  opacity: 1;
+}
+
+.portraitProcedure {
+  font-size: var(--fs-taxonomy);
+  letter-spacing: var(--ls-taxonomy);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-accent);
+}
+
+.portraitInitials {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-weight: 500;
+}

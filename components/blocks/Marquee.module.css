@@ -1,0 +1,100 @@
+/*
+ * `--per-view-desktop` is set inline by the component. An inline custom property beats
+ * anything a media query can set on the same element, so the breakpoints pick a
+ * *different* variable and `--pv` chooses between them.
+ */
+.root {
+  --duration: 60s;
+  --pv: var(--per-view-desktop, 4);
+  --marquee-gap: var(--gap);
+
+  position: relative;
+  overflow: hidden;
+  /* Fade the ends so cards drift in and out rather than being cut off hard. */
+  -webkit-mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: var(--marquee-gap);
+  animation: scroll var(--duration) linear infinite;
+  /* Room for the cards' lifted hover state. */
+  padding-block: 6px;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.root:hover .track,
+.root:focus-within .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  gap: var(--marquee-gap);
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.item {
+  /* Same track sizing as the static grids, so cards keep their proportions. */
+  width: calc(
+    (min(100vw, var(--container)) - (var(--pv) - 1) * var(--marquee-gap)) / var(--pv)
+  );
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/*
+ * Half the track is one full copy of the children, so shifting by -50% lands the
+ * duplicate exactly where the original started.
+ */
+@keyframes scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-50% - var(--marquee-gap) / 2), 0, 0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .root {
+    --pv: 2.4;
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    --pv: 1.25;
+  }
+}
+
+/*
+ * No motion: drop the animation and let people scroll the row themselves. The second
+ * copy is hidden so screen readers and tab order don't see everything twice.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .track > .group[aria-hidden='true'] {
+    display: none;
+  }
+
+  .item {
+    scroll-snap-align: start;
+  }
+}

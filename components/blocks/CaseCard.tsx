@@ -7,8 +7,11 @@ import { IMAGE_QUALITY } from '@/components/ui/image';
 
 type Props = {
   item: PatientCase;
-  /** `compact` drops the title overlay — used by the home "Our Patients" carousel. */
-  variant?: 'default' | 'compact';
+  /**
+   * `default` is the tall listing card. `portrait` is the home marquee card: a 3:4
+   * frame that suits the face photography, with the procedure revealed on hover.
+   */
+  variant?: 'default' | 'compact' | 'portrait';
   priority?: boolean;
 };
 
@@ -30,7 +33,15 @@ export function CaseCard({ item, variant = 'default', priority = false }: Props)
         />
       ) : null}
 
-      {variant === 'default' ? (
+      {variant === 'portrait' ? (
+        <>
+          <span className={styles.veil} />
+          <span className={styles.portraitBody}>
+            <span className={styles.portraitProcedure}>{item.procedure}</span>
+            <span className={styles.portraitInitials}>{item.initials}</span>
+          </span>
+        </>
+      ) : variant === 'default' ? (
         <>
           <span className={styles.veil} />
           <span className={styles.title}>{item.title}</span>
