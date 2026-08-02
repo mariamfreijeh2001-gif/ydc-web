@@ -145,12 +145,11 @@ export default function HomePage() {
           </Reveal>
 
           {/*
-            A plain grid rather than a scroller: with a handful of published cases a
-            marquee just loops the same faces past. Switch back to <Marquee> once the
-            full set of cases is uploaded.
+            One row of cases, not a scroller — a marquee only reads as a carousel with
+            more than a screenful, and it just looped the same faces past.
           */}
           <ul className={styles.patientGrid}>
-            {cases.map((item, i) => (
+            {cases.slice(0, home.patients.limit).map((item, i) => (
               <li key={item.slug}>
                 <Reveal delay={i * 90}>
                   <CaseCard item={item} variant="portrait" />

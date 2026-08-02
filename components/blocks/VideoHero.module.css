@@ -1,16 +1,18 @@
 /*
- * Exactly one screen tall and edge to edge. `svh` rather than `vh` so mobile browsers
- * don't add the collapsing-toolbar overshoot that would make the hero taller than the
- * screen. No negative offset is needed: on the home page the header is `fixed`, so it
- * floats over this section without taking any layout space.
+ * Rounded inset panel rather than a full-screen takeover: it sits in the same wide
+ * container as the services and patients rows, so the page reads as one grid, and the
+ * content below is visible without scrolling.
  */
 .hero {
   position: relative;
   isolation: isolate;
-  height: 100svh;
+  width: calc(100% - 2 * var(--container-wide-gutter));
+  margin: 12px auto 0;
+  height: clamp(380px, 46vw, 660px);
+  border-radius: var(--radius-card);
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
-  overflow: hidden;
   background: #0b1416;
 }
 
@@ -28,14 +30,15 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(to top, rgba(4, 12, 14, 0.78) 0%, rgba(4, 12, 14, 0.12) 52%, rgba(4, 12, 14, 0.42) 100%),
-    radial-gradient(120% 80% at 20% 100%, rgba(0, 74, 94, 0.45), transparent 60%);
+    linear-gradient(to top, rgba(4, 12, 14, 0.76) 0%, rgba(4, 12, 14, 0.14) 56%, rgba(4, 12, 14, 0.3) 100%),
+    radial-gradient(120% 80% at 20% 100%, rgba(0, 74, 94, 0.42), transparent 62%);
 }
 
 .inner {
-  width: min(100% - 2 * var(--container-wide-gutter), var(--container));
+  width: 100%;
+  max-width: var(--container);
   margin-inline: auto;
-  padding-bottom: clamp(88px, 12vh, 150px);
+  padding: 0 clamp(28px, 4vw, 56px) clamp(38px, 5vw, 68px);
 }
 
 .eyebrow {
@@ -44,7 +47,7 @@
   text-transform: uppercase;
   font-weight: 600;
   color: var(--c-accent);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   animation: rise 0.9s var(--ease) both;
 }
 
@@ -54,11 +57,11 @@
   gap: 2px;
   margin: 0;
   color: #fff;
-  font-size: var(--fs-h1);
-  line-height: 1.06;
-  letter-spacing: var(--ls-h1);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
   font-weight: 500;
-  max-width: 20ch;
+  max-width: 22ch;
   text-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -74,48 +77,9 @@
   }
 }
 
-/* ---- Scroll cue --------------------------------------------------------- */
-
+/* The panel is short enough to see past, so no scroll cue is needed. */
 .cue {
-  position: absolute;
-  left: 50%;
-  bottom: 34px;
-  translate: -50% 0;
-  width: 26px;
-  height: 42px;
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  border-radius: var(--radius-pill);
-  display: flex;
-  justify-content: center;
-  padding-top: 7px;
-  transition: border-color var(--dur) var(--ease);
-}
-
-.cue:hover {
-  border-color: #fff;
-}
-
-.cueDot {
-  width: 3px;
-  height: 8px;
-  border-radius: 2px;
-  background: #fff;
-  animation: cue 1.8s var(--ease) infinite;
-}
-
-@keyframes cue {
-  0% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  35% {
-    opacity: 1;
-  }
-  70%,
-  100% {
-    opacity: 0;
-    transform: translateY(14px);
-  }
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -123,22 +87,18 @@
   .line {
     animation: none;
   }
-
-  .cueDot {
-    animation: none;
-  }
 }
 
 @media (max-width: 767px) {
+  .hero {
+    height: clamp(340px, 88vw, 460px);
+  }
+
   .inner {
-    padding-bottom: clamp(72px, 14vh, 120px);
+    padding: 0 22px 30px;
   }
 
   .title {
     max-width: none;
-  }
-
-  .cue {
-    display: none;
   }
 }

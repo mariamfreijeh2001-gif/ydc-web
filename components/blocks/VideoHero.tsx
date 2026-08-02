@@ -9,9 +9,9 @@ type Props = {
 };
 
 /**
- * Full-bleed hero: exactly one viewport tall, so it fills the screen and then scrolls
- * away. Muted + playsInline are required for autoplay to be permitted on iOS and
- * Chrome; the video is decorative, so it's hidden from assistive tech.
+ * Rounded inset video panel. Muted + playsInline are required for autoplay to be
+ * permitted on iOS and Chrome; the video is decorative, so it's hidden from
+ * assistive tech.
  */
 export function VideoHero({ src, poster, lines, eyebrow }: Props) {
   return (
@@ -41,9 +41,6 @@ export function VideoHero({ src, poster, lines, eyebrow }: Props) {
         </h1>
       </div>
 
-      <a className={styles.cue} href="#intro" aria-label="Scroll to content">
-        <span className={styles.cueDot} />
-      </a>
     </section>
   );
 }

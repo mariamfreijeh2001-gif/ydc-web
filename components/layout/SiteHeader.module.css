@@ -10,36 +10,6 @@
     box-shadow var(--dur) var(--ease);
 }
 
-/* Home only: the header floats over the full-screen video hero. */
-.overlay {
-  position: fixed;
-  left: 0;
-  right: 0;
-}
-
-.transparent {
-  background: transparent;
-  backdrop-filter: none;
-}
-
-.transparent .navLink {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.transparent .navLink:hover,
-.transparent .navLink[aria-current='page'] {
-  color: #fff;
-}
-
-/* The logo is dark artwork, so lift it to white while it sits on the video. */
-.transparent .logo img {
-  filter: brightness(0) invert(1);
-}
-
-.transparent .toggle {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-}
 
 .inner {
   max-width: var(--container);

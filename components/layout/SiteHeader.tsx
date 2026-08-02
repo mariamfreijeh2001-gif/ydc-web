@@ -21,21 +21,6 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  /*
-   * The home page opens on a full-screen video, so the header sits transparently over
-   * it and only takes on a solid background once you've scrolled past.
-   */
-  const overlay = pathname === '/';
-
-  useEffect(() => {
-    if (!overlay) return;
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [overlay]);
 
   // Close the drawer whenever the route changes.
   useEffect(() => setOpen(false), [pathname]);
@@ -54,15 +39,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header
-      className={[
-        styles.header,
-        overlay ? styles.overlay : '',
-        overlay && !scrolled ? styles.transparent : '',
-      ]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label={`${site.name} — home`}>
           <Image src={LOGO} alt={site.name} width={230} height={44} priority

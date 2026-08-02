@@ -96,15 +96,21 @@ export const home = {
   patients: {
     heading: 'Our Patients',
     cta: { label: 'View All Cases', href: '/before-after/' },
+    /*
+     * A single row on the home page; the rest live on /before-after/. The case order
+     * in lib/content.ts alternates treatments, so the first four cover All-on-4,
+     * C&B, All-on-6 and All-on-4 rather than four of a kind.
+     */
+    limit: 4,
   },
 
   services: {
     heading: 'Our Services',
     cta: { label: 'View All Services', href: '/services/' },
     /*
-     * Four, so the grid is a single row — the full list is one click away. Order and
-     * selection follow the live homepage.
+     * Four, so the grid is a single row — the full list is one click away. Two implant
+     * treatments and two cosmetic ones, rather than the live site's implant-heavy set.
      */
-    featured: ['allon6', 'all-on-4', 'zaygoma', 'aligners'],
+    featured: ['allon6', 'zir-maxveneers', 'zaygoma', 'dentalcrowns'],
   },
 } as const;
