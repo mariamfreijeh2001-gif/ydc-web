@@ -27,4 +27,14 @@ export const about = {
     cta: { label: 'View All Doctors', href: '/doctors/' },
   },
   services: { heading: 'Our Services' },
+  /*
+   * The regions come from the clinic's own "World-Class Clinic" copy on /services/ —
+   * "renowned globally, attracting patients from the US, Canada, EU, MENA, and
+   * Australia". Nothing here claims more than that: no patient counts, no cities.
+   */
+  origins: {
+    eyebrow: 'Patients from around the world',
+    heading: 'They travel to Jeita, Sour and Antelias',
+    text: 'Patients come to us from the United States, Canada, Europe, the MENA region and Australia — many for full-arch treatment they were told was not possible at home, and most of it completed inside a single visit to Lebanon.',
+  },
 } as const;

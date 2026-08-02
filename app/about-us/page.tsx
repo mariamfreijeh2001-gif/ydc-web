@@ -3,11 +3,13 @@ import Image from 'next/image';
 
 import { Carousel } from '@/components/blocks/Carousel';
 import { DoctorCard } from '@/components/blocks/DoctorCard';
+import { PatientOrigins } from '@/components/blocks/PatientOrigins';
 import { Reviews } from '@/components/blocks/Reviews';
 import { ServiceCard } from '@/components/blocks/ServiceCard';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
+import { Reveal } from '@/components/ui/Reveal';
 import { about } from '@/content/pages/about';
 import { doctors, services } from '@/lib/content';
 import styles from './page.module.css';
@@ -112,9 +114,11 @@ export default function AboutPage() {
           </div>
 
           <ul className={styles.team}>
-            {doctors.slice(0, 3).map((doctor) => (
+            {doctors.slice(0, 3).map((doctor, i) => (
               <li key={doctor.name}>
-                <DoctorCard doctor={doctor} />
+                <Reveal delay={i * 90}>
+                  <DoctorCard doctor={doctor} />
+                </Reveal>
               </li>
             ))}
           </ul>
@@ -134,14 +138,20 @@ export default function AboutPage() {
           <Carousel label="Our services" tone="light">
             {services.map((service) => (
               <li key={service.slug}>
-                <ServiceCard service={service} />
+                <ServiceCard service={service} size="compact" />
               </li>
             ))}
           </Carousel>
         </div>
       </Section>
 
-      <Reviews />
+      <PatientOrigins
+        eyebrow={about.origins.eyebrow}
+        heading={about.origins.heading}
+        text={about.origins.text}
+      />
+
+      <Reviews variant="marquee" />
     </>
   );
 }
