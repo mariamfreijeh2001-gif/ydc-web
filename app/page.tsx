@@ -15,7 +15,7 @@ import { ArrowUpRightIcon, CheckIcon } from '@/components/ui/Icon';
 import { IMAGE_QUALITY } from '@/components/ui/image';
 import { Reveal } from '@/components/ui/Reveal';
 import { home } from '@/content/pages/home';
-import { site } from '@/content/site';
+import { contact, site } from '@/content/site';
 import { cases, doctors, services } from '@/lib/content';
 import styles from './page.module.css';
 
@@ -29,6 +29,11 @@ export default function HomePage() {
   const featured = home.services.featured
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+  // Only the Younes family appear in the "family of surgeons" section.
+  const family = home.family.members
+    .map((name) => doctors.find((d) => d.name === name))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d));
 
   return (
     <>
@@ -108,7 +113,7 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={120} className={styles.familyFaces}>
-              {doctors.map((doctor, i) => (
+              {family.map((doctor, i) => (
                 <figure key={doctor.name} className={styles.face} style={{ zIndex: 10 - i }}>
                   <Image
                     src={doctor.photo}
@@ -202,6 +207,18 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
+
+          <Reveal delay={200} className={styles.journeyCta}>
+            <p className={styles.journeyCtaText}>{home.journey.cta.text}</p>
+            <div className={styles.journeyCtaActions}>
+              <Button href={contact.whatsappHref} variant="accent">
+                {home.journey.cta.primary.label}
+              </Button>
+              <Button href={home.journey.cta.secondary.href} variant="outline-light">
+                {home.journey.cta.secondary.label}
+              </Button>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 

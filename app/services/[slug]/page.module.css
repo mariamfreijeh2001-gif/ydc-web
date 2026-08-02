@@ -186,96 +186,6 @@
   color: var(--c-secondary);
 }
 
-/* ---- Pricing ------------------------------------------------------------ */
-
-.pricingHead {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 40px;
-}
-
-.pricingTitle {
-  font-size: var(--fs-h4);
-  line-height: var(--lh-h4);
-  letter-spacing: 0;
-}
-
-.pricingSub {
-  margin-top: 6px;
-  font-size: var(--fs-meta);
-  font-weight: 700;
-  color: var(--c-primary);
-}
-
-.pricingNote {
-  margin-top: 16px;
-  font-size: var(--fs-text);
-  color: var(--c-text);
-}
-
-.plans {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap);
-  margin: 0;
-}
-
-.plan {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 34px 32px;
-  border-radius: var(--radius-md);
-  background: var(--c-alternate);
-}
-
-.planDark {
-  background: var(--c-primary);
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.planIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--c-bg);
-  color: var(--c-primary);
-  margin-bottom: 14px;
-}
-
-.planDark .planIcon {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-}
-
-.planTitle {
-  font-size: var(--fs-h4);
-  line-height: var(--lh-h4);
-  letter-spacing: 0;
-}
-
-.planDark .planTitle {
-  color: #fff;
-}
-
-.planPrice {
-  font-size: var(--fs-h5);
-  font-weight: 700;
-  color: var(--c-primary);
-}
-
-.planDark .planPrice {
-  color: var(--c-accent);
-}
-
-.planNote {
-  font-size: var(--fs-text);
-  line-height: 1.6;
-}
-
 /* ---- Related + FAQ ------------------------------------------------------ */
 
 .relatedTitle,
@@ -319,12 +229,63 @@
 
 @media (max-width: 767px) {
   .features,
-  .relatedGrid,
-  .plans {
+  .relatedGrid {
     grid-template-columns: 1fr;
   }
 
   .featured {
     aspect-ratio: 4 / 3;
+  }
+}
+
+/* ---- Quote-on-request band ---------------------------------------------- */
+
+.quote {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: clamp(34px, 4vw, 56px);
+  border-radius: var(--radius-card);
+  background: var(--c-alternate);
+}
+
+.quoteEyebrow {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--ls-h6);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-primary);
+  margin-bottom: 12px;
+}
+
+.quoteHeading {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  margin-bottom: 14px;
+}
+
+.quoteText {
+  font-size: var(--fs-text);
+  line-height: 1.75;
+  color: var(--c-text);
+  max-width: 58ch;
+}
+
+.quoteActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .quote {
+    grid-template-columns: 1fr;
+  }
+
+  .quoteActions {
+    justify-content: flex-start;
   }
 }

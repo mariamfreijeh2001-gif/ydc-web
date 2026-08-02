@@ -28,7 +28,6 @@ import {
   imagesIn,
   widgetSettings,
   bulletPairs,
-  iconNamesIn,
 } from './lib/wp.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -142,29 +141,6 @@ const categoryOf = (item) =>
 // ---------------------------------------------------------------------------
 
 /**
- * Parse `jkit_heading` widgets: title, coloured subtitle, description paragraphs.
- *
- * The wrapper contains nested `<div>`s, so matching to its closing tag is unreliable;
- * split on the widget boundary instead and read the parts out of each segment.
- */
-function jkitHeadings(chunk) {
-  return chunk
-    .split(/(?=class="jeg-elementor-kit jkit-heading)/)
-    .slice(1)
-    .map((seg) => ({
-      title: textOf(seg.match(/class="heading-title"[^>]*>([\s\S]*?)<\/h[1-6]>/)?.[1] ?? ''),
-      subtitle: textOf(subtitleOf(seg)),
-      body: [
-        ...(seg.match(/class="heading-section-description"[^>]*>([\s\S]*?)<\/div>/)?.[1] ?? '')
-          .matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g),
-      ]
-        .map((p) => textOf(p[1]))
-        .filter(Boolean),
-    }))
-    .filter((h) => h.title || h.subtitle);
-}
-
-/**
  * The jkit subtitle is emitted as <p> on some widgets and <h3> on others, so the
  * closing tag has to be matched against whatever tag actually opened it.
  */
@@ -209,7 +185,6 @@ function parseService(item, bg = new Map()) {
     candidates: null,
     restorative: null,
     visits: null,
-    pricing: null,
     faq: [],
   };
 
@@ -299,32 +274,10 @@ function parseService(item, bg = new Map()) {
       continue;
     }
 
-    // -- Pricing header
-    if (!service.pricing && /Pricing Plans/i.test(chunk)) {
-      const jk = jkitHeadings(chunk);
-      service.pricing = {
-        heading: 'Pricing Plans',
-        subheading: jk[0]?.subtitle || heads.find((h) => h.level === 3)?.text || '',
-        note: jk[0]?.body[0] ?? paras[0] ?? '',
-        plans: [],
-      };
-      continue;
-    }
-
-    // -- Pricing plan cards: jkit heading (title / price / note) + an inline icon
-    if (service.pricing && /\$/.test(chunk)) {
-      const icons = iconNamesIn(chunk);
-      jkitHeadings(chunk)
-        .filter((h) => h.title && /\$/.test(h.subtitle))
-        .forEach((h, i) => {
-          service.pricing.plans.push({
-            title: h.title,
-            price: h.subtitle,
-            note: h.body[0] ?? '',
-            icon: icons[i] ?? icons[0] ?? null,
-          });
-        });
-    }
+    /*
+     * The live pages published per-arch prices. The clinic has since decided prices
+     * are quoted case by case, so pricing is deliberately not imported or rendered.
+     */
   }
 
   return service;

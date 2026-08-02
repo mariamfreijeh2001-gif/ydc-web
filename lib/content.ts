@@ -44,12 +44,6 @@ export type Service = {
     image: string | null;
   } | null;
   visits: { label: string; subtitle: string; points: { title: string; text: string }[] }[] | null;
-  pricing: {
-    heading: string;
-    subheading: string;
-    note: string;
-    plans: { title: string; price: string; note: string; icon: string | null }[];
-  } | null;
   faq: { q: string; a: string }[];
 };
 

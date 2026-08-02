@@ -7,8 +7,9 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Accordion } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
-import { CheckIcon, MoonIcon, StarIcon } from '@/components/ui/Icon';
+import { CheckIcon } from '@/components/ui/Icon';
 import { Tabs } from '@/components/ui/Tabs';
+import { contact } from '@/content/site';
 import { getService, relatedServices, services } from '@/lib/content';
 import styles from './page.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
@@ -39,8 +40,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     },
   };
 }
-
-const PRICING_ICONS = { moon: MoonIcon, star: StarIcon } as const;
 
 export default async function ServiceDetailPage({ params }: Params) {
   const { slug } = await params;
@@ -223,42 +222,33 @@ export default async function ServiceDetailPage({ params }: Params) {
         </Section>
       ) : null}
 
-      {/* Pricing */}
-      {service.pricing?.plans.length ? (
-        <Section space="tight">
-          <Container>
-            <div className={styles.pricingHead}>
-              <h2 className={styles.pricingTitle}>{service.pricing.heading}</h2>
-              {service.pricing.subheading ? (
-                <p className={styles.pricingSub}>{service.pricing.subheading}</p>
-              ) : null}
-              {service.pricing.note ? (
-                <p className={styles.pricingNote}>{service.pricing.note}</p>
-              ) : null}
+      {/*
+        No prices anywhere on the site — every case is quoted individually after a
+        consultation, so this section points people at us instead.
+      */}
+      <Section space="tight">
+        <Container>
+          <div className={styles.quote}>
+            <div>
+              <p className={styles.quoteEyebrow}>Pricing</p>
+              <h2 className={styles.quoteHeading}>Every case is quoted individually.</h2>
+              <p className={styles.quoteText}>
+                Cost depends on extractions, bone loss, infection and the restoration you
+                choose — so we price {service.title} after we&rsquo;ve seen your scans, not before.
+                Send us an X-ray or a photo and we&rsquo;ll come back with a plan.
+              </p>
             </div>
-
-            <ul className={styles.plans}>
-              {service.pricing.plans.map((plan, i) => {
-                const PlanIcon = plan.icon
-                  ? PRICING_ICONS[plan.icon as keyof typeof PRICING_ICONS]
-                  : null;
-                return (
-                  <li key={plan.title} className={`${styles.plan} ${i % 2 ? styles.planDark : ''}`}>
-                    {PlanIcon ? (
-                      <span className={styles.planIcon}>
-                        <PlanIcon width={22} height={22} />
-                      </span>
-                    ) : null}
-                    <h3 className={styles.planTitle}>{plan.title}</h3>
-                    <p className={styles.planPrice}>{plan.price}</p>
-                    <p className={styles.planNote}>{plan.note}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </Container>
-        </Section>
-      ) : null}
+            <div className={styles.quoteActions}>
+              <Button href={contact.whatsappHref} variant="primary">
+                Ask on WhatsApp
+              </Button>
+              <Button href="/contacts/" variant="outline">
+                Contact the clinic
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* Related */}
       <Section space="tight">

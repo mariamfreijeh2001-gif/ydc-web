@@ -307,6 +307,31 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
+/* Closes the journey with an action, since the site quotes rather than lists prices. */
+.journeyCta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  margin-top: 56px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.journeyCtaText {
+  font-size: var(--fs-large);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 58ch;
+}
+
+.journeyCtaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* ---- Responsive --------------------------------------------------------- */
 
 @media (max-width: 1024px) {

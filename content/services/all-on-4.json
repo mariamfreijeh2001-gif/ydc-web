@@ -116,25 +116,6 @@
       ]
     }
   ],
-  "pricing": {
-    "heading": "Pricing Plans",
-    "subheading": "Cost per Arch",
-    "note": "The price does not determine the quality of the treatment. The cost of implants is consistent, but there may be slight variations depending on extractions, bone loss, infections, and restoration options.",
-    "plans": [
-      {
-        "title": "Surgical Phase Cost",
-        "price": "3900$",
-        "note": "Implant Placement And Temporary Prosthesis",
-        "icon": "moon"
-      },
-      {
-        "title": "Restorative Phase",
-        "price": "3600$",
-        "note": "ZirArch Full Arch Final Zirconia Restoration after 6 months",
-        "icon": null
-      }
-    ]
-  },
   "faq": [
     {
       "q": "How long will the implants last?",

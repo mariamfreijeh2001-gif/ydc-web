@@ -112,17 +112,6 @@ export const StarIcon = ({ title, ...p }: IconProps) => (
   </svg>
 );
 
-export const MoonIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />
-  </Svg>
-);
-
-/** Pricing-card icons, keyed by the Font Awesome slug the WordPress site used. */
-export const pricingIcons: Record<string, (p: IconProps) => React.ReactElement> = {
-  moon: MoonIcon,
-  star: StarIcon,
-};
 
 // ---- Social ---------------------------------------------------------------
 

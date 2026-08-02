@@ -112,25 +112,6 @@
       ]
     }
   ],
-  "pricing": {
-    "heading": "Pricing Plans",
-    "subheading": "Cost per Implant",
-    "note": "The price does not determine the quality of the treatment. The cost of implants is consistent, but there may be slight variations depending on extractions, bone loss, infections, and restoration options.",
-    "plans": [
-      {
-        "title": "Surgical Phase Cost",
-        "price": "800$",
-        "note": "Implant Placement And Temporary Prosthesis",
-        "icon": "moon"
-      },
-      {
-        "title": "Restorative Phase Cost Zirconia Crown After 2-3 Months",
-        "price": "300$",
-        "note": "",
-        "icon": "star"
-      }
-    ]
-  },
   "faq": [
     {
       "q": "How long will the implants last?",

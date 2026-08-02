@@ -37,6 +37,12 @@ export const home = {
     heading: 'A family of surgeons.',
     body: 'Younes Dental is led by the Younes family — surgeons who trained, and now operate, side by side. That continuity is the reason a case is planned, placed and restored by the same hands, and why patients see the same faces from consultation through to the final bridge.',
     cta: { label: 'Meet the team', href: '/doctors/' },
+    /*
+     * This section is specifically about the family, so it lists them by name rather
+     * than showing every doctor. The full team, including colleagues who aren't
+     * family, is on /doctors/ and in the About Us team grid.
+     */
+    members: ['Dr Ali Younes', 'Dr Jamal Younes', 'Dr Hassanain Younes'],
   },
 
   lab: {
@@ -78,6 +84,12 @@ export const home = {
         text: 'Four to six months later, final digital impressions and your definitive Zir-Arch restoration. Implants carry a lifetime warranty.',
       },
     ],
+    cta: {
+      /* No prices on the site — every case is quoted after a consultation. */
+      text: 'Every case is different, so we quote after we’ve seen your scans. Send us an X-ray or a photo and we’ll tell you what’s possible.',
+      primary: { label: 'Start on WhatsApp', href: 'whatsapp' },
+      secondary: { label: 'Contact the clinic', href: '/contacts/' },
+    },
   },
 
   patients: {
