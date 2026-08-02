@@ -84,13 +84,15 @@ export const clinics: Clinic[] = [
   },
   {
     /*
-     * Antelias never appeared on the WordPress site. The address is confirmed; opening
-     * hours and an interior photo are still outstanding, and the card renders without
-     * them rather than repeating the other clinics' hours as an assumption.
-     * The map links are a search on the address itself, not asserted coordinates.
+     * Antelias never appeared on the WordPress site, so none of this came from the
+     * export. Opening hours are still outstanding and the card shows "call us" rather
+     * than repeating the other clinics' hours as an assumption. The photo is the
+     * clinic's own treatment room, not a stock interior. Map links search the address
+     * text rather than asserting coordinates.
      */
-    name: 'Antelias Clinic',
-    address: 'Demco Towers, Antelias Highway, Antelias',
+    name: 'Antelias Clinic — Murex',
+    image: '/media/2024/06/sliderBG-scaled-1.webp',
+    address: 'Murex, Demco Towers, Antelias Highway, Antelias',
     directionsUrl:
       'https://www.google.com/maps/search/?api=1&query=Demco%20Towers%2C%20Antelias%20Highway%2C%20Antelias%2C%20Lebanon',
     mapEmbed:

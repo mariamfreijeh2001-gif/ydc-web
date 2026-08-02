@@ -99,6 +99,7 @@ const EXTRA_ASSETS = [
   // /contacts/
   '2024/01/contacts-2.webp', // Jeita clinic
   '2024/01/contacts-3.webp', // Sour clinic
+  '2024/06/sliderBG-scaled-1.jpg', // Antelias clinic — the clinic's own treatment room
   '2024/08/Beige-Minimalist-Carousel-Instagram-Post-33.png', // tooth + question mark
 ];
 
