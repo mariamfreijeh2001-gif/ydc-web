@@ -6,6 +6,7 @@ import { ServiceCard } from '@/components/blocks/ServiceCard';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Accordion } from '@/components/ui/Accordion';
+import { Reveal } from '@/components/ui/Reveal';
 import page from '@/content/pages/services.json';
 import { servicesByCategory } from '@/lib/content';
 import styles from './page.module.css';
@@ -25,45 +26,74 @@ export default function ServicesPage() {
     <>
       <PageHero title={page.hero.title} intro={page.hero.intro} image={page.hero.image} />
 
-      {groups.map((group, gi) => (
-        <Section key={group.category} space="tight" className={styles.group}>
-          <Container>
-            <h2 className={styles.groupTitle}>{group.category}</h2>
-            <ul className={styles.grid}>
-              {group.items.map((service, i) => (
-                <li key={service.slug}>
-                  <ServiceCard service={service} priority={gi === 0 && i < 3} />
-                </li>
-              ))}
-            </ul>
-          </Container>
-        </Section>
-      ))}
+      {/*
+       * One continuous listing rather than a stack of separate sections: the categories
+       * are dividers inside it, so the whole catalogue reads as a single grid and the
+       * four-column rhythm never breaks between groups.
+       */}
+      <Section space="tight">
+        <Container>
+          {groups.map((group, gi) => (
+            <div key={group.category} className={styles.group}>
+              <div className={styles.groupHead}>
+                <h2 className={styles.groupTitle}>{group.category}</h2>
+                <span className={styles.groupCount}>
+                  {group.items.length} {group.items.length === 1 ? 'treatment' : 'treatments'}
+                </span>
+                <span className={styles.groupRule} />
+              </div>
+
+              <ul className={styles.grid}>
+                {group.items.map((service, i) => (
+                  <li key={service.slug}>
+                    <Reveal delay={i * 70}>
+                      <ServiceCard service={service} size="compact" priority={gi === 0 && i < 4} />
+                    </Reveal>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Container>
+      </Section>
 
       {/* Why Choose Us */}
-      <Section tone="alt">
+      <Section tone="alt" space="tight" className={styles.compactSection}>
         <Container>
-          <div className={styles.whyHead}>
-            <p className={styles.eyebrow}>{page.why.eyebrow}</p>
-            <h2>{page.why.heading}</h2>
-            <p className={styles.whyText}>{page.why.text}</p>
+          {/*
+           * Heading beside the paragraph instead of stacked above it — the intro runs to
+           * four lines, and centring it under the heading was what pushed this section
+           * past a screen height.
+           */}
+          <div className={styles.splitHead}>
+            <div>
+              <p className={styles.eyebrow}>{page.why.eyebrow}</p>
+              <h2 className={styles.splitHeading}>{page.why.heading}</h2>
+            </div>
+            <p className={styles.splitText}>{page.why.text}</p>
           </div>
 
           <ul className={styles.reasons}>
-            {page.why.reasons.map((reason) => (
-              <li key={reason.title} className={styles.reason}>
-                {reason.icon ? (
-                  <Image
-                    src={reason.icon}
-                    alt=""
-                    width={48}
-                    height={48}
-                    className={styles.reasonIcon}
-                    quality={IMAGE_QUALITY}
-                  />
-                ) : null}
-                <h3 className={styles.reasonTitle}>{reason.title}</h3>
-                <p className={styles.reasonText}>{reason.text}</p>
+            {page.why.reasons.map((reason, i) => (
+              <li key={reason.title}>
+                <Reveal delay={i * 60} className={styles.reasonReveal}>
+                  <article className={styles.reason}>
+                    {reason.icon ? (
+                      <span className={styles.reasonIconWrap}>
+                        <Image
+                          src={reason.icon}
+                          alt=""
+                          width={40}
+                          height={40}
+                          className={styles.reasonIcon}
+                          quality={IMAGE_QUALITY}
+                        />
+                      </span>
+                    ) : null}
+                    <h3 className={styles.reasonTitle}>{reason.title}</h3>
+                    <p className={styles.reasonText}>{reason.text}</p>
+                  </article>
+                </Reveal>
               </li>
             ))}
           </ul>
@@ -71,23 +101,33 @@ export default function ServicesPage() {
       </Section>
 
       {/* How It Works */}
-      <Section>
+      <Section space="tight" className={styles.compactSection}>
         <Container>
-          <div className={styles.whyHead}>
+          <div className={styles.stepsHead}>
             <p className={styles.eyebrow}>{page.how.eyebrow}</p>
-            <h2>{page.how.heading}</h2>
+            <h2 className={styles.splitHeading}>{page.how.heading}</h2>
           </div>
 
           <ol className={styles.steps}>
-            {page.how.steps.map((step) => (
-              <li key={step.title} className={styles.step}>
-                {step.icon ? (
-                  <Image src={step.icon} alt="" width={64} height={64} className={styles.stepIcon}
-  quality={IMAGE_QUALITY}
-/>
-                ) : null}
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepText}>{step.text}</p>
+            {page.how.steps.map((step, i) => (
+              <li key={step.title}>
+                <Reveal delay={i * 90} className={styles.stepReveal}>
+                  <article className={styles.step}>
+                    <span className={styles.stepNo}>{String(i + 1).padStart(2, '0')}</span>
+                    {step.icon ? (
+                      <Image
+                        src={step.icon}
+                        alt=""
+                        width={56}
+                        height={56}
+                        className={styles.stepIcon}
+                        quality={IMAGE_QUALITY}
+                      />
+                    ) : null}
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepText}>{step.text}</p>
+                  </article>
+                </Reveal>
               </li>
             ))}
           </ol>

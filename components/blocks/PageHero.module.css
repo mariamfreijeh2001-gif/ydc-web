@@ -14,11 +14,16 @@
  * that simply covers the photo's rounded corner — matching the live site, and avoiding
  * the hairline you get from stacking two identical anti-aliased arcs.
  */
+/*
+ * The hero is meant to be taken in at a glance, so it never grows past the space left
+ * below the sticky header — on a short laptop screen the 640px design height would push
+ * its own notch text out of view. `svh` so mobile browser chrome doesn't overshoot.
+ */
 .frame {
   position: relative;
   width: calc(100% - 2 * var(--container-wide-gutter));
   margin-inline: auto;
-  height: clamp(360px, 44vw, 640px);
+  height: min(clamp(360px, 44vw, 640px), calc(100svh - var(--header-h) - 44px));
 }
 
 .panel {

@@ -1,32 +1,60 @@
-.group {
-  padding-block: 0 56px;
+/* ---- Category listing --------------------------------------------------- */
+
+.group + .group {
+  margin-top: 52px;
 }
 
-.group:first-of-type {
-  padding-top: 40px;
+/* Label, count and a rule that runs out to the right edge of the grid. */
+.groupHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
 }
 
-/*
- * The live /services/ category grid is a 1170px column centred in the page — narrower
- * than the 1280 boxed container. The heading sits on the same left edge as the cards.
- */
 .groupTitle {
   font-size: var(--fs-h4);
   line-height: var(--lh-h4);
   letter-spacing: 0;
-  margin: 0 auto 24px;
-  max-width: 1170px;
+  margin: 0;
+  flex: 0 0 auto;
 }
 
+.groupCount {
+  flex: 0 0 auto;
+  font-size: var(--fs-taxonomy);
+  letter-spacing: var(--ls-taxonomy);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-tertiary);
+}
+
+.groupRule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--c-border);
+}
+
+/*
+ * Four across. Dental Implants and Cosmetic hold four treatments each, so they land as
+ * one clean row instead of the 3-up grid's row-and-a-bit.
+ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
-  margin: 0 auto;
-  max-width: 1170px;
+  margin: 0;
 }
 
 /* ---- Section heads ------------------------------------------------------ */
+
+/*
+ * Both closing sections are meant to be readable in one screen, so they run tighter
+ * than the site's default section rhythm.
+ */
+.compactSection {
+  padding-block: 62px;
+}
 
 .eyebrow {
   font-size: var(--fs-h6);
@@ -34,19 +62,34 @@
   text-transform: uppercase;
   font-weight: 600;
   color: var(--c-primary);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.whyHead,
+.splitHead {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.splitHeading {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  margin: 0;
+}
+
+.splitText {
+  color: var(--c-text);
+  margin: 0;
+}
+
+.stepsHead,
 .faqHead {
   text-align: center;
-  max-width: 860px;
-  margin: 0 auto 52px;
-}
-
-.whyText {
-  margin-top: 20px;
-  color: var(--c-text);
+  max-width: 780px;
+  margin: 0 auto 32px;
 }
 
 /* ---- Why Choose Us ------------------------------------------------------ */
@@ -54,31 +97,86 @@
 .reasons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 34px;
+  gap: 20px;
   margin: 0;
 }
 
+/* Reveal wraps each card, so it has to stretch for the row to stay level. */
+.reasons > li,
+.reasonReveal {
+  display: flex;
+  width: 100%;
+}
+
 .reason {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
+  padding: 22px 22px 20px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+/* Accent wipe along the bottom edge, the same gesture as the home page stat cards. */
+.reason::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transition: width 0.5s var(--ease);
+}
+
+.reason:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: var(--shadow-card);
+}
+
+.reason:hover::after {
+  width: 100%;
+}
+
+.reasonIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  transition: transform 0.4s var(--ease);
+}
+
+.reason:hover .reasonIconWrap {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .reasonIcon {
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
 .reasonTitle {
-  font-size: var(--fs-h4);
-  line-height: var(--lh-h4);
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
   letter-spacing: 0;
 }
 
 .reasonText {
   font-size: var(--fs-text);
-  line-height: 1.7;
+  line-height: 1.55;
   color: var(--c-text);
 }
 
@@ -87,54 +185,135 @@
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 34px;
+  gap: var(--gap);
   margin: 0;
-  counter-reset: step;
+}
+
+.steps > li,
+.stepReveal {
+  display: flex;
+  width: 100%;
 }
 
 .step {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  width: 100%;
+  padding: 26px 24px 24px;
   text-align: center;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+/* Tinted fill that rises from the bottom, so the whole card lights up on hover. */
+.step::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 0;
+  background: var(--c-alternate);
+  transition: height 0.45s var(--ease);
+}
+
+.step:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: var(--shadow-card);
+}
+
+.step:hover::before {
+  height: 100%;
+}
+
+/* Oversized ghost numeral in the corner — carries the "step 1, 2, 3" reading. */
+.stepNo {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  font-weight: 500;
+  color: var(--c-surface-2);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  transition: color 0.4s var(--ease);
+}
+
+.step:hover .stepNo {
+  color: var(--c-accent);
 }
 
 .stepIcon {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
+  transition: transform 0.45s var(--ease);
+}
+
+.step:hover .stepIcon {
+  transform: translateY(-4px) scale(1.06);
 }
 
 .stepTitle {
-  font-size: var(--fs-h4);
-  line-height: var(--lh-h4);
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
   letter-spacing: 0;
 }
 
 .stepText {
   font-size: var(--fs-text);
-  line-height: 1.7;
+  line-height: 1.62;
   color: var(--c-text);
-  max-width: 42ch;
+  max-width: 40ch;
 }
 
+/* ---- Responsive --------------------------------------------------------- */
+
 @media (max-width: 1024px) {
-  .grid,
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .reasons,
   .steps {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .splitHead {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 16px;
+  }
 }
 
 @media (max-width: 767px) {
-  .grid,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
   .reasons,
   .steps {
     grid-template-columns: 1fr;
   }
 
-  .group {
-    padding-bottom: 36px;
+  .group + .group {
+    margin-top: 36px;
+  }
+
+  /* The count would crowd the title on a phone; the rule alone still reads as a divider. */
+  .groupCount {
+    display: none;
   }
 }

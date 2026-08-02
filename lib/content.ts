@@ -103,12 +103,17 @@ import ao3aa from '@/content/cases/ao3-a-a.json';
 import cbgingivectomymf from '@/content/cases/cbgingivectomy-m-f.json';
 
 /** Display order for the /services/ page and the home grid. */
+/*
+ * Listing order on /services/: the two headline categories the clinic is known for
+ * first, then the supporting treatments, then diagnostics. Also drives the order of
+ * "Related Services" fallbacks.
+ */
 export const CATEGORY_ORDER: ServiceCategory[] = [
   'Dental Implants',
+  'Cosmetic',
   'Orthodontic',
   'Therapeutic',
   'Imaging',
-  'Cosmetic',
 ];
 
 export const services = [
