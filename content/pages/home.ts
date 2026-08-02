@@ -102,18 +102,9 @@ export const home = {
     heading: 'Our Services',
     cta: { label: 'View All Services', href: '/services/' },
     /*
-     * Eight, so the four-across grid fills two clean rows. The first six are the ones
-     * the live homepage features, in its order.
+     * Four, so the grid is a single row — the full list is one click away. Order and
+     * selection follow the live homepage.
      */
-    featured: [
-      'allon6',
-      'all-on-4',
-      'zaygoma',
-      'aligners',
-      'zir-maxveneers',
-      'zir-arch',
-      'dentalimplant',
-      'braces',
-    ],
+    featured: ['allon6', 'all-on-4', 'zaygoma', 'aligners'],
   },
 } as const;

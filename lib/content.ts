@@ -94,7 +94,12 @@ import zirArch from '@/content/services/zir-arch.json';
 import zirMaxveneers from '@/content/services/zir-maxveneers.json';
 
 import allon4nd from '@/content/cases/allon4-n-d.json';
+import allon4za from '@/content/cases/allon4-z-a.json';
+import allon4yb from '@/content/cases/allon4-y-b.json';
 import allon6mm from '@/content/cases/allon6-m-m.json';
+import allon6rs from '@/content/cases/allon6-r-s.json';
+import allon6rd from '@/content/cases/allon6-r-d.json';
+import ao3aa from '@/content/cases/ao3-a-a.json';
 import cbgingivectomymf from '@/content/cases/cbgingivectomy-m-f.json';
 
 /** Display order for the /services/ page and the home grid. */
@@ -122,7 +127,17 @@ export const services = [
   zirMaxveneers,
 ] as unknown as Service[];
 
-export const cases = [allon4nd, cbgingivectomymf, allon6mm] as unknown as PatientCase[];
+/* Display order: alternating treatments so the grid doesn't read as three of a kind. */
+export const cases = [
+  allon4nd,
+  cbgingivectomymf,
+  allon6rs,
+  allon4za,
+  ao3aa,
+  allon6mm,
+  allon4yb,
+  allon6rd,
+] as unknown as PatientCase[];
 
 export const doctors = doctorsData as Doctor[];
 export const reviews = reviewsData as Review[];

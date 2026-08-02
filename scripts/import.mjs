@@ -37,8 +37,20 @@ const CONTENT = path.join(ROOT, 'content');
 const PUBLIC_MEDIA = path.join(ROOT, 'public', 'media');
 const LIVE = 'https://younes.dental/wp-content/uploads/';
 
-/** Patient cases to publish. The other 35 stay in the archive. */
-const CASES = ['allon4-n-d', 'cbgingivectomy-m-f', 'allon6-m-m'];
+/**
+ * Patient cases to publish; the rest stay in the archive until their photography is
+ * ready. Every slug here has its full image set available locally.
+ */
+const CASES = [
+  'allon4-n-d', // All on 4
+  'allon4-z-a', // All on 4 — richest gallery, 18 photos
+  'allon4-y-b', // All on 4
+  'allon6-m-m', // All on 6
+  'allon6-r-s', // All on 6
+  'allon6-r-d', // All on 6
+  'ao3-a-a', // All on 3
+  'cbgingivectomy-m-f', // C&B & Gingivectomy
+];
 
 /** Service display order per category, matching the live /services/ page. */
 const CATEGORY_ORDER = ['Dental Implants', 'Orthodontic', 'Therapeutic', 'Imaging', 'Cosmetic'];

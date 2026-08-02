@@ -196,9 +196,10 @@
 
 /* ---- Our Patients ------------------------------------------------------- */
 
+/* Four across, so the cards stay compact and eight fit in two clean rows. */
 .patientGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
   margin: 0;
 }
