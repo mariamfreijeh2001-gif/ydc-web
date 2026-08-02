@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 
+import { ClinicCard } from '@/components/blocks/ClinicCard';
 import { ContactForm } from '@/components/blocks/ContactForm';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ArrowUpRightIcon } from '@/components/ui/Icon';
+import { AtIcon, PhoneIcon, WhatsAppIcon } from '@/components/ui/Icon';
+import { Reveal } from '@/components/ui/Reveal';
 import { contact, publishedClinics } from '@/content/site';
 import styles from './page.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
@@ -24,103 +26,62 @@ export default function ContactsPage() {
       {/* Our Locations */}
       <Section space="tight">
         <Container>
-          <h1 className={styles.pageTitle}>Our Locations</h1>
+          <div className={styles.head}>
+            <p className={styles.eyebrow}>Our clinics</p>
+            <h1 className={styles.pageTitle}>Three clinics across Lebanon</h1>
+            <p className={styles.headText}>
+              Jeita, Sour and Antelias — same team, same treatments, same equipment. Open the map
+              on any of them for directions, or call and we&rsquo;ll tell you which is easiest to
+              reach from where you are.
+            </p>
+          </div>
+
+          {/* Phone, e-mail and WhatsApp up front, for anyone who came here to get in touch. */}
+          <ul className={styles.quick}>
+            <li>
+              <a className={styles.quickLink} href={contact.phoneHref}>
+                <span className={styles.quickIcon}>
+                  <PhoneIcon width={17} height={17} />
+                </span>
+                <span>
+                  <span className={styles.quickLabel}>Call us</span>
+                  <span className={styles.quickValue}>{contact.phoneDisplay}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a className={styles.quickLink} href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">
+                <span className={styles.quickIcon}>
+                  <WhatsAppIcon width={17} height={17} />
+                </span>
+                <span>
+                  <span className={styles.quickLabel}>WhatsApp</span>
+                  <span className={styles.quickValue}>{contact.whatsapp}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a className={styles.quickLink} href={contact.emailHref}>
+                <span className={styles.quickIcon}>
+                  <AtIcon width={17} height={17} />
+                </span>
+                <span>
+                  <span className={styles.quickLabel}>E-mail</span>
+                  <span className={styles.quickValue}>{contact.email}</span>
+                </span>
+              </a>
+            </li>
+          </ul>
 
           <ul className={styles.clinics}>
             {publishedClinics.map((clinic, i) => (
-              <li key={clinic.name} className={styles.clinic}>
-                <div className={styles.clinicMedia}>
-                  {clinic.image ? (
-                    <Image
-                      src={clinic.image}
-                      alt={clinic.name}
-                      fill
-                      priority={i === 0}
-                      sizes="(max-width: 1024px) 100vw, 46vw"
-                      className={styles.cover}
-                      quality={IMAGE_QUALITY}
-                    />
-                  ) : (
-                    /* No interior photo yet — a branded panel rather than someone
-                       else's clinic standing in for it. */
-                    <span className={styles.clinicPlaceholder} aria-hidden="true">
-                      {clinic.name.replace(/\s*Clinic$/, '')}
-                    </span>
-                  )}
-                </div>
-
-                <h2 className={styles.clinicName}>{clinic.name}</h2>
-
-                <div className={styles.clinicMeta}>
-                  <div>
-                    <p className={styles.label}>Address:</p>
-                    <p className={styles.value}>{clinic.address}</p>
-                  </div>
-                  {clinic.serviceTimes ? (
-                    <div>
-                      <p className={styles.label}>Service Times:</p>
-                      <p className={styles.value}>{clinic.serviceTimes}</p>
-                    </div>
-                  ) : (
-                    <div>
-                      <p className={styles.label}>Service Times:</p>
-                      <p className={styles.value}>
-                        <a href={contact.phoneHref}>Call {contact.phoneDisplay}</a>
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {clinic.directionsUrl ? (
-                  <a
-                    className={styles.directions}
-                    href={clinic.directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Get Directions
-                    <ArrowUpRightIcon width={13} height={13} />
-                  </a>
-                ) : null}
+              <li key={clinic.name}>
+                <Reveal delay={i * 90} className={styles.clinicReveal}>
+                  <ClinicCard clinic={clinic} priority={i === 0} />
+                </Reveal>
               </li>
             ))}
           </ul>
-        </Container>
-      </Section>
-
-      {/* Contact information + map */}
-      <Section space="tight">
-        <Container>
-          <div className={styles.info}>
-            <div className={styles.infoBody}>
-              <h2 className={styles.infoTitle}>Contact Information</h2>
-              <p className={styles.infoText}>
-                Learn more about our clinic and doctors and why they are trusted by so many families
-                in our community.
-              </p>
-
-              <div className={styles.clinicMeta}>
-                <div>
-                  <p className={styles.label}>Address:</p>
-                  <p className={styles.value}>{publishedClinics[0].address}</p>
-                </div>
-                <div>
-                  <p className={styles.label}>Service Times:</p>
-                  <p className={styles.value}>{publishedClinics[0].serviceTimes}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.map}>
-              <iframe
-                src={publishedClinics[0].mapEmbed}
-                title="Map showing Younes Dental Clinic, Jeita"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-          </div>
         </Container>
       </Section>
 

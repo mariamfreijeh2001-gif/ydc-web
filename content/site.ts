@@ -59,6 +59,8 @@ export type Clinic = {
   image?: string;
   address?: string;
   serviceTimes?: string;
+  /** Only where the clinic has given us exact coordinates — never inferred. */
+  coords?: { lat: number; lng: number };
   directionsUrl?: string;
   mapEmbed?: string;
 };
@@ -76,23 +78,26 @@ export const clinics: Clinic[] = [
   {
     name: 'Sour Clinic',
     image: '/media/2024/01/contacts-3.webp',
-    address: 'Center Marine 6th floor',
+    address: 'Center Marine, 6th floor, Tyre',
     serviceTimes: 'Monday till Thursday, 9 am till 5 pm',
+    /* Coordinates supplied by the clinic. */
+    coords: { lat: 33.26982554386347, lng: 35.20063611731417 },
     directionsUrl:
-      'https://www.google.com/maps/place/Younes+dental+clinic/@33.2696731,35.2006683,17z/data=!3m1!4b1!4m6!3m5!1s0x151e7d9161f722c5:0xe117d9b7e31521a8!8m2!3d33.2696731!4d35.2006683!16s%2Fg%2F11byygwzts?entry=ttu',
-    mapEmbed: 'https://maps.google.com/maps?q=33.2696731,35.2006683&z=15&output=embed',
+      'https://www.google.com/maps/search/?api=1&query=33.26982554386347,35.20063611731417',
+    mapEmbed:
+      'https://maps.google.com/maps?q=33.26982554386347,35.20063611731417&z=16&output=embed',
   },
   {
     /*
      * Antelias never appeared on the WordPress site, so none of this came from the
-     * export. Opening hours are still outstanding and the card shows "call us" rather
-     * than repeating the other clinics' hours as an assumption. The photo is the
-     * clinic's own treatment room, not a stock interior. Map links search the address
-     * text rather than asserting coordinates.
+     * export — the address and hours were supplied by the clinic directly. The photo
+     * stands in from Jeita until Antelias has its own; the map searches the address
+     * text rather than asserting coordinates we haven't been given.
      */
     name: 'Antelias Clinic — Murex',
-    image: '/media/2024/06/sliderBG-scaled-1.webp',
+    image: '/media/2024/01/contacts-2.webp',
     address: 'Murex, Demco Towers, Antelias Highway, Antelias',
+    serviceTimes: 'Monday till Friday, 9 am till 5 pm',
     directionsUrl:
       'https://www.google.com/maps/search/?api=1&query=Demco%20Towers%2C%20Antelias%20Highway%2C%20Antelias%2C%20Lebanon',
     mapEmbed:
@@ -113,14 +118,13 @@ export const socials: Social[] = [
     href: 'https://www.instagram.com/younesdentalclinic?igsh=cXE0MWt5c2hkNmxy',
     icon: 'instagram',
   },
-  // NOTE: on the live WordPress site the TikTok icon also points at Instagram — very
-  // likely a copy-paste slip when the footer was built. Kept as-is so the rebuild is
-  // faithful; swap in the real TikTok URL when it's available.
-  {
-    label: 'TikTok',
-    href: 'https://www.instagram.com/younesdentalclinic?igsh=cXE0MWt5c2hkNmxy',
-    icon: 'tiktok',
-  },
+  /*
+   * The live WordPress footer pointed its TikTok icon at Instagram — a copy-paste slip
+   * carried over from the original build. This is the real account, supplied by the
+   * clinic. The tracking parameters from the share link are dropped: they identify the
+   * share that produced the URL and are meaningless to anyone else.
+   */
+  { label: 'TikTok', href: 'https://www.tiktok.com/@draliyounes', icon: 'tiktok' },
   { label: 'YouTube', href: 'https://www.youtube.com/@jamalyounes46', icon: 'youtube' },
   {
     label: 'LinkedIn',

@@ -25,6 +25,13 @@
 
 .image {
   object-fit: cover;
+  /*
+   * Rounded twice on purpose. A composited layer — a <video>, or an image that scales
+   * on hover — is not clipped by an ancestor's border-radius in Chrome, so its square
+   * corners print over the rounded ones. Carrying the same radius on the layer itself
+   * is what actually keeps the corner round.
+   */
+  border-radius: inherit;
   object-position: center top;
   z-index: -2;
   transition: transform 0.6s var(--ease);
@@ -37,6 +44,8 @@
 .veil {
   position: absolute;
   inset: 0;
+  /* Composited layers escape an ancestor's rounded clip; see the note above. */
+  border-radius: inherit;
   z-index: -1;
   background: linear-gradient(
     to bottom,

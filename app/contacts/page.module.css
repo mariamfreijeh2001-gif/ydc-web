@@ -17,98 +17,35 @@
   margin: 0;
 }
 
-.clinic {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
-.clinicMedia {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-bg);
-}
+
+
 
 /* Stands in until an interior photo of the clinic is supplied. */
-.clinicPlaceholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--c-accent), var(--c-surface-2));
-  color: var(--c-primary);
-  font-size: var(--fs-h3);
-  line-height: 1;
-  letter-spacing: var(--ls-h3);
-  font-weight: 500;
-}
+
 
 .cover {
   object-fit: cover;
   object-position: center;
 }
 
-.clinicName {
-  font-size: var(--fs-h4);
-  line-height: var(--lh-h4);
-  letter-spacing: 0;
-}
 
-.clinicMeta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
 
-.label {
-  font-size: var(--fs-h6);
-  letter-spacing: var(--ls-h6);
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--c-secondary);
-  margin-bottom: 8px;
-}
 
-.value {
-  font-size: var(--fs-text);
-  line-height: 1.7;
-  color: var(--c-text);
-}
 
-.directions {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  align-self: flex-start;
-  font-size: var(--fs-meta);
-  font-weight: 700;
-  color: var(--c-secondary);
-}
 
-.directions:hover {
-  color: var(--c-primary);
-}
+
+
+
+
+
+
 
 /* ---- Contact information + map ------------------------------------------ */
 
-.info {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
-  align-items: center;
-}
 
-.infoBody {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+
+
 
 .infoTitle {
   font-size: var(--fs-h2);
@@ -123,19 +60,9 @@
   max-width: 46ch;
 }
 
-.map {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--c-alternate);
-  aspect-ratio: 16 / 10;
-}
 
-.map iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
+
+
 
 /* ---- Ask a question ----------------------------------------------------- */
 
@@ -198,5 +125,119 @@
   .clinicMeta {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+}
+
+/* ---- Page head ---------------------------------------------------------- */
+
+.head {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--ls-h6);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-primary);
+  margin-bottom: 12px;
+}
+
+.headText {
+  margin-top: 14px;
+  color: var(--c-text);
+}
+
+/* ---- Quick contact row -------------------------------------------------- */
+
+.quick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 0 0 30px;
+}
+
+.quickLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  transition:
+    border-color 0.35s var(--ease),
+    background 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.quickLink:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-primary);
+  background: var(--c-alternate);
+}
+
+.quickIcon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--c-primary);
+}
+
+.quickLabel {
+  display: block;
+  font-size: var(--fs-taxonomy);
+  letter-spacing: var(--ls-taxonomy);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-tertiary);
+}
+
+.quickValue {
+  display: block;
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: var(--c-secondary);
+  word-break: break-word;
+}
+
+/* ---- Clinic grid -------------------------------------------------------- */
+
+.clinics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  margin: 0;
+}
+
+/* Reveal wraps each card, so both wrappers stretch to keep the row level. */
+.clinics > li,
+.clinicReveal {
+  display: flex;
+  width: 100%;
+}
+
+.clinicReveal > * {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .quick,
+  .clinics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .quick,
+  .clinics {
+    grid-template-columns: 1fr;
   }
 }

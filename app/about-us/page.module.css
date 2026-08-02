@@ -19,6 +19,8 @@
 
 .heroImg {
   object-fit: cover;
+  /* Composited layers escape an ancestor's rounded clip; carry the radius here too. */
+  border-radius: inherit;
   object-position: center;
 }
 
