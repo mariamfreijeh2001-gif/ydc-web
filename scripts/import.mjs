@@ -526,6 +526,20 @@ function howHeading(block) {
 // Doctors + reviews
 // ---------------------------------------------------------------------------
 
+/*
+ * The WordPress site labelled every doctor "Orthodontic Solutions", which isn't what
+ * any of them actually practise. Confirmed by the clinic:
+ *   Dr Ali Younes and Dr Hassanain Younes — surgery and cosmetic dentistry
+ *   Dr Samer Dawoud — cosmetic dentistry
+ * Dr Jamal Younes has not been confirmed yet, so he keeps the clinic's own wording
+ * rather than a guess. Update DOCTOR_ROLES once it's known.
+ */
+const DOCTOR_ROLES = {
+  'Dr Ali Younes': 'Implant Surgeon & Cosmetic Dentist',
+  'Dr Hassanain Younes': 'Implant Surgeon & Cosmetic Dentist',
+  'Dr Samer Dawoud': 'Cosmetic Dentist',
+};
+
 function parseDoctors(pageJson) {
   const doctors = pageJson.find((p) => p.slug === 'doctors');
   const html = doctors.content.rendered;
@@ -536,7 +550,7 @@ function parseDoctors(pageJson) {
     if (h4 && img) {
       out.push({
         name: h4.text,
-        role: 'Orthodontic Solutions',
+        role: DOCTOR_ROLES[h4.text] ?? 'Orthodontic Solutions',
         photo: track(img),
         linkedin: '#',
         instagram: '#',

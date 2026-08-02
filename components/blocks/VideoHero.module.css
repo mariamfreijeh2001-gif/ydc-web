@@ -8,7 +8,13 @@
   isolation: isolate;
   width: calc(100% - 2 * var(--container-wide-gutter));
   margin: 12px auto 0;
-  height: clamp(380px, 46vw, 660px);
+  /*
+   * Capped against the viewport *height*, not just width: a 620px panel fits a 900px
+   * window but overflows a short laptop screen. Subtracting the header and a 56px
+   * margin guarantees the whole panel is visible on any screen, and leaves the next
+   * section just peeking so it's clear there's more below.
+   */
+  height: min(clamp(360px, 44vw, 620px), calc(100svh - var(--header-h) - 56px));
   border-radius: var(--radius-card);
   overflow: hidden;
   display: flex;
@@ -91,7 +97,7 @@
 
 @media (max-width: 767px) {
   .hero {
-    height: clamp(340px, 88vw, 460px);
+    height: min(clamp(320px, 82vw, 440px), calc(100svh - var(--header-h) - 40px));
   }
 
   .inner {
