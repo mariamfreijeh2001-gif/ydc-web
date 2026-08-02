@@ -37,7 +37,12 @@ export default function HomePage() {
 
   return (
     <>
-      <VideoHero src={home.hero.video} lines={[...home.hero.lines]} eyebrow={home.hero.eyebrow} />
+      <VideoHero
+        src={home.hero.video}
+        poster={home.hero.poster}
+        lines={[...home.hero.lines]}
+        eyebrow={home.hero.eyebrow}
+      />
 
       {/* Statement + intro, with the stats built into the same band */}
       <Section id="intro" space="tight">

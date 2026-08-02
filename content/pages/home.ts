@@ -10,6 +10,8 @@ export const home = {
     eyebrow: 'Younes Dental · Ortho Implant Center',
     lines: ['Prioritize your dental health', 'State of the art dentistry'],
     video: '/media/2024/11/Clinic-Intro.mp4',
+    /* Shown until the video is ready, and if it can't play at all. */
+    poster: '/media/2024/11/Clinic-Intro-poster.webp',
   },
 
   intro: {

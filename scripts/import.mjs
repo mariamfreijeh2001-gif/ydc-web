@@ -15,6 +15,11 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import ffmpegPath from 'ffmpeg-static';
+
+const run = promisify(execFile);
 
 import {
   decodeEntities,
@@ -619,7 +624,41 @@ async function indexDropFolder() {
   return byName;
 }
 
-const RASTER = /\.(png|jpe?g)$/i;
+const RASTER = /.(png|jpe?g)$/i;
+
+/**
+ * Re-encode an imported video to H.264 with the index at the front.
+ *
+ * The clinic's Clinic-Intro.mp4 was HEVC (hvc1), which most desktop browsers cannot
+ * decode — the audio track played while the picture stayed blank. Its moov atom also
+ * sat at the end of the file, so playback couldn't start until the whole thing had
+ * downloaded. Audio is dropped because these are muted background videos.
+ *
+ * A poster frame is written alongside so there's something to look at before the
+ * video is ready, and something to fall back on if it never plays.
+ */
+async function transcodeVideo(dest) {
+  const tmp = `${dest}.src`;
+  await fs.rename(dest, tmp);
+  try {
+    await run(ffmpegPath, [
+      '-y', '-loglevel', 'error', '-i', tmp,
+      '-an',
+      '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+      '-preset', 'slow', '-crf', '27',
+      '-vf', 'scale=1600:-2',
+      '-movflags', '+faststart',
+      dest,
+    ]);
+    const poster = dest.replace(/.mp4$/i, '-poster.webp');
+    const frame = `${tmp}.png`;
+    await run(ffmpegPath, ['-y', '-loglevel', 'error', '-ss', '3', '-i', dest, '-frames:v', '1', frame]);
+    await sharp(frame).resize(1600).webp({ quality: 80 }).toFile(poster);
+    await fs.unlink(frame).catch(() => {});
+  } finally {
+    await fs.unlink(tmp).catch(() => {});
+  }
+}
 
 /**
  * Long-edge cap for imported rasters. 2560 covers a full-bleed hero on a 1280px
@@ -699,6 +738,7 @@ async function importAssets(index) {
     bytesOut += buf.length;
 
     await fs.writeFile(dest, buf);
+    if (/\.mp4$/i.test(dest)) await transcodeVideo(dest);
   }
 
   return { copied, fetched, missing, renames, bytesIn, bytesOut };
