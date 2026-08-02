@@ -56,7 +56,12 @@ export const home = {
       'Temporary arch fitted the same day as surgery',
     ],
     cta: { label: 'Our technologies', href: '/technologies/' },
-    image: '/media/2024/08/82.webp',
+    /*
+     * Hand-supplied, not from the WordPress export — anything under /media/site/ is
+     * added directly to the repo and is not touched by scripts/import.mjs.
+     * Transparent PNG, so it needs a white surface behind it.
+     */
+    image: '/media/site/digital-lab.webp',
   },
 
   journey: {
@@ -86,10 +91,13 @@ export const home = {
       },
     ],
     cta: {
-      /* No prices on the site — every case is quoted after a consultation. */
+      /*
+       * One call to action, not two. No prices anywhere on the site, so this is how
+       * someone asks. It points at /contacts/ for now; when the enquiry flow is
+       * settled it becomes either the form or a WhatsApp deep link — one href here.
+       */
       text: 'Every case is different, so we quote after we’ve seen your scans. Send us an X-ray or a photo and we’ll tell you what’s possible.',
-      primary: { label: 'Start on WhatsApp', href: 'whatsapp' },
-      secondary: { label: 'Contact the clinic', href: '/contacts/' },
+      action: { label: 'Contact us', href: '/contacts/' },
     },
   },
 

@@ -15,7 +15,7 @@ import { ArrowUpRightIcon, CheckIcon } from '@/components/ui/Icon';
 import { IMAGE_QUALITY } from '@/components/ui/image';
 import { Reveal } from '@/components/ui/Reveal';
 import { home } from '@/content/pages/home';
-import { contact, site } from '@/content/site';
+import { site } from '@/content/site';
 import { cases, doctors, services } from '@/lib/content';
 import styles from './page.module.css';
 
@@ -217,11 +217,8 @@ export default function HomePage() {
           <Reveal delay={200} className={styles.journeyCta}>
             <p className={styles.journeyCtaText}>{home.journey.cta.text}</p>
             <div className={styles.journeyCtaActions}>
-              <Button href={contact.whatsappHref} variant="accent">
-                {home.journey.cta.primary.label}
-              </Button>
-              <Button href={home.journey.cta.secondary.href} variant="outline-light">
-                {home.journey.cta.secondary.label}
+              <Button href={home.journey.cta.action.href} variant="accent">
+                {home.journey.cta.action.label}
               </Button>
             </div>
           </Reveal>

@@ -289,7 +289,7 @@
 .labImg {
   width: 100%;
   height: auto;
-  max-width: 520px;
+  max-width: 620px;
   object-fit: contain;
 }
 
@@ -335,9 +335,10 @@
 
 /* ---- Journey ------------------------------------------------------------ */
 
+/* Wide enough for the heading to sit on one line, so the section stays compact. */
 .journeyHead {
-  max-width: 720px;
-  margin-bottom: 52px;
+  max-width: 900px;
+  margin-bottom: 34px;
 }
 
 .journey {
@@ -347,20 +348,34 @@
   margin: 0;
 }
 
+/*
+ * Static cards size to their own content, so stretch the item and the Reveal wrapper
+ * inside it to give every card in a row the same height.
+ */
+.journey > li,
+.journey > li > * {
+  display: flex;
+  width: 100%;
+}
+
+.journey > li > * > * {
+  width: 100%;
+}
+
 /* Closes the journey with an action, since the site quotes rather than lists prices. */
 .journeyCta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 26px;
-  margin-top: 56px;
-  padding-top: 34px;
+  gap: 22px;
+  margin-top: 32px;
+  padding-top: 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .journeyCtaText {
-  font-size: var(--fs-large);
+  font-size: var(--fs-text);
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.86);
   max-width: 58ch;
@@ -398,9 +413,13 @@
 }
 
 @media (max-width: 767px) {
-  .serviceGrid,
-  .patientGrid {
+  /* One service per row so titles don't wrap; patients two up, they're just photos. */
+  .serviceGrid {
     grid-template-columns: 1fr;
+  }
+
+  .patientGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .stats {

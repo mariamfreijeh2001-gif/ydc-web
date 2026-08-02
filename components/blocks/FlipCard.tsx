@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ArrowUpRightIcon } from '@/components/ui/Icon';
 import styles from './FlipCard.module.css';
@@ -13,15 +13,41 @@ type Props = {
 };
 
 /**
- * Journey step as a flip card.
+ * A journey step.
  *
- * Hover or keyboard focus flips it on pointer devices; on touch, tapping toggles it.
- * Both faces stay in the DOM so the detail is always available to search engines and
- * screen readers — `aria-expanded` on the button reports the current state, and with
- * reduced motion the card cross-fades instead of rotating.
+ * On a pointer device wide enough for a row of cards it flips on hover or keyboard
+ * focus to reveal the detail. Everywhere else — phones, tablets, anything without
+ * hover — it renders as a plain card with the detail already visible, because a card
+ * that has to be tapped to reveal its own content is worse than one that just shows it.
+ *
+ * The static version is what renders on the server and before hydration, so it is the
+ * baseline rather than the fallback: no layout shift, no hydration mismatch, and the
+ * text is present for search engines either way.
  */
 export function FlipCard({ index, step, title, text }: Props) {
+  const [canFlip, setCanFlip] = useState(false);
   const [flipped, setFlipped] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
+    const update = () => setCanFlip(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const number = String(index).padStart(2, '0');
+
+  if (!canFlip) {
+    return (
+      <div className={styles.static}>
+        <span className={styles.index}>{number}</span>
+        <span className={styles.step}>{step}</span>
+        <h3 className={styles.staticTitle}>{title}</h3>
+        <p className={styles.staticText}>{text}</p>
+      </div>
+    );
+  }
 
   return (
     <button
@@ -32,7 +58,7 @@ export function FlipCard({ index, step, title, text }: Props) {
     >
       <span className={styles.inner}>
         <span className={styles.face}>
-          <span className={styles.index}>{String(index).padStart(2, '0')}</span>
+          <span className={styles.index}>{number}</span>
           <span className={styles.step}>{step}</span>
           <span className={styles.title}>{title}</span>
           <span className={styles.more}>

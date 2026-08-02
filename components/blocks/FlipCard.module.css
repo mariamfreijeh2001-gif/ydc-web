@@ -1,7 +1,7 @@
 .card {
   display: block;
   width: 100%;
-  height: 320px;
+  height: 250px;
   padding: 0;
   perspective: 1400px;
   text-align: left;
@@ -28,8 +28,8 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 28px 26px;
+  gap: 8px;
+  padding: 22px 22px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.05);
@@ -114,8 +114,32 @@
   }
 }
 
-@media (max-width: 767px) {
-  .card {
-    height: 280px;
-  }
+
+/* ---- Static card ---------------------------------------------------------
+ * Used on touch and narrow viewports: everything visible, nothing to tap.
+ */
+
+.static {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.staticTitle {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-weight: 500;
+  color: #fff;
+  margin-top: 4px;
+}
+
+.staticText {
+  font-size: var(--fs-tertiary);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
 }

@@ -87,12 +87,6 @@
   color: var(--c-secondary);
 }
 
-@media (max-width: 767px) {
-  .card {
-    padding: 24px 22px;
-  }
-}
-
 /* Shorter card for the home grid, where four sit in a row. */
 .compact {
   height: clamp(320px, 30vw, 420px);
@@ -103,3 +97,15 @@
   font-size: var(--fs-h5);
   line-height: var(--lh-h5);
 }
+
+@media (max-width: 767px) {
+  .card {
+    padding: 22px 20px;
+  }
+
+  /* Full-width on a phone, so a landscape card reads better than a tall one. */
+  .compact {
+    height: 210px;
+  }
+}
+
