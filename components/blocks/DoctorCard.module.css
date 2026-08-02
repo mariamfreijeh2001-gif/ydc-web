@@ -26,11 +26,16 @@
   box-shadow: var(--shadow-card);
 }
 
+/*
+ * Two lines' worth of space whether the name needs it or not, so the roles and
+ * portraits line up across a row instead of stepping down wherever a name wraps.
+ */
 .name {
   align-self: flex-start;
   font-size: var(--fs-h4);
   line-height: var(--lh-h4);
   letter-spacing: 0;
+  min-height: calc(2em * var(--lh-h4));
 }
 
 .role {

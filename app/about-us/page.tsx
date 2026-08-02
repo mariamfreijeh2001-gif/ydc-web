@@ -35,6 +35,10 @@ const PHOTOS: Photo[] = [
 ];
 
 export default function AboutPage() {
+  const team = about.team.members
+    .map((name) => doctors.find((d) => d.name === name))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
   return (
     <PhotoViewer photos={PHOTOS}>
       {/* Hero with floating card */}
@@ -120,7 +124,7 @@ export default function AboutPage() {
           </div>
 
           <ul className={styles.team}>
-            {doctors.slice(0, 3).map((doctor, i) => (
+            {team.map((doctor, i) => (
               <li key={doctor.name}>
                 <Reveal delay={i * 90}>
                   <DoctorCard doctor={doctor} />

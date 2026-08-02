@@ -24,6 +24,17 @@ export const about = {
   team: {
     eyebrow: 'Meet our team',
     heading: 'Our Professional Team',
+    /*
+     * Named and ordered here rather than sliced off the top of doctors.json — who
+     * appears, and in what order, is an editorial call, and slicing meant re-ordering
+     * that file silently changed the page.
+     */
+    members: [
+      'Dr Ali Younes',
+      'Dr Hassanain Younes',
+      'Dr Jamal Younes',
+      'Dr Samer Dawoud',
+    ],
     cta: { label: 'View All Doctors', href: '/doctors/' },
   },
   services: { heading: 'Our Services' },
