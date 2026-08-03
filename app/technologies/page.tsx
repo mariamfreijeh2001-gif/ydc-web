@@ -54,27 +54,27 @@ export default function TechnologiesPage() {
               </div>
 
               {/*
-                Eve standing inside the planning rings, rather than the rings alone. The
-                supplied photograph is a 300px thumbnail whose subject is only 92x254 —
-                shown any larger than its native size it goes soft, so the rings carry the
-                panel and the robot sits at 1:1 inside them.
+                Eve's tracking head on a lit disc. The camera is the part of the machine
+                that does the interesting thing — it is what watches the drill and the jaw
+                — and it crops close to square, which fills a circle far better than a
+                photograph of the whole trolley did.
               */}
-              <div className={styles.diagram}>
-                <span className={styles.ring} aria-hidden="true" />
-                <span className={styles.ring} aria-hidden="true" />
-                <span className={styles.ring} aria-hidden="true" />
-                <span className={styles.axis} aria-hidden="true" />
+              <div className={styles.stage}>
+                <span className={styles.disc} aria-hidden="true" />
+                <span className={styles.discRing} aria-hidden="true" />
+                <span className={styles.shadow} aria-hidden="true" />
                 {/*
-                  Served as-is. It is already a 7.9 KB WebP at 92x254, and putting it
-                  through the optimiser had it picking a 33px-wide variant off the
-                  srcset — a 2.8x upscale of an image that has no detail to spare.
+                  Served as-is: the source is a small thumbnail upsampled once at build
+                  time, so the browser downscales into place rather than stretching, and
+                  Next's optimiser was picking variants far below the rendered size.
                 */}
                 <Image
-                  src="/media/site/eve-navident.webp"
-                  alt="Eve, the clinic's Navident dynamic navigation unit"
-                  width={92}
-                  height={254}
+                  src="/media/site/eve-camera@3x.webp"
+                  alt="The stereoscopic tracking camera on Eve, the clinic's Navident unit"
+                  width={624}
+                  height={834}
                   unoptimized
+                  priority
                   className={styles.robot}
                 />
               </div>

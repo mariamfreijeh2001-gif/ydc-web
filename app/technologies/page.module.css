@@ -74,77 +74,70 @@
 }
 
 /*
- * Concentric rings on a shared axis: a drill held to a planned path. Drawn rather than
- * photographed — there is no picture of the unit in the repo, and a manufacturer's
- * product shot is their copyright, not ours to publish.
+ * A lit disc for Eve to stand on, with the robot taller than the disc and breaking its
+ * top edge. The overlap is the whole trick: a cut-out photograph sitting entirely inside
+ * a circle reads as a sticker, whereas one that crosses the edge reads as standing in
+ * front of it.
  */
-.diagram {
+.stage {
   position: relative;
-  display: grid;
-  place-items: center;
   aspect-ratio: 1;
-  max-width: 360px;
+  max-width: 430px;
   width: 100%;
   margin-inline: auto;
 }
 
-.ring {
+.disc {
   position: absolute;
+  inset: 14% 6% 6%;
   border-radius: 50%;
-  border: 1px solid rgba(203, 242, 254, 0.34);
-}
-
-.ring:nth-of-type(1) {
-  inset: 0;
-  border-style: dashed;
-  animation: spin 26s linear infinite;
-}
-
-.ring:nth-of-type(2) {
-  inset: 16%;
-  border-color: rgba(203, 242, 254, 0.5);
-  border-style: dashed;
-  animation: spin 18s linear infinite reverse;
-}
-
-.ring:nth-of-type(3) {
-  inset: 32%;
-  border-color: rgba(203, 242, 254, 0.7);
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Sits behind the robot, reading as the planned axis it is held on. */
-.axis {
-  position: absolute;
-  top: 6%;
-  bottom: 6%;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--c-accent) 22%,
-    var(--c-accent) 78%,
-    transparent
-  );
+  background:
+    radial-gradient(75% 70% at 50% 26%, rgba(203, 242, 254, 0.26), rgba(203, 242, 254, 0.06) 62%),
+    rgba(255, 255, 255, 0.05);
 }
 
 /*
- * Held to native size. The supplied file is a 300px thumbnail with the unit occupying
- * only 92x254 of it; scaling that up to fill the panel would just enlarge the
- * compression. The rings do the work of filling the space instead.
+ * One ring outside the disc, as a trace of the planned path rather than a full diagram.
+ *
+ * Static, deliberately. Rotating it looked fine but a rotated element's layout box is
+ * the bounding box of the rotated square, not the circle you can see — up to 1.41x
+ * wider — and on a phone that alone pushed the page 48px past the viewport.
+ */
+.discRing {
+  position: absolute;
+  inset: 2%;
+  border-radius: 50%;
+  border: 1px dashed rgba(203, 242, 254, 0.3);
+}
+
+/* A soft pool under the head, so it reads as lit from above rather than pasted on. */
+.shadow {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  width: 52%;
+  height: 9%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.38), transparent);
+}
+
+/*
+ * Absolutely positioned so the disc governs the panel's size rather than the photograph —
+ * left in flow, its height drove the square's height and the disc ended up a fraction of
+ * the height of the thing sitting on it.
  */
 .robot {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
   width: auto;
-  height: 254px;
-  max-height: 78%;
+  height: 74%;
+  max-width: 84%;
   object-fit: contain;
-  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.4));
 }
 
 /* ---- Flow --------------------------------------------------------------- */
@@ -368,9 +361,10 @@
     grid-template-columns: 1fr;
   }
 
-  .diagram {
+  /* Eve leads on a narrow screen, above the copy rather than below it. */
+  .stage {
     order: -1;
-    max-width: 230px;
+    max-width: 280px;
   }
 
   .stepInner {
