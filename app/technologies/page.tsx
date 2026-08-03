@@ -4,7 +4,12 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
-import { CheckIcon } from "@/components/ui/Icon";
+import {
+  CheckIcon,
+  GuidedToolIcon,
+  MillingDiscIcon,
+  ScanFrameIcon,
+} from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { technologies } from "@/content/pages/technologies";
 import styles from "./page.module.css";
@@ -16,6 +21,13 @@ export const metadata: Metadata = {
     "Robotic implant surgery with Navident, 3D face scanning, CBCT, photogrammetry and an in-house digital lab — one digital chain from the first scan to the finished tooth.",
   alternates: { canonical: "/technologies/" },
 };
+
+/** Keyed off the content file so a fact carries its own icon. */
+const FACT_ICONS = {
+  guided: GuidedToolIcon,
+  scan: ScanFrameIcon,
+  mill: MillingDiscIcon,
+} as const;
 
 export default function TechnologiesPage() {
   const { flagship, flow, alsoInUse } = technologies;
@@ -38,12 +50,18 @@ export default function TechnologiesPage() {
           </div>
 
           <ul className={styles.introFacts}>
-            {technologies.facts.map((fact) => (
-              <li key={fact.label} className={styles.fact}>
-                <span className={styles.factLabel}>{fact.label}</span>
-                <span className={styles.factText}>{fact.text}</span>
-              </li>
-            ))}
+            {technologies.facts.map((fact) => {
+              const Icon = FACT_ICONS[fact.icon];
+              return (
+                <li key={fact.label} className={styles.fact}>
+                  <span className={styles.factIcon}>
+                    <Icon width={22} height={22} />
+                  </span>
+                  <span className={styles.factLabel}>{fact.label}</span>
+                  <span className={styles.factText}>{fact.text}</span>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </Section>

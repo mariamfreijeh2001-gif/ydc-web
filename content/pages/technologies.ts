@@ -22,9 +22,21 @@ export const technologies = {
    * what the clinic owns, not a promise about outcomes.
    */
   facts: [
-    { label: 'Robotic surgery', text: 'Implants placed by a Navident robot, to a plan approved on your own scan.' },
-    { label: 'Three scanners', text: 'Your face, your teeth and your bone, captured digitally before anything begins.' },
-    { label: 'In-house lab', text: 'Designed and milled here, which is how a full arch can be fitted the same day.' },
+    {
+      icon: 'guided',
+      label: 'Robotic surgery',
+      text: 'Implants placed by a Navident robot, to a plan approved on your own scan.',
+    },
+    {
+      icon: 'scan',
+      label: 'Three scanners',
+      text: 'Your face, your teeth and your bone, captured digitally before anything begins.',
+    },
+    {
+      icon: 'mill',
+      label: 'In-house lab',
+      text: 'Designed and milled here, which is how a full arch can be fitted the same day.',
+    },
   ],
 
   /**

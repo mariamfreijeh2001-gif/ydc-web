@@ -142,3 +142,32 @@ export const ExpandIcon = (p: IconProps) => (
     <path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5" />
   </Svg>
 );
+
+/* ---- Technologies ------------------------------------------------------- */
+
+/** A tool held on a target: guided, robotic placement. */
+export const GuidedToolIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M12 2v4M10 6h4" />
+    <circle cx="12" cy="15" r="5.5" />
+    <path d="M12 11.5v7M8.5 15h7" />
+  </Svg>
+);
+
+/** Corner brackets with a sweep line — the universal shorthand for a scan. */
+export const ScanFrameIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 8.5V6.5A2.5 2.5 0 0 1 6.5 4h2M15.5 4h2A2.5 2.5 0 0 1 20 6.5v2M20 15.5v2a2.5 2.5 0 0 1-2.5 2.5h-2M8.5 20h-2A2.5 2.5 0 0 1 4 17.5v-2" />
+    <path d="M4 12h16" />
+  </Svg>
+);
+
+/** A milling disc with blanks cut from it — what the in-house lab actually works from. */
+export const MillingDiscIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="8.5" />
+    <circle cx="12" cy="8.2" r="1.7" />
+    <circle cx="15.3" cy="14" r="1.7" />
+    <circle cx="8.7" cy="14" r="1.7" />
+  </Svg>
+);

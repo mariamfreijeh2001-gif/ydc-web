@@ -162,12 +162,64 @@
   margin: 0;
 }
 
+/*
+ * Cards rather than three columns under a rule. The rule alone left them reading as a
+ * caption to the paragraph above; a panel makes them the page's first claim, which is
+ * what they are.
+ */
 .fact {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  padding-top: 16px;
-  border-top: 2px solid var(--c-primary);
+  gap: 8px;
+  padding: 24px 24px 22px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-bg);
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+/* Accent wipe along the bottom, the same gesture the cards on /services/ use. */
+.fact::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transition: width 0.5s var(--ease);
+}
+
+.fact:hover {
+  transform: translateY(-5px);
+  border-color: transparent;
+  box-shadow: var(--shadow-card);
+}
+
+.fact:hover::after {
+  width: 100%;
+}
+
+.factIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--c-primary);
+  transition: transform 0.4s var(--ease);
+}
+
+.fact:hover .factIcon {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .factLabel {
