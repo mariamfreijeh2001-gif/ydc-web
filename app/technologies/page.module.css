@@ -254,41 +254,58 @@
 }
 
 /*
- * A framed stage, not a floating cut-out. These product shots arrive at wildly different
- * shapes — a wide face scanner, a tall trolley — and dropping them straight onto the page
- * made them read as clip art. One panel, one aspect ratio, image contained inside it, and
- * five unrelated photographs become one set.
+ * A disc behind the equipment rather than a box around it, matching the treatment Eve
+ * gets at the top of the page. The photograph is sized against the square stage while
+ * the disc is inset within it, so every image breaks the disc's edge and sits in front
+ * of it instead of being boxed in — which is what makes a flat cut-out read as an object
+ * with depth.
+ *
+ * The stage itself still holds the image, so nothing can push the page sideways: the
+ * break-out is against the disc, never against the layout.
  */
 .stepMedia {
+  position: relative;
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 3;
-  padding: 28px;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-card);
-  background: radial-gradient(120% 100% at 50% 0%, #fff 0%, var(--c-alternate) 78%);
-  overflow: hidden;
-  transition:
-    border-color 0.45s var(--ease),
-    box-shadow 0.45s var(--ease);
+  aspect-ratio: 1;
 }
 
-.step:hover .stepMedia {
-  border-color: transparent;
-  box-shadow: var(--shadow-card);
+.stepMedia::before {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background: radial-gradient(70% 70% at 50% 28%, #fff 0%, var(--c-alternate) 72%);
+  transition: transform 0.5s var(--ease);
+}
+
+/* A hairline orbit, so the disc reads as deliberate rather than as a stray blob. */
+.stepMedia::after {
+  content: '';
+  position: absolute;
+  inset: 1%;
+  border-radius: 50%;
+  border: 1px dashed var(--c-border);
+}
+
+.step:hover .stepMedia::before {
+  transform: scale(1.04);
 }
 
 .stepImg {
+  position: relative;
+  z-index: 1;
   width: auto;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 96%;
+  max-height: 96%;
   object-fit: contain;
+  filter: drop-shadow(0 26px 30px rgba(15, 44, 48, 0.24));
   transition: transform 0.6s var(--ease);
 }
 
 .step:hover .stepImg {
-  transform: scale(1.05);
+  transform: translateY(-8px) scale(1.03);
 }
 
 /* The one number or fact worth carrying out of each step. */
