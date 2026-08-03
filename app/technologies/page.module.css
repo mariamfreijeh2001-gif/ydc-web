@@ -73,73 +73,6 @@
   color: var(--c-accent);
 }
 
-/*
- * A lit disc for Eve to stand on, with the robot taller than the disc and breaking its
- * top edge. The overlap is the whole trick: a cut-out photograph sitting entirely inside
- * a circle reads as a sticker, whereas one that crosses the edge reads as standing in
- * front of it.
- */
-.stage {
-  position: relative;
-  aspect-ratio: 1;
-  max-width: 430px;
-  width: 100%;
-  margin-inline: auto;
-}
-
-.disc {
-  position: absolute;
-  inset: 14% 6% 6%;
-  border-radius: 50%;
-  background:
-    radial-gradient(75% 70% at 50% 26%, rgba(203, 242, 254, 0.26), rgba(203, 242, 254, 0.06) 62%),
-    rgba(255, 255, 255, 0.05);
-}
-
-/*
- * One ring outside the disc, as a trace of the planned path rather than a full diagram.
- *
- * Static, deliberately. Rotating it looked fine but a rotated element's layout box is
- * the bounding box of the rotated square, not the circle you can see — up to 1.41x
- * wider — and on a phone that alone pushed the page 48px past the viewport.
- */
-.discRing {
-  position: absolute;
-  inset: 2%;
-  border-radius: 50%;
-  border: 1px dashed rgba(203, 242, 254, 0.3);
-}
-
-/* A soft pool under the head, so it reads as lit from above rather than pasted on. */
-.shadow {
-  position: absolute;
-  left: 50%;
-  top: 66%;
-  width: 52%;
-  height: 9%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.38), transparent);
-}
-
-/*
- * Absolutely positioned so the disc governs the panel's size rather than the photograph —
- * left in flow, its height drove the square's height and the disc ended up a fraction of
- * the height of the thing sitting on it.
- */
-.robot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  width: auto;
-  height: 74%;
-  max-width: 84%;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.4));
-}
-
 /* ---- Flow --------------------------------------------------------------- */
 
 .eyebrow {
@@ -254,14 +187,12 @@
 }
 
 /*
- * A disc behind the equipment rather than a box around it, matching the treatment Eve
- * gets at the top of the page. The photograph is sized against the square stage while
- * the disc is inset within it, so every image breaks the disc's edge and sits in front
- * of it instead of being boxed in — which is what makes a flat cut-out read as an object
- * with depth.
+ * No container at all — the object and the shadow it casts, nothing else.
  *
- * The stage itself still holds the image, so nothing can push the page sideways: the
- * break-out is against the disc, never against the layout.
+ * A frame around a cut-out always reads as a frame; what makes product photography feel
+ * three-dimensional is the ground, not the box. The ellipse below each object does that
+ * job in one element, and it scales and softens as the object lifts on hover, which is
+ * what selling the lift depends on.
  */
 .stepMedia {
   position: relative;
@@ -270,42 +201,44 @@
   aspect-ratio: 1;
 }
 
-.stepMedia::before {
-  content: '';
-  position: absolute;
-  inset: 9%;
-  border-radius: 50%;
-  background: radial-gradient(70% 70% at 50% 28%, #fff 0%, var(--c-alternate) 72%);
-  transition: transform 0.5s var(--ease);
-}
-
-/* A hairline orbit, so the disc reads as deliberate rather than as a stray blob. */
-.stepMedia::after {
-  content: '';
-  position: absolute;
-  inset: 1%;
-  border-radius: 50%;
-  border: 1px dashed var(--c-border);
-}
-
-.step:hover .stepMedia::before {
-  transform: scale(1.04);
-}
-
 .stepImg {
   position: relative;
   z-index: 1;
   width: auto;
   height: auto;
-  max-width: 96%;
-  max-height: 96%;
+  max-width: 88%;
+  max-height: 88%;
   object-fit: contain;
-  filter: drop-shadow(0 26px 30px rgba(15, 44, 48, 0.24));
-  transition: transform 0.6s var(--ease);
+  filter: drop-shadow(0 18px 22px rgba(15, 44, 48, 0.16));
+  transition:
+    transform 0.55s var(--ease),
+    filter 0.55s var(--ease);
+}
+
+/* The ground. Widening and fading it as the object rises is what reads as height. */
+.stepMedia::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  width: 56%;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(15, 44, 48, 0.24), transparent);
+  transition:
+    transform 0.55s var(--ease),
+    opacity 0.55s var(--ease);
 }
 
 .step:hover .stepImg {
-  transform: translateY(-8px) scale(1.03);
+  transform: translateY(-14px) scale(1.04);
+  filter: drop-shadow(0 34px 34px rgba(15, 44, 48, 0.2));
+}
+
+.step:hover .stepMedia::after {
+  transform: translateX(-50%) scaleX(1.12);
+  opacity: 0.6;
 }
 
 /* The one number or fact worth carrying out of each step. */
@@ -333,17 +266,34 @@
 
 /* ---- Also in use -------------------------------------------------------- */
 
+/*
+ * A band rather than a loose chip row. These are the supporting cast, and giving them a
+ * panel of their own says that plainly — without it the chips read as an afterthought
+ * someone forgot to finish.
+ */
 .also {
-  margin-top: 30px;
-  padding-top: 28px;
-  border-top: 1px solid var(--c-border);
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-top: 44px;
+  padding: 34px 36px;
+  border-radius: var(--radius-card);
+  background: var(--c-alternate);
 }
 
 .alsoHeading {
-  font-size: var(--fs-h5);
-  line-height: var(--lh-h5);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
   letter-spacing: 0;
-  margin: 0 0 16px;
+  margin: 0 0 10px;
+}
+
+.alsoText {
+  margin: 0;
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  color: var(--c-text);
 }
 
 .alsoList {
@@ -354,7 +304,10 @@
 }
 
 .chip {
-  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 14px;
   border: 1px solid var(--c-border);
   border-radius: var(--radius-pill);
   background: var(--c-bg);
@@ -363,12 +316,26 @@
   color: var(--c-secondary);
   transition:
     border-color 0.3s var(--ease),
-    color 0.3s var(--ease);
+    color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.chipMark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-tertiary);
+  transition: background 0.3s var(--ease);
 }
 
 .chip:hover {
+  transform: translateY(-2px);
   border-color: var(--c-primary);
   color: var(--c-primary);
+}
+
+.chip:hover .chipMark {
+  background: var(--c-primary);
 }
 
 /* ---- Responsive --------------------------------------------------------- */
@@ -376,12 +343,6 @@
 @media (max-width: 1024px) {
   .flagship {
     grid-template-columns: 1fr;
-  }
-
-  /* Eve leads on a narrow screen, above the copy rather than below it. */
-  .stage {
-    order: -1;
-    max-width: 280px;
   }
 
   .stepInner {
