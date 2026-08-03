@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { PageHero } from "@/components/blocks/PageHero";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
-import { EveStage } from "@/components/blocks/EveStage";
 import { CheckIcon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { technologies } from "@/content/pages/technologies";
@@ -24,11 +22,31 @@ export default function TechnologiesPage() {
 
   return (
     <>
-      <PageHero
-        title={technologies.title}
-        intro={technologies.intro}
-        variant="centered"
-      />
+      {/*
+        The stock centred hero put a centred title over a left-aligned paragraph, which
+        never lined up, and said nothing a reader could hold on to. An editorial split
+        instead, closing on the three things this page is actually about.
+      */}
+      <Section space="tight">
+        <Container>
+          <div className={styles.intro}>
+            <div>
+              <p className={styles.eyebrow}>What we work with</p>
+              <h1 className={styles.introTitle}>{technologies.title}</h1>
+            </div>
+            <p className={styles.introText}>{technologies.intro}</p>
+          </div>
+
+          <ul className={styles.introFacts}>
+            {technologies.facts.map((fact) => (
+              <li key={fact.label} className={styles.fact}>
+                <span className={styles.factLabel}>{fact.label}</span>
+                <span className={styles.factText}>{fact.text}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
 
       {/*
         Eve leads. It is the one piece of equipment here that most patients have never
@@ -62,10 +80,21 @@ export default function TechnologiesPage() {
                 </Button>
               </div>
 
-              <EveStage
-                src="/media/site/eve-camera@3x.webp"
-                alt="The stereoscopic tracking camera on Eve, the clinic's Navident unit"
-              />
+              {/*
+                Same treatment as the equipment further down the page: the object, the
+                ground it sits on, and a lift on hover. Nothing else.
+              */}
+              <div className={styles.eveMedia}>
+                <Image
+                  src="/media/site/eve-camera@3x.webp"
+                  alt="The stereoscopic tracking camera on Eve, the clinic's Navident unit"
+                  width={624}
+                  height={834}
+                  unoptimized
+                  priority
+                  className={styles.eveImg}
+                />
+              </div>
             </div>
           </Reveal>
         </Container>

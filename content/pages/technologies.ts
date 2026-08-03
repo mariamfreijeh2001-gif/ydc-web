@@ -18,6 +18,16 @@ export const technologies = {
     'At Younes Dental Clinic, we are committed to using the latest dental technologies to provide our patients with the highest level of care. Advanced technology allows us to perform treatments more effectively, reduce recovery time, and achieve precise, comfortable results.',
 
   /**
+   * Three claims the page then goes on to substantiate. Each is a plain statement of
+   * what the clinic owns, not a promise about outcomes.
+   */
+  facts: [
+    { label: 'Robotic surgery', text: 'Implants placed by a Navident robot, to a plan approved on your own scan.' },
+    { label: 'Three scanners', text: 'Your face, your teeth and your bone, captured digitally before anything begins.' },
+    { label: 'In-house lab', text: 'Designed and milled here, which is how a full arch can be fitted the same day.' },
+  ],
+
+  /**
    * Eve is the clinic's own name for its ClaroNav Navident unit — not a second system.
    * It leads the page because it is the one thing here most patients have never seen in
    * a dental practice.

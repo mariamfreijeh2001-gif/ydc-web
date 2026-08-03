@@ -73,6 +73,116 @@
   color: var(--c-accent);
 }
 
+/*
+ * Eve gets exactly what the equipment further down the page gets: the object, the ground
+ * beneath it, and a lift on hover. She had a disc and a pointer-tracking tilt of her own,
+ * which made the flagship feel like a different page from the flow it introduces.
+ */
+.eveMedia {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  max-width: 420px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.eveImg {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 84%;
+  max-height: 84%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.4));
+  transition:
+    transform 0.55s var(--ease),
+    filter 0.55s var(--ease);
+}
+
+/* Lighter than the flow's shadow — it has to sit on teal, not on white. */
+.eveMedia::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  width: 52%;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.42), transparent);
+  transition:
+    transform 0.55s var(--ease),
+    opacity 0.55s var(--ease);
+}
+
+.flagship:hover .eveImg {
+  transform: translateY(-14px) scale(1.04);
+  filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.45));
+}
+
+.flagship:hover .eveMedia::after {
+  transform: translateX(-50%) scaleX(1.12);
+  opacity: 0.6;
+}
+
+/* ---- Opening ------------------------------------------------------------ */
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+  padding-bottom: 30px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.introTitle {
+  margin: 0;
+  font-size: var(--fs-h1);
+  line-height: 1.04;
+  letter-spacing: var(--ls-h1);
+}
+
+.introText {
+  margin: 0;
+  font-size: var(--fs-large);
+  line-height: var(--lh-large);
+  color: var(--c-text);
+}
+
+/* The three things the rest of the page then goes on to substantiate. */
+.introFacts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 16px;
+  border-top: 2px solid var(--c-primary);
+}
+
+.factLabel {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-weight: 500;
+  color: var(--c-secondary);
+}
+
+.factText {
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  color: var(--c-text);
+}
+
 /* ---- Flow --------------------------------------------------------------- */
 
 .eyebrow {
@@ -343,6 +453,23 @@
 @media (max-width: 1024px) {
   .flagship {
     grid-template-columns: 1fr;
+  }
+
+  /* Eve leads on a narrow screen, above the copy rather than below it. */
+  .eveMedia {
+    order: -1;
+    max-width: 280px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .introFacts {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .stepInner {
