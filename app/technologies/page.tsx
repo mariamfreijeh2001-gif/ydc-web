@@ -54,17 +54,29 @@ export default function TechnologiesPage() {
               </div>
 
               {/*
-                A drawn diagram, not a photograph — there is no picture of the unit in the
-                repository yet, and a borrowed product shot is someone else's copyright.
-                The rings read as a drill held on a planned axis. Swap in the clinic's own
-                photo of Eve the moment it lands in the repo.
+                Eve standing inside the planning rings, rather than the rings alone. The
+                supplied photograph is a 300px thumbnail whose subject is only 92x254 —
+                shown any larger than its native size it goes soft, so the rings carry the
+                panel and the robot sits at 1:1 inside them.
               */}
-              <div className={styles.diagram} aria-hidden="true">
-                <span className={styles.ring} />
-                <span className={styles.ring} />
-                <span className={styles.ring} />
-                <span className={styles.axis} />
-                <span className={styles.core} />
+              <div className={styles.diagram}>
+                <span className={styles.ring} aria-hidden="true" />
+                <span className={styles.ring} aria-hidden="true" />
+                <span className={styles.ring} aria-hidden="true" />
+                <span className={styles.axis} aria-hidden="true" />
+                {/*
+                  Served as-is. It is already a 7.9 KB WebP at 92x254, and putting it
+                  through the optimiser had it picking a 33px-wide variant off the
+                  srcset — a 2.8x upscale of an image that has no detail to spare.
+                */}
+                <Image
+                  src="/media/site/eve-navident.webp"
+                  alt="Eve, the clinic's Navident dynamic navigation unit"
+                  width={92}
+                  height={254}
+                  unoptimized
+                  className={styles.robot}
+                />
               </div>
             </div>
           </Reveal>

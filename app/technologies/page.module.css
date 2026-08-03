@@ -83,7 +83,7 @@
   display: grid;
   place-items: center;
   aspect-ratio: 1;
-  max-width: 330px;
+  max-width: 360px;
   width: 100%;
   margin-inline: auto;
 }
@@ -118,6 +118,7 @@
   }
 }
 
+/* Sits behind the robot, reading as the planned axis it is held on. */
 .axis {
   position: absolute;
   top: 6%;
@@ -132,13 +133,18 @@
   );
 }
 
-.core {
-  position: absolute;
-  width: 15%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--c-accent);
-  box-shadow: 0 0 0 12px rgba(203, 242, 254, 0.14);
+/*
+ * Held to native size. The supplied file is a 300px thumbnail with the unit occupying
+ * only 92x254 of it; scaling that up to fill the panel would just enlarge the
+ * compression. The rings do the work of filling the space instead.
+ */
+.robot {
+  position: relative;
+  width: auto;
+  height: 254px;
+  max-height: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.35));
 }
 
 /* ---- Flow --------------------------------------------------------------- */
