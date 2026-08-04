@@ -199,13 +199,16 @@
 
 /* ---- Comparison ---------------------------------------------------------- */
 
+/* Same width as the slider beneath it, so the two read as one block. */
 .compareHead {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto 20px;
 }
 
 .compareTitle {

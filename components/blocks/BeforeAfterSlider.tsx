@@ -55,7 +55,7 @@ export function BeforeAfterSlider({ before, after, alt = '', priority = false }:
           alt={alt ? `${alt} — after` : 'After'}
           fill
           priority={priority}
-          sizes="(max-width: 1024px) 100vw, 640px"
+          sizes="(max-width: 940px) 96vw, 880px"
           className={styles.img}
           quality={IMAGE_QUALITY}
         />
@@ -70,7 +70,7 @@ export function BeforeAfterSlider({ before, after, alt = '', priority = false }:
             alt={alt ? `${alt} — before` : 'Before'}
             fill
             priority={priority}
-            sizes="(max-width: 1024px) 100vw, 640px"
+            sizes="(max-width: 940px) 96vw, 880px"
             className={styles.img}
             quality={IMAGE_QUALITY}
           />

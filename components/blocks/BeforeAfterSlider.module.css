@@ -1,11 +1,20 @@
+/*
+ * Capped, and centred. Given a full-width section this ran to 1280px across, which is
+ * both taller than the fold and a 2x upscale of the source photographs — most of these
+ * comparisons are around 1400px wide originals. At 880 they are shown at close to
+ * native resolution, and the whole comparison is visible without scrolling.
+ */
 .root {
   width: 100%;
+  max-width: 880px;
+  margin-inline: auto;
 }
 
 .frame {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 2;
+  max-height: calc(100svh - var(--header-h) - 190px);
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--c-bg);
