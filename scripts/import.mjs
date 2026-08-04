@@ -46,15 +46,36 @@ const LIVE = 'https://younes.dental/wp-content/uploads/';
  * Patient cases to publish; the rest stay in the archive until their photography is
  * ready. Every slug here has its full image set available locally.
  */
+/*
+ * Published patient cases, chosen on image quality rather than on how many there are.
+ *
+ * Two filters were applied to the 38 in the export. First, every referenced image has to
+ * exist locally — nine cases reference photographs we simply don't have. Second, the case
+ * needs a single-subject portrait: several are illustrated only with a "Before and After"
+ * export, which is two faces side by side, and a portrait card crops that straight down
+ * the middle and shows half of each. Sharpness was measured across the rest (variance of
+ * a Laplacian, which separates "small but crisp" from "large but soft") and nothing below
+ * the bar was published.
+ */
+/*
+ * Note: allon6-r-d and allon6-r-s are both withheld for the same reason — their only
+ * face photograph is a joined before/after pair, and the fallback is a retractor
+ * close-up. Neither has a portrait to lead a card with.
+ */
 const CASES = [
-  'allon4-n-d', // All on 4
-  'allon4-z-a', // All on 4 — richest gallery, 18 photos
-  'allon4-y-b', // All on 4
-  'allon6-m-m', // All on 6
-  'allon6-r-s', // All on 6
-  'allon6-r-d', // All on 6
+  'allon3-r-a', // All on 3 — sharpest cover in the set, 2560px
+  'allon4-h-m', // All on 4
+  'allon4allon5-b-b', // All on 4 & All on 5
+  'allon4-a-e', // All on 4
   'ao3-a-a', // All on 3
-  'cbgingivectomy-m-f', // C&B & Gingivectomy
+  'allon4-z-a', // All on 4 — richest gallery, 18 photos
+  'allon4-n-d', // All on 4
+  'allon4-g-k', // All on 4
+  'allon6-m-m', // All on 6
+  'all-on-4-m-n-2-28', // All on 4 — B.M
+  'cbgingivectomy-m-f', // C&B & Gingivectomy — the only non-implant case that qualifies
+  'allon4-f-b', // All on 4
+  'allon4-y-b', // All on 4
 ];
 
 /** Service display order per category, matching the live /services/ page. */
@@ -374,6 +395,21 @@ function parseCase(item) {
       record.body = paras.length ? paras.join('\n\n') : textOf(desc ?? '');
     }
   }
+
+  /*
+   * The WordPress featured image is sometimes a "Before and After" export — two faces
+   * side by side — and the case card crops a portrait out of it, which slices both down
+   * the middle. Prefer a single-subject portrait from the gallery and fall back to the
+   * featured image only when there isn't one.
+   */
+  const composite = (p) => /before[-s]?and[-s]?after/i.test(p);
+  const single = record.gallery.filter((p) => !composite(p));
+  record.cover =
+    single.find((p) => /portrait/i.test(p)) ??
+    single.find((p) => /face/i.test(p)) ??
+    record.cover ??
+    single[0] ??
+    null;
 
   /*
    * The archived title is "<treatment> – <patient initials>". Only the treatment is
@@ -800,6 +836,60 @@ async function attachImageRatios(services) {
   }
 }
 
+/**
+ * Choose each case's cover by looking at the pixels, not the filename.
+ *
+ * Several exports are "before and after" composites — two faces joined down the middle —
+ * and a portrait card crops one straight down the seam, showing half of each person.
+ * Filenames don't reliably say which: allon6-r-d's is called "Face-post-FINAL2".
+ *
+ * A composite has a hard vertical edge at the join, so compare the horizontal gradient in
+ * a narrow band at the centre against the median column. Real photographs score under 2;
+ * the composites score above 10.
+ */
+async function seamScore(file) {
+  const W = 400;
+  const { data, info } = await sharp(file)
+    .greyscale()
+    .resize(W, W, { fit: 'fill' })
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = info;
+
+  const cols = new Array(w).fill(0);
+  for (let x = 1; x < w - 1; x++) {
+    let sum = 0;
+    for (let y = 0; y < h; y++) sum += Math.abs(data[y * w + x + 1] - data[y * w + x - 1]);
+    cols[x] = sum / h;
+  }
+  const mid = Math.floor(w / 2);
+  const peak = Math.max(...cols.slice(mid - 8, mid + 8));
+  const sorted = cols.slice(1, -1).sort((a, b) => a - b);
+  return peak / (sorted[Math.floor(sorted.length / 2)] || 1);
+}
+
+/** Re-pick every case cover once the images are on disk and can be measured. */
+async function pickCovers(cases) {
+  for (const record of cases) {
+    const candidates = [record.cover, ...record.gallery].filter(Boolean);
+    let best = null;
+    for (const rel of candidates) {
+      const file = path.join(ROOT, 'public', rel.replace(/^\//, ''));
+      let seam;
+      try {
+        seam = await seamScore(file);
+      } catch {
+        continue;
+      }
+      if (seam > 4) continue; // a joined pair, not a portrait
+      const name = path.basename(rel);
+      const rank = /portrait/i.test(name) ? 0 : /face/i.test(name) ? 1 : 2;
+      if (!best || rank < best.rank) best = { rel, rank };
+    }
+    if (best) record.cover = best.rel;
+  }
+}
+
 async function attachIconSizes(services) {
   for (const service of services) {
     for (const item of service.features?.items ?? []) {
@@ -879,7 +969,11 @@ async function main() {
   await attachImageRatios(remapped);
   for (const s of remapped) await writeJson(`services/${s.slug}.json`, s);
   console.log(`  services: ${services.length}`);
-  for (const c of cases) await writeJson(`cases/${c.slug}.json`, remap(c, renames));
+
+  /* Covers are picked after the remap, so the paths point at files that exist on disk. */
+  const remappedCases = cases.map((c) => remap(c, renames));
+  await pickCovers(remappedCases);
+  for (const c of remappedCases) await writeJson(`cases/${c.slug}.json`, c);
   console.log(`  cases: ${cases.length}`);
   await writeJson('doctors.json', remap(doctors, renames));
   console.log(`  doctors: ${doctors.length}`);

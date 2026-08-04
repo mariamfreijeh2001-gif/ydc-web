@@ -46,6 +46,11 @@ export default async function CasePage({ params }: Params) {
 
   return (
     <>
+      {/*
+        The portrait beside the title, not a full-width square beneath it. At container
+        width the square was 1280px tall — the page opened on a crop of the patient's
+        forehead and the treatment name was gone before you could read it.
+      */}
       <Section space="none" className={styles.head}>
         <Container>
           <Link href="/before-after/" className={styles.back}>
@@ -53,72 +58,86 @@ export default async function CasePage({ params }: Params) {
             All cases
           </Link>
 
-          {/*
-            The heading is the treatment, never patient initials, and it links through
-            to the service page for that treatment.
-          */}
-          <h1 className={styles.title}>
-            {service ? (
-              <Link href={`/services/${service.slug}/`} className={styles.titleLink}>
-                {item.procedure}
-                <ArrowUpRightIcon className={styles.titleArrow} width={22} height={22} />
-              </Link>
-            ) : (
-              item.procedure
-            )}
-          </h1>
-          <p className={styles.meta}>
-            {service ? <span className={styles.chip}>{service.category}</span> : null}
-            <time dateTime={item.date}>
-              {new Date(item.date).toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-            </time>
-          </p>
-
-          {item.cover ? (
-            <div className={styles.cover}>
-              <Image
-                src={item.cover}
-                alt={`${item.procedure} — patient result`}
-                fill
-                priority
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                className={styles.coverImg}
-                quality={IMAGE_QUALITY}
-              />
-            </div>
-          ) : null}
-        </Container>
-      </Section>
-
-      {/* Comparison slider + description */}
-      <Section space="tight">
-        <Container>
-          <div className={styles.split}>
-            {item.before && item.after ? (
-              <BeforeAfterSlider before={item.before} after={item.after} alt={`${item.procedure} — patient result`} />
+          <div className={styles.headGrid}>
+            {item.cover ? (
+              <div className={styles.cover}>
+                <Image
+                  src={item.cover}
+                  alt={`${item.procedure} — patient result`}
+                  fill
+                  priority
+                  sizes="(max-width: 767px) 90vw, 40vw"
+                  className={styles.coverImg}
+                  quality={IMAGE_QUALITY}
+                />
+              </div>
             ) : null}
 
-            <div className={styles.body}>
-              <h2 className={styles.bodyHeading}>{item.heading}</h2>
-              {item.body.split('\n\n').map((para, i) => (
-                <p key={i} className={styles.bodyText}>
-                  {para}
-                </p>
-              ))}
+            <div className={styles.headBody}>
+              <p className={styles.eyebrow}>Patient case</p>
+              {/*
+                The heading is the treatment, never patient initials, and it links through
+                to the service page for that treatment.
+              */}
+              <h1 className={styles.title}>
+                {service ? (
+                  <Link href={`/services/${service.slug}/`} className={styles.titleLink}>
+                    {item.procedure}
+                    <ArrowUpRightIcon className={styles.titleArrow} width={22} height={22} />
+                  </Link>
+                ) : (
+                  item.procedure
+                )}
+              </h1>
+              <p className={styles.meta}>
+                {service ? <span className={styles.chip}>{service.category}</span> : null}
+                <time dateTime={item.date}>
+                  {new Date(item.date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </time>
+              </p>
+              {/*
+                The whole story, here rather than in a column beside the slider. Every
+                case's copy is a single paragraph, so there was nothing to split into a
+                lede without cutting it mid-thought — and moving it up lets the
+                before-and-after have the page to itself, which is what people came for.
+              */}
+              {item.body ? <p className={styles.headLede}>{item.body}</p> : null}
             </div>
           </div>
         </Container>
       </Section>
 
+      {/* The comparison, full width — it is the reason the page exists. */}
+      {item.before && item.after ? (
+        <Section space="tight">
+          <Container>
+            <div className={styles.compareHead}>
+              <h2 className={styles.compareTitle}>Before and after</h2>
+              <p className={styles.compareHint}>Drag the handle to compare</p>
+            </div>
+            <BeforeAfterSlider
+              before={item.before}
+              after={item.after}
+              alt={`${item.procedure} — patient result`}
+            />
+          </Container>
+        </Section>
+      ) : null}
+
       {/* Gallery */}
       {item.gallery.length ? (
         <Section space="tight">
           <Container>
-            <h2 className="visually-hidden">Photo gallery</h2>
+            <div className={styles.galleryHead}>
+              <h2 className={styles.galleryTitle}>Every stage, photographed</h2>
+              <p className={styles.galleryCount}>
+                {item.gallery.length} photos · tap any to enlarge
+              </p>
+            </div>
             <Gallery images={item.gallery} caption={item.procedure} />
           </Container>
         </Section>

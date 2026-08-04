@@ -1,7 +1,14 @@
+/*
+ * Four across with the first photograph spanning two columns and two rows. A flat 3-up
+ * grid of identical 3:2 tiles gave every shot the same weight — the portrait, the x-ray
+ * and the retractor view all read as equally important, and the run looked like a
+ * contact sheet rather than a case.
+ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
   margin: 0;
 }
 
@@ -9,15 +16,38 @@
   min-width: 0;
 }
 
+.item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
 .thumb {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
-  border-radius: var(--radius-sm);
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--c-bg);
+  background: var(--c-surface-2);
   padding: 0;
+  cursor: zoom-in;
+}
+
+/* Darkens from the corner the cue sits in, so the icon stays legible on a pale photo. */
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to top right, rgba(8, 22, 25, 0.4), transparent 44%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.thumb:hover::after,
+.thumb:focus-visible::after {
+  opacity: 1;
 }
 
 .img {
@@ -28,8 +58,30 @@
   transition: transform 0.5s var(--ease);
 }
 
-.thumb:hover .img {
-  transform: scale(1.04);
+.thumb:hover .img,
+.thumb:focus-visible .img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* A hero tile on a phone would fill the screen and bury the rest. */
+  .item:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img,
+  .thumb:hover .img {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ---- Lightbox ----------------------------------------------------------- */

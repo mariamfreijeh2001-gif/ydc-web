@@ -95,14 +95,19 @@ import zaygoma from '@/content/services/zaygoma.json';
 import zirArch from '@/content/services/zir-arch.json';
 import zirMaxveneers from '@/content/services/zir-maxveneers.json';
 
-import allon4nd from '@/content/cases/allon4-n-d.json';
-import allon4za from '@/content/cases/allon4-z-a.json';
-import allon4yb from '@/content/cases/allon4-y-b.json';
-import allon6mm from '@/content/cases/allon6-m-m.json';
-import allon6rs from '@/content/cases/allon6-r-s.json';
-import allon6rd from '@/content/cases/allon6-r-d.json';
+import allon3ra from '@/content/cases/allon3-r-a.json';
+import allon4hm from '@/content/cases/allon4-h-m.json';
+import allon4allon5bb from '@/content/cases/allon4allon5-b-b.json';
+import allon4ae from '@/content/cases/allon4-a-e.json';
 import ao3aa from '@/content/cases/ao3-a-a.json';
+import allon4za from '@/content/cases/allon4-z-a.json';
+import allon4nd from '@/content/cases/allon4-n-d.json';
+import allon4gk from '@/content/cases/allon4-g-k.json';
+import allon6mm from '@/content/cases/allon6-m-m.json';
+import allon4mn from '@/content/cases/all-on-4-m-n-2-28.json';
 import cbgingivectomymf from '@/content/cases/cbgingivectomy-m-f.json';
+import allon4fb from '@/content/cases/allon4-f-b.json';
+import allon4yb from '@/content/cases/allon4-y-b.json';
 
 /** Display order for the /services/ page and the home grid. */
 /*
@@ -134,16 +139,25 @@ export const services = [
   zirMaxveneers,
 ] as unknown as Service[];
 
-/* Display order: alternating treatments so the grid doesn't read as three of a kind. */
+
+/*
+ * Ordered by the quality of the portrait each case leads with, so the grid opens on the
+ * strongest photography. Selection criteria live beside CASES in scripts/import.mjs.
+ */
 export const cases = [
-  allon4nd,
-  cbgingivectomymf,
-  allon6rs,
-  allon4za,
+  allon3ra,
+  allon4hm,
+  allon4allon5bb,
+  allon4ae,
   ao3aa,
+  allon4za,
+  allon4nd,
+  allon4gk,
   allon6mm,
+  allon4mn,
+  cbgingivectomymf,
+  allon4fb,
   allon4yb,
-  allon6rd,
 ] as unknown as PatientCase[];
 
 export const doctors = doctorsData as Doctor[];
