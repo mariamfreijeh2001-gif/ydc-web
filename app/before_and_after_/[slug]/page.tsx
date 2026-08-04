@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { BeforeAfterSlider } from '@/components/blocks/BeforeAfterSlider';
+import { BeforeAfter } from '@/components/blocks/BeforeAfter';
 import { Gallery } from '@/components/blocks/Gallery';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
@@ -117,12 +117,13 @@ export default async function CasePage({ params }: Params) {
           <Container>
             <div className={styles.compareHead}>
               <h2 className={styles.compareTitle}>Before and after</h2>
-              <p className={styles.compareHint}>Drag the handle to compare</p>
+              <p className={styles.compareHint}>The same patient, before and after</p>
             </div>
-            <BeforeAfterSlider
+            <BeforeAfter
               before={item.before}
               after={item.after}
               alt={`${item.procedure} — patient result`}
+              priority
             />
           </Container>
         </Section>

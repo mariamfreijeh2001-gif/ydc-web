@@ -1,0 +1,72 @@
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+}
+
+/*
+ * Both frames share one aspect ratio and one crop origin, which is what makes the pair
+ * line up. The source photographs are the same pixel dimensions in 12 of 13 cases, so
+ * fixing the frame rather than letting each image set its own height keeps the two
+ * mouths at the same scale and on the same line.
+ */
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-surface-2);
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+  /* Composited layers escape an ancestor's rounded clip; carry the radius here too. */
+  border-radius: inherit;
+}
+
+.tag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 7px 15px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-taxonomy);
+  letter-spacing: var(--ls-taxonomy);
+  text-transform: uppercase;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+/* Before is stated plainly; after is the one worth colouring. */
+.tagBefore {
+  background: rgba(15, 30, 33, 0.62);
+  color: #fff;
+}
+
+.tagAfter {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .pair {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /*
+   * Stacked, a 4:3 pair runs to most of a phone screen before you reach the second
+   * photograph, so both are shortened to keep the comparison in one view.
+   */
+  .frame {
+    aspect-ratio: 3 / 2;
+  }
+
+  .tag {
+    left: 10px;
+    bottom: 10px;
+    padding: 6px 12px;
+  }
+}
