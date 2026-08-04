@@ -78,3 +78,55 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---- Actions ------------------------------------------------------------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/*
+ * WhatsApp's own green, not a brand colour. This button hands off to another app and
+ * looks like what it opens — using the clinic's teal here would be quieter but would
+ * also make it read as a second, equivalent submit.
+ */
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 12px 22px;
+  border: 1px solid #25d366;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: #128c4a;
+  font-size: var(--fs-button);
+  font-weight: 700;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.whatsapp:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.whatsapp svg {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 460px) {
+  /* Side by side these wrap awkwardly mid-label; full width reads as two clear choices. */
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .whatsapp {
+    justify-content: center;
+  }
+}
