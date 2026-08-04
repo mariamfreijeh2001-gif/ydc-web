@@ -306,3 +306,12 @@
     opacity: 0;
   }
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* Tapping a region pins its route, so the chip has to be a real target. */
+  .chip {
+    min-height: 44px;
+  }
+}

@@ -134,3 +134,14 @@ a.chip:hover {
     transform: none;
   }
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* The treatment chip is its own link through to the service page. */
+  .chip {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

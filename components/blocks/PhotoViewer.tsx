@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+
+import { lockScroll, unlockScroll } from '@/lib/scrollLock';
 import type { ReactNode } from 'react';
 
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon, ExpandIcon } from '@/components/ui/Icon';
@@ -33,7 +35,7 @@ export function PhotoViewer({ photos, children }: { photos: Photo[]; children: R
 
   useEffect(() => {
     if (index === null) return;
-    document.body.classList.add('is-locked');
+    lockScroll();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') close();
       if (e.key === 'ArrowRight') step(1);
@@ -41,7 +43,7 @@ export function PhotoViewer({ photos, children }: { photos: Photo[]; children: R
     };
     window.addEventListener('keydown', onKey);
     return () => {
-      document.body.classList.remove('is-locked');
+      unlockScroll();
       window.removeEventListener('keydown', onKey);
     };
   }, [index, close, step]);

@@ -74,8 +74,9 @@
 
 .toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  /* 44px is the smallest reliable touch target; 42 was under it. */
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
   background: var(--c-primary);
   color: #fff;
@@ -100,6 +101,11 @@
 /*
  * Viewport-sized clipping shell. Without it the drawer, parked at translateX(100%),
  * widens the document and creates a phantom horizontal scroll on every page.
+ *
+ * It has to live outside <header>. The header carries a backdrop-filter, and a filter
+ * of any kind makes an element the containing block for its fixed descendants — so
+ * while this sat inside it, "position: fixed; inset: 0" resolved to the header's own
+ * 64px box and the open drawer was clipped to a strip across the top of the screen.
  */
 .shell {
   position: fixed;
@@ -215,4 +221,15 @@
 
 .drawerContact a:hover {
   color: var(--c-primary);
+}
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* The mark is 36px tall; the link around it needs to be reachable, not just visible. */
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }

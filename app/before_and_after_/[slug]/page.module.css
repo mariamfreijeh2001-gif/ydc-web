@@ -224,3 +224,13 @@
   font-weight: 600;
   color: var(--c-tertiary);
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* A standalone back link, not one inside a sentence. */
+  .back {
+    min-height: 44px;
+    align-items: center;
+  }
+}

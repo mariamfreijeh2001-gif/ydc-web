@@ -141,22 +141,30 @@
 /* Mobile — Elementor breakpoint 767px */
 @media (max-width: 767px) {
   :root {
-    --fs-h1: 44px;
+    /*
+     * The phone scale, raised across the board. The transcribed theme set eyebrows and
+     * taxonomy chips at 10px and body copy at 15px, which is under what a phone can be
+     * read at comfortably — 16px is the usual floor for body text, and it also stops iOS
+     * zooming the page when a form field takes focus. The display sizes came down at the
+     * same time: 44px was over a tenth of the screen width per character and forced
+     * two-word headings onto three lines.
+     */
+    --fs-h1: 38px;
     --ls-h1: -1px;
-    --fs-h2: 36px;
-    --fs-h3: 26px;
+    --fs-h2: 30px;
+    --fs-h3: 24px;
     --fs-h4: 20px;
-    --fs-h5: 16px;
-    --fs-h6: 10px;
-    --fs-text: 15px;
-    --fs-accent: 14px;
-    --fs-tertiary: 13px;
-    --fs-meta: 12px;
+    --fs-h5: 17px;
+    --fs-h6: 12px;
+    --fs-text: 16px;
+    --fs-accent: 15px;
+    --fs-tertiary: 14px;
+    --fs-meta: 13px;
     --fs-small: 13px;
-    --fs-taxonomy: 10px;
-    --fs-button: 14px;
+    --fs-taxonomy: 11px;
+    --fs-button: 15px;
     --fs-blockquote: 20px;
-    --fs-large: 16px;
+    --fs-large: 17px;
 
     --section-y: 64px;
     --container-pad: 16px;

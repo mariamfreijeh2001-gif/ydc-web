@@ -159,3 +159,20 @@
     gap: 20px;
   }
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* Social icons sat at 36px, and the contact lines had no vertical padding at all. */
+  .social {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact a,
+  .navLink {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

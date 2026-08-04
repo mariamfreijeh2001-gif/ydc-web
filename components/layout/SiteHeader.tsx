@@ -1,20 +1,22 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { contact, nav, site } from '@/content/site';
-import { AtIcon, CloseIcon, MenuIcon, PhoneIcon } from '@/components/ui/Icon';
-import styles from './SiteHeader.module.css';
-import { IMAGE_QUALITY } from '@/components/ui/image';
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
-const LOGO = '/media/2024/05/ydc_logo_transparent.webp';
+import { contact, nav, site } from "@/content/site";
+import { AtIcon, CloseIcon, MenuIcon, PhoneIcon } from "@/components/ui/Icon";
+import styles from "./SiteHeader.module.css";
+import { IMAGE_QUALITY } from "@/components/ui/image";
+
+const LOGO = "/media/2024/05/ydc_logo_transparent.webp";
 
 /** `/` only matches itself; every other entry also matches its sub-routes. */
 function isActive(pathname: string, href: string) {
-  if (href === '/') return pathname === '/';
+  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href);
 }
 
@@ -27,65 +29,85 @@ export function SiteHeader() {
 
   // Lock background scroll while the drawer is open, and allow Esc to dismiss.
   useEffect(() => {
-    document.body.classList.toggle('is-locked', open);
+    if (open) lockScroll();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === "Escape") setOpen(false);
     };
-    window.addEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.classList.remove('is-locked');
-      window.removeEventListener('keydown', onKey);
+      if (open) unlockScroll();
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
   return (
-    <header className={styles.header}>
-      <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label={`${site.name} — home`}>
-          <Image src={LOGO} alt={site.name} width={280} height={56} priority
-  quality={IMAGE_QUALITY}
-/>
-        </Link>
+    <>
+      <header className={styles.header}>
+        <div className={styles.inner}>
+          <Link
+            href="/"
+            className={styles.logo}
+            aria-label={`${site.name} — home`}
+          >
+            <Image
+              src={LOGO}
+              alt={site.name}
+              width={280}
+              height={56}
+              priority
+              quality={IMAGE_QUALITY}
+            />
+          </Link>
 
-        <nav className={styles.nav} aria-label="Main">
-          <ul className={styles.navList}>
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={styles.navLink}
-                  aria-current={isActive(pathname, item.href) ? 'page' : undefined}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav className={styles.nav} aria-label="Main">
+            <ul className={styles.navList}>
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={styles.navLink}
+                    aria-current={
+                      isActive(pathname, item.href) ? "page" : undefined
+                    }
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <button
-          type="button"
-          className={styles.toggle}
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-        >
-          {open ? <CloseIcon width={22} height={22} /> : <MenuIcon width={22} height={22} />}
-        </button>
-      </div>
+          <button
+            type="button"
+            className={styles.toggle}
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? (
+              <CloseIcon width={22} height={22} />
+            ) : (
+              <MenuIcon width={22} height={22} />
+            )}
+          </button>
+        </div>
+      </header>
 
       {/*
         Off-canvas drawer, mirroring the theme's mobile menu. The viewport-sized shell
         clips the parked drawer so it can't widen the document.
       */}
-      <div className={`${styles.shell} ${open ? styles.shellOpen : ''}`}>
+      <div className={`${styles.shell} ${open ? styles.shellOpen : ""}`}>
         <div
-          className={`${styles.scrim} ${open ? styles.scrimOpen : ''}`}
+          className={`${styles.scrim} ${open ? styles.scrimOpen : ""}`}
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
-        <div id="mobile-menu" className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`}>
+        <div
+          id="mobile-menu"
+          className={`${styles.drawer} ${open ? styles.drawerOpen : ""}`}
+        >
           <div className={styles.drawerHead}>
             <span className={styles.drawerTitle}>Menu</span>
             <button
@@ -105,7 +127,9 @@ export function SiteHeader() {
                   <Link
                     href={item.href}
                     className={styles.drawerLink}
-                    aria-current={isActive(pathname, item.href) ? 'page' : undefined}
+                    aria-current={
+                      isActive(pathname, item.href) ? "page" : undefined
+                    }
                   >
                     {item.label}
                   </Link>
@@ -126,6 +150,6 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }

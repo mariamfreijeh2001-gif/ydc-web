@@ -84,3 +84,13 @@
 .ghost:hover {
   color: var(--c-primary);
 }
+
+@media (max-width: 767px) {
+  /*
+   * 44px is the smallest target a finger hits reliably. The size variants are set from
+   * padding and line-height, which landed some buttons at 38px on a phone.
+   */
+  .btn {
+    min-height: 44px;
+  }
+}

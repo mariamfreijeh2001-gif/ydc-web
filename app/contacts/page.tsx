@@ -95,7 +95,7 @@ export default function ContactsPage() {
                 alt=""
                 width={520}
                 height={520}
-                sizes="(max-width: 1024px) 60vw, 420px"
+                sizes="(max-width: 767px) 92vw, (max-width: 1024px) 60vw, 420px"
                 className={styles.askImg}
                 quality={IMAGE_QUALITY}
               />

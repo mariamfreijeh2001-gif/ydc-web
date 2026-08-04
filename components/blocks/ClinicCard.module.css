@@ -114,3 +114,12 @@
     transition: none;
   }
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .directions {
+    min-height: 44px;
+    align-items: center;
+  }
+}

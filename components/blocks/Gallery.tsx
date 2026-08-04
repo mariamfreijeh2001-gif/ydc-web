@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
+import { lockScroll, unlockScroll } from '@/lib/scrollLock';
+
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from '@/components/ui/Icon';
 import styles from './Gallery.module.css';
 import { IMAGE_QUALITY } from '@/components/ui/image';
@@ -25,7 +27,7 @@ export function Gallery({ images, caption }: Props) {
 
   useEffect(() => {
     if (open === null) return;
-    document.body.classList.add('is-locked');
+    lockScroll();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') close();
       if (e.key === 'ArrowRight') step(1);
@@ -33,7 +35,7 @@ export function Gallery({ images, caption }: Props) {
     };
     window.addEventListener('keydown', onKey);
     return () => {
-      document.body.classList.remove('is-locked');
+      unlockScroll();
       window.removeEventListener('keydown', onKey);
     };
   }, [open, close, step]);

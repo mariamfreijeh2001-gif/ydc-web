@@ -189,6 +189,3 @@ b {
 }
 
 /* Locks background scroll while the mobile drawer or lightbox is open. */
-body.is-locked {
-  overflow: hidden;
-}

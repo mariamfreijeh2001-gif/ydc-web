@@ -436,3 +436,17 @@
     font-size: var(--fs-h5);
   }
 }
+
+/* ---- Touch targets ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /*
+   * Standalone calls to action, not links inside a sentence — the WCAG exemption for
+   * inline links doesn't apply and they were 21px tall.
+   */
+  .introLink,
+  .viewAll {
+    min-height: 44px;
+    align-items: center;
+  }
+}
